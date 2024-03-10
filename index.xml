@@ -1,18 +1,1 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Daaihang Online – DH Online</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content in DH Online on Daaihang Online</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-CN</language>
-    <lastBuildDate>Sun, 10 Mar 2024 00:14:47 +0800</lastBuildDate>
-    
-	  <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-      
-      
-    
-    
-  </channel>
-</rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Daaihang Online – DH Online</title><link>https://wdh.hk/</link><description>Recent content in DH Online on Daaihang Online</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 10 Mar 2024 00:14:47 +0800</lastBuildDate><atom:link href="https://wdh.hk/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
