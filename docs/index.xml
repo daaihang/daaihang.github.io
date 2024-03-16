@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Daaihang Online – 文档</title><link>https://wdh.hk/docs/</link><description>Recent content in 文档 on Daaihang Online</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>© 2019 - 2024 Daaihang Online</copyright><lastBuildDate>Sun, 10 Mar 2024 00:14:50 +0800</lastBuildDate><atom:link href="https://wdh.hk/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Ubuntu 20.04 安装 MongoDB 7.0</title><link>https://wdh.hk/docs/ubuntu-mongodb/</link><pubDate>Sat, 16 Mar 2024 15:40:12 +0800</pubDate><guid>https://wdh.hk/docs/ubuntu-mongodb/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Daaihang Wong Online – 文档</title><link>https://wdh.hk/docs/</link><description>Recent content in 文档 on Daaihang Wong Online</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>© 2019 - 2024 Daaihang Wong Online</copyright><lastBuildDate>Sun, 10 Mar 2024 00:14:50 +0800</lastBuildDate><atom:link href="https://wdh.hk/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Ubuntu 20.04 安装 MongoDB 7.0</title><link>https://wdh.hk/docs/ubuntu-mongodb/</link><pubDate>Sat, 16 Mar 2024 15:40:12 +0800</pubDate><guid>https://wdh.hk/docs/ubuntu-mongodb/</guid><description>
 &lt;h2>添加MongoDB 7.0存储库&lt;span class="hx-absolute -hx-mt-20" id="添加mongodb-70存储库">&lt;/span>
 &lt;a href="#%e6%b7%bb%e5%8a%a0mongodb-70%e5%ad%98%e5%82%a8%e5%ba%93" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>更新 APT 包索引：&lt;/p>
 &lt;div class="code-block hx-relative hx-mt-6 first:hx-mt-0 group/code">&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">sudo apt update -y&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hx-opacity-0 hx-transition group-hover/code:hx-opacity-100 hx-flex hx-gap-1 hx-absolute hx-m-[11px] hx-right-0 hx-top-0">
@@ -435,7 +435,7 @@ title="Copy code"
 本教程仅供学习，请在成功刷入OpenWrt后正确使用系统，并在学习后24小时内删除相关固件和（或）软件包。
 &lt;/div>
 &lt;/div>
-&lt;/div></description></item><item><title>GZCTF 部署笔记</title><link>https://wdh.hk/docs/gzctf-build/</link><pubDate>Sun, 10 Mar 2024 21:57:38 +0800</pubDate><guid>https://wdh.hk/docs/gzctf-build/</guid><description>
+&lt;/div></description></item><item><title>GZCTF 搭建部署笔记（Docker）</title><link>https://wdh.hk/docs/gzctf-build/</link><pubDate>Sun, 10 Mar 2024 21:57:38 +0800</pubDate><guid>https://wdh.hk/docs/gzctf-build/</guid><description>
 &lt;blockquote>
 &lt;p>Github: &lt;a href="https://github.com/GZTimeWalker/GZCTF" target="_blank" rel="noopener">GZTimeWalker/GZCTF&lt;/a>&lt;/p>
 &lt;p>部署方式：Docker-compose（GZCTF、数据库、题目容器均在同一Docker实例中）&lt;/p>
@@ -630,12 +630,12 @@ title="Copy code"
 &lt;li>
 &lt;p>部署报错：&lt;/p>
 &lt;ul>
-&lt;li>不会两个文件内容改都不改吧？&lt;/li>
+&lt;li>&lt;strong>不会两个文件内容改都不改吧？&lt;/strong>&lt;/li>
 &lt;li>检查 pip 版本，检查 Docker 版本。&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;li>
-&lt;p>容器无法创建：数据库是否连上？看前面的配置和 &lt;code>docker logs xxx&lt;/code> 命令。&lt;/p>
+&lt;p>容器无法创建：数据库是否连上？看前面的配置和使用 &lt;code>docker logs xxx&lt;/code> 命令查看日志。&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>容器创建成功但无法打开网页：&lt;/p>
