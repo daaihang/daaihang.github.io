@@ -24,7 +24,7 @@
 &lt;/div>&lt;/div>
 &lt;div class="hx-w-full hx-min-w-0 hx-leading-7">
 &lt;div class="hx-mt-6 hx-leading-7 first:hx-mt-0">
-在构建过程中，本网站使用Cloudflare解析域名并加速，使用Netlity再次加速Github Page。因此本网站（旧版本，版本更新见&lt;a href="../about" >关于&lt;/a>）是Cloudflare、Netlity和Github Page三方加速的结果。&lt;strong>但在我部署前后的加速仍然比较明显&lt;/strong>。
+在构建过程中，本网站使用Cloudflare解析域名并加速，使用Netlity再次加速Github Page。因此本网站（旧版本，版本更新见&lt;a href="https://wdh.hk/about" >关于&lt;/a>）是Cloudflare、Netlity和Github Page三方加速的结果。&lt;strong>但在我部署前后的加速仍然比较明显&lt;/strong>。
 &lt;/div>
 &lt;/div>
 &lt;/div>
@@ -59,9 +59,8 @@
 &lt;/div>&lt;/div>
 &lt;div class="hx-w-full hx-min-w-0 hx-leading-7">
 &lt;div class="hx-mt-6 hx-leading-7 first:hx-mt-0">
-&lt;p>&lt;strong>推荐网站&lt;/strong>&lt;/p>
-&lt;p>&lt;a href="https://pagespeed.web.dev/" target="_blank" rel="noopener">PageSpeed Insights&lt;/a>&lt;/p>
-&lt;p>这个网站为谷歌旗下网站分析的网站，可以分析网站的优缺点，提出优化建议。例如采用新一代格式提供图片、适当调整图片大小、移除阻塞渲染的资源。这些建议可以帮助提高网页加载速度。同时还给出无障碍设计建议、安全建议和SEO优化建议，谷歌还是很给力的😘。&lt;/p>
+&lt;h3>推荐网站：&lt;a href="https://pagespeed.web.dev/" target="_blank" rel="noopener">PageSpeed Insights&lt;/a>&lt;span class="hx-absolute -hx-mt-20" id="推荐网站pagespeed-insightshttpspagespeedwebdev">&lt;/span>
+&lt;a href="#%e6%8e%a8%e8%8d%90%e7%bd%91%e7%ab%99pagespeed-insightshttpspagespeedwebdev" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>这个网站为谷歌旗下网站分析的网站，可以分析网站的优缺点，提出优化建议。例如采用新一代格式提供图片、适当调整图片大小、移除阻塞渲染的资源。这些建议可以帮助提高网页加载速度。同时还给出无障碍设计建议、安全建议和SEO优化建议，谷歌还是很给力的😘。&lt;/p>
 &lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310324195.png" style="zoom:50%;" />
 &lt;/div>
 &lt;/div>
