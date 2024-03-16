@@ -1,9 +1,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Daaihang Wong Online – 文档</title><link>https://wdh.hk/docs/</link><description>Recent content in 文档 on Daaihang Wong Online</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><copyright>© 2019 - 2024 Daaihang Wong Online</copyright><lastBuildDate>Sun, 10 Mar 2024 00:14:50 +0800</lastBuildDate><atom:link href="https://wdh.hk/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>使用Netlity加速Github Page</title><link>https://wdh.hk/docs/netlity/</link><pubDate>Sat, 16 Mar 2024 18:22:49 +0800</pubDate><guid>https://wdh.hk/docs/netlity/</guid><description>
 &lt;p>使用Github Page构建静态网页可以大大降低网页部署成本。虽然Github设有CDN加速节点，但在大陆仍然加载较慢。可以使用Netlity加速访问，提升Github Page的国内使用体验。&lt;/p>
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310127745.png" alt="image-20230131012454959" style="zoom:33%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310127745.png" alt="image-20230131012454959" style="zoom:33%;" />
 &lt;p>加速后本网站实测结果（用了很多网站测试，测速结果基本一致）：&lt;/p>
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310130655.png" alt="" style="zoom: 33%;" />
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310157035.png" alt="" style="zoom: 33%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310130655.png" alt="" style="zoom: 33%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310157035.png" alt="" style="zoom: 33%;" />
 &lt;div class="hx-overflow-x-auto hx-mt-6 hx-flex hx-rounded-lg hx-border hx-py-2 ltr:hx-pr-4 rtl:hx-pl-4 contrast-more:hx-border-current contrast-more:dark:hx-border-current hx-border-blue-200 hx-bg-blue-100 hx-text-blue-900 dark:hx-border-blue-200/30 dark:hx-bg-blue-900/30 dark:hx-text-blue-200">
 &lt;div class="ltr:hx-pl-3 ltr:hx-pr-2 rtl:hx-pr-3 rtl:hx-pl-2">&lt;div class="hx-select-none hx-text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">
 ℹ️
@@ -11,10 +11,10 @@
 &lt;div class="hx-w-full hx-min-w-0 hx-leading-7">
 &lt;div class="hx-mt-6 hx-leading-7 first:hx-mt-0">
 &lt;p>&lt;strong>更多测速结果&lt;/strong>&lt;/p>
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310204970.png" style="zoom:33%;" />
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310206217.png" style="zoom:33%;" />
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310207495.png" style="zoom:33%;" />
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310212887.png" style="zoom:33%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310204970.png" style="zoom:33%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310206217.png" style="zoom:33%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310207495.png" style="zoom:33%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310212887.png" style="zoom:33%;" />
 &lt;/div>
 &lt;/div>
 &lt;/div>
@@ -30,27 +30,27 @@
 &lt;/div>
 &lt;h2>绑定仓库&lt;span class="hx-absolute -hx-mt-20" id="绑定仓库">&lt;/span>
 &lt;a href="#%e7%bb%91%e5%ae%9a%e4%bb%93%e5%ba%93" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>前面的基础信息自行选择，并起一个用户名。只需要填框内两个项目，其他选项可不填写。&lt;/p>
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310238656.png" alt="" style="zoom:50%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310238656.png" alt="" style="zoom:50%;" />
 &lt;p>选择&lt;code>Import from Git&lt;/code>，以导入Github上的仓库。&lt;/p>
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310240296.png" alt="" style="zoom:50%;" />
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310242126.png" style="zoom:50%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310240296.png" alt="" style="zoom:50%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310242126.png" style="zoom:50%;" />
 &lt;p>登入Github账号后，选择需要构建的仓库&lt;code>&amp;lt;username&amp;gt;.github.io&lt;/code>。&lt;/p>
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310318721.png" style="zoom:50%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310318721.png" style="zoom:50%;" />
 &lt;p>选择了需要的分支后点击&lt;code>Deploy site&lt;/code>。&lt;/p>
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310248008.png" style="zoom:50%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310248008.png" style="zoom:50%;" />
 &lt;h2>添加自定义域名&lt;span class="hx-absolute -hx-mt-20" id="添加自定义域名">&lt;/span>
 &lt;a href="#%e6%b7%bb%e5%8a%a0%e8%87%aa%e5%ae%9a%e4%b9%89%e5%9f%9f%e5%90%8d" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>完成后在&lt;code>Domains&lt;/code>选项卡中点击&lt;code>Add custom domain&lt;/code>添加自定义域名。并在域名解析服务商填写解析。&lt;/p>
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310251539.png" style="zoom:50%;" />
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310252712.png" style="zoom:50%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310251539.png" style="zoom:50%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310252712.png" style="zoom:50%;" />
 &lt;p>添加后后添加两个域名，需要分别设置。点击&lt;code>Check DNS configuration&lt;/code>选项，查看需要CNAME的域名。&lt;/p>
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310255259.png" style="zoom:50%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310255259.png" style="zoom:50%;" />
 &lt;p>复制框内的二级域名或IP地址，在域名解析商设置解析。&lt;/p>
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310302886.png" style="zoom:50%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310302886.png" style="zoom:50%;" />
 &lt;p>例如，我在Cloudflare解析域名，那我就在此处添加记录，解析上面两个域名。注意需要分开解析&lt;code>example.com&lt;/code>和&lt;code>www.example.com&lt;/code>域名，解析类型为CNAME。&lt;/p>
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310307898.png" style="zoom:50%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310307898.png" style="zoom:50%;" />
 &lt;h2>设置HTTPS&lt;span class="hx-absolute -hx-mt-20" id="设置https">&lt;/span>
 &lt;a href="#%e8%ae%be%e7%bd%aehttps" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>完成解析后在下方选项启用HTTPS，安全访问网站。（此时截图还没验证完成，验证成功后可以启用。）&lt;/p>
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310314163.png" style="zoom:50%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310314163.png" style="zoom:50%;" />
 &lt;h2>最后&lt;span class="hx-absolute -hx-mt-20" id="最后">&lt;/span>
 &lt;a href="#%e6%9c%80%e5%90%8e" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>
 &lt;div class="hx-overflow-x-auto hx-mt-6 hx-flex hx-rounded-lg hx-border hx-py-2 ltr:hx-pr-4 rtl:hx-pl-4 contrast-more:hx-border-current contrast-more:dark:hx-border-current hx-border-blue-200 hx-bg-blue-100 hx-text-blue-900 dark:hx-border-blue-200/30 dark:hx-bg-blue-900/30 dark:hx-text-blue-200">
@@ -61,7 +61,7 @@
 &lt;div class="hx-mt-6 hx-leading-7 first:hx-mt-0">
 &lt;h3>推荐网站：&lt;a href="https://pagespeed.web.dev/" target="_blank" rel="noopener">PageSpeed Insights&lt;/a>&lt;span class="hx-absolute -hx-mt-20" id="推荐网站pagespeed-insightshttpspagespeedwebdev">&lt;/span>
 &lt;a href="#%e6%8e%a8%e8%8d%90%e7%bd%91%e7%ab%99pagespeed-insightshttpspagespeedwebdev" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>这个网站为谷歌旗下网站分析的网站，可以分析网站的优缺点，提出优化建议。例如采用新一代格式提供图片、适当调整图片大小、移除阻塞渲染的资源。这些建议可以帮助提高网页加载速度。同时还给出无障碍设计建议、安全建议和SEO优化建议，谷歌还是很给力的😘。&lt;/p>
-&lt;img src="https://raw.githubusercontent.com/daaihang/PicGo/master/202301310324195.png" style="zoom:50%;" />
+&lt;img src="https://cdn.jsdelivr.net/gh/daaihang/PicGo/202301310324195.png" style="zoom:50%;" />
 &lt;/div>
 &lt;/div>
 &lt;/div>
@@ -673,7 +673,7 @@ title="Copy code"
 &lt;p>看到 gzctf 的 ID 是 &lt;code>5b9bc7a475h2&lt;/code>。使用 &lt;code>docker logs 5b9bc7a475h2&lt;/code> 查看日志。看到连接上数据库的日志即可成功配置。&lt;/p>
 &lt;h2>平台测试&lt;span class="hx-absolute -hx-mt-20" id="平台测试">&lt;/span>
 &lt;a href="#%e5%b9%b3%e5%8f%b0%e6%b5%8b%e8%af%95" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>登录域名或 IP（域名需要在域名服务商配置）。用 Admin 和前面设置的密码登录。（中间就自己添加比赛什么的）然后添加需要容器的题目，并测试几个 Web 容器。&lt;/p>
-&lt;p>&lt;img src="http://picgo-1258675557.cos.accelerate.myqcloud.com/202304011351351.png?imageMogr2/quality/70/strip%7Cwatermark/2/text/wqkgMHhmLiBEYWFpaGFuZyBXb25n/font/U1RIZWl0aSBMaWdodOWNjuaWh-m7keS9ky50dGM/fontsize/18/fill/I2ZmZmZmZg/dissolve/70/shadow/40/gravity/southeast/dx/10/dy/10%7Cwatermark/3/type/3/text/V2FuZ0RhaGVuZ0RhYWloYW5nV29uZ1dESA" alt="" loading="lazy" />&lt;/p>
+&lt;p>&lt;img src="http://picgo-1258675557.cos.accelerate.myqcloud.com/202304011351351.png" alt="" loading="lazy" />&lt;/p>
 &lt;p>可以测试的 Docker Hub 镜像如下。这些镜像本身部署是没有问题的。若出现错误就是平台配置问题了。服务端口均为 80。&lt;/p>
 &lt;div class="code-block hx-relative hx-mt-6 first:hx-mt-0 group/code">&lt;pre>&lt;code>vaalacat/push_f12
 glzjin/hctf_2018_warmup
