@@ -1,12 +1,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Daaihang Wong Online – Docs</title>
+    <title>Daaihang Wong Online – 文档</title>
     <link>https://wdh.hk/docs/</link>
-    <description>Recent content in Docs on Daaihang Wong Online</description>
+    <description>Recent content in 文档 on Daaihang Wong Online</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>© 2019 - 2024 Daaihang Wong Online</copyright>
-    <lastBuildDate>Sat, 16 Mar 2024 18:22:49 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Apr 2024 23:31:53 +0800</lastBuildDate>
     
 	  <atom:link href="https://wdh.hk/docs/index.xml" rel="self" type="application/rss+xml" />
     
