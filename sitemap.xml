@@ -2,11 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://wdh.hk/blog/world-book-day-2024/</loc>
+    <lastmod>2024-04-20T12:36:28+08:00</lastmod>
+  </url><url>
     <loc>https://wdh.hk/docs/awesome-python/</loc>
-    <lastmod>2024-04-16T10:40:54+08:00</lastmod>
+    <lastmod>2024-04-20T12:36:28+08:00</lastmod>
   </url><url>
     <loc>https://wdh.hk/docs/js-33/</loc>
-    <lastmod>2024-04-16T10:53:28+08:00</lastmod>
+    <lastmod>2024-04-20T12:36:28+08:00</lastmod>
   </url><url>
     <loc>https://wdh.hk/docs/gmp-windows/</loc>
     <lastmod>2024-04-16T09:00:24+08:00</lastmod>
