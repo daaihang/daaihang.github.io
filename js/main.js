@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return svg;
   }
 
-  document.querySelectorAll('.hextra-code-copy-btn').forEach(function (button) {
+  document.querySelectorAll('.code-copy-btn').forEach(function (button) {
     // Add copy and success icons
     button.querySelector('.copy-icon')?.appendChild(getCopyIcon());
     button.querySelector('.success-icon')?.appendChild(getSuccessIcon());
