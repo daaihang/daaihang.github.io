@@ -25,6 +25,20 @@ document.addEventListener("DOMContentLoaded", function () {
     el.addEventListener('focus', init);
     el.addEventListener('keyup', search);
     el.addEventListener('keydown', handleKeyDown);
+    el.addEventListener('input', handleInputChange);
+  }
+
+  const shortcutElements = document.querySelectorAll('.search-wrapper kbd');
+
+  function setShortcutElementsOpacity(opacity) {
+    shortcutElements.forEach(el => {
+      el.style.opacity = opacity;
+    });
+  }
+
+  function handleInputChange(e) {
+    const opacity = e.target.value.length > 0 ? 0 : 100;
+    setShortcutElementsOpacity(opacity);
   }
 
   // Get the search wrapper, input, and results elements.
@@ -77,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.target !== resultsElement &&
       !resultsElement.contains(e.target)
     ) {
+      setShortcutElementsOpacity(100);
       hideSearchResults();
     }
   });
@@ -155,6 +170,10 @@ document.addEventListener("DOMContentLoaded", function () {
       case 'Escape':
         e.preventDefault();
         hideSearchResults();
+        // Clear the input when pressing escape
+        inputElement.value = '';
+        inputElement.dispatchEvent(new Event('input'));
+        // Remove focus from the input
         inputElement.blur();
         break;
     }
@@ -168,10 +187,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Preload the search index.
+  /**
+   * Preloads the search index by fetching data and adding it to the FlexSearch index.
+   * @returns {Promise<void>} A promise that resolves when the index is preloaded.
+   */
   async function preloadIndex() {
+    const tokenize = 'forward';
     window.pageIndex = new FlexSearch.Document({
-      tokenize: 'forward',
+      tokenize,
       cache: 100,
       document: {
         id: 'id',
@@ -181,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     window.sectionIndex = new FlexSearch.Document({
-      tokenize: 'forward',
+      tokenize,
       cache: 100,
       document: {
         id: 'id',
@@ -237,6 +260,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  /**
+   * Performs a search based on the provided query and displays the results.
+   * @param {Event} e - The event object.
+   */
   function search(e) {
     const query = e.target.value;
     if (!e.target.value) {
@@ -305,6 +332,12 @@ document.addEventListener("DOMContentLoaded", function () {
     displayResults(sortedResults, query);
   }
 
+  /**
+   * Displays the search results on the page.
+   *
+   * @param {Array} results - The array of search results.
+   * @param {string} query - The search query.
+   */
   function displayResults(results, query) {
     const { resultsElement } = getActiveSearchElement();
     if (!resultsElement) return;
