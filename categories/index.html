@@ -416,19 +416,38 @@
       <footer class="hextra-footer hx-bg-gray-100 hx-pb-[env(safe-area-inset-bottom)] dark:hx-bg-neutral-900 print:hx-bg-transparent"><div
     class="hx-max-w-screen-xl hx-mx-auto hx-flex hx-justify-center hx-py-12 hx-pl-[max(env(safe-area-inset-left),1.5rem)] hx-pr-[max(env(safe-area-inset-right),1.5rem)] hx-text-gray-600 dark:hx-text-gray-400 md:hx-justify-start"
   >
-    <div class="hx-flex hx-w-full hx-flex-col hx-items-center sm:hx-items-start"><div class="hx-mt-6 hx-text-xs">© 2019 - 2024 Daaihang Wong Online</div>
+    <div class="hx-flex hx-w-full hx-flex-col hx-items-center sm:hx-items-start">
+        <div class="hx-mt-6 hx-text-xs">© 2019 - 2024 Daaihang Wong Online</div>
+      
+
+      
+      <div id="beian-info" class="hx-mt-4 hx-text-xs"></div>
     </div>
   </div>
 </footer><script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?d702a5a08a6b7a0d02ec85a7eb1091e2";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
-    </script>
-    
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?d702a5a08a6b7a0d02ec85a7eb1091e2";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  
+  
+  (function() {
+    var domain = window.location.hostname;
+    var beianInfo = "";
+    if (domain === "wangdh.cn" || domain === "www.wangdh.cn") {
+      beianInfo = '<a href="https://beian.miit.gov.cn/" target="_blank">桂ICP备2022008498号-2</a>';
+    } else if (domain === "dev.gx.cn" || domain === "www.dev.gx.cn") {
+      beianInfo = '<a href="https://beian.miit.gov.cn/" target="_blank">桂ICP备2022008498号-7</a>';
+    } else if (domain === "wdh.hk" || domain === "www.wdh.hk" || domain === "localhost") {
+      beianInfo = '正在访问海外站点，中国大陆可访问 <a href="https://wangdh.cn/" target="_blank">由腾讯云托管的镜像站</a>。';
+    } 
+    document.getElementById("beian-info").innerHTML = beianInfo;
+  })();
+</script>
+
     
     <script defer src="/js/main.min.342e1e44bc7342ae62e1a3b59ef97a9517fdcb27179b2b109a683bb5bb77d9a7.js" integrity="sha256-NC4eRLxzQq5i4aO1nvl6lRf9yycXmysQmmg7tbt32ac="></script>
 

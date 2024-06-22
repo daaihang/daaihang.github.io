@@ -84,8 +84,8 @@
 &lt;/div&gt;
 
 &lt;h2&gt;实验一 对称加密&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;实验一-对称加密&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#%e5%ae%9e%e9%aa%8c%e4%b8%80-%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;（1）古典密码Hill密码&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;1古典密码hill密码&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#1%e5%8f%a4%e5%85%b8%e5%af%86%e7%a0%81hill%e5%af%86%e7%a0%81&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;随机生成一个2×2和一个3×3的可逆的密钥矩阵，矩阵元素取自Z26。&lt;/p&gt;
+    &lt;a href=&#34;#%e5%ae%9e%e9%aa%8c%e4%b8%80-%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;古典密码Hill密码&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;古典密码hill密码&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%8f%a4%e5%85%b8%e5%af%86%e7%a0%81hill%e5%af%86%e7%a0%81&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;随机生成一个2×2和一个3×3的可逆的密钥矩阵，矩阵元素取自Z26。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;求这两个矩阵的逆矩阵&lt;/li&gt;
 &lt;li&gt;分别用这两个密钥矩阵加密消息（学号+姓名），得密文；解密密文，检验是否正确解密了？&lt;/li&gt;
@@ -293,8 +293,8 @@ function toggleCollapse(element) {
     }
 }
 &lt;/script&gt;
-&lt;h3&gt;（2）置换密码&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;2置换密码&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#2%e7%bd%ae%e6%8d%a2%e5%af%86%e7%a0%81&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;随机生成一个置换表（置换表长度可设置）&lt;/p&gt;
+&lt;h3&gt;置换密码&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;置换密码&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e7%bd%ae%e6%8d%a2%e5%af%86%e7%a0%81&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;随机生成一个置换表（置换表长度可设置）&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;求逆置换&lt;/li&gt;
 &lt;li&gt;用此置换表加密消息（学号+姓名），得密文；解密密文，检验是否正确解密了？&lt;/li&gt;
@@ -447,8 +447,8 @@ function toggleCollapse(element) {
     }
 }
 &lt;/script&gt;
-&lt;h3&gt;（3）对称加密算法AES和工作模式&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;3对称加密算法aes和工作模式&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#3%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95aes%e5%92%8c%e5%b7%a5%e4%bd%9c%e6%a8%a1%e5%bc%8f&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;h3&gt;对称加密算法AES和工作模式&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;对称加密算法aes和工作模式&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95aes%e5%92%8c%e5%b7%a5%e4%bd%9c%e6%a8%a1%e5%bc%8f&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;编写AES加密和解密算法&lt;/li&gt;
 &lt;li&gt;分别结合CBC和OFB工作模式，加密消息（学号+姓名），得密文；解密密文，检验是否正确解密了？&lt;/li&gt;
 &lt;/ol&gt;
@@ -1423,8 +1423,9 @@ function toggleCollapse(element) {
     }
 }
 &lt;/script&gt;
-&lt;h1&gt;实验二 非对称加密&lt;/h1&gt;&lt;h3&gt;（1）公钥加密算法RSA&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;1公钥加密算法rsa&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#1%e5%85%ac%e9%92%a5%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95rsa&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;h2&gt;实验二 非对称加密&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;实验二-非对称加密&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%ae%9e%e9%aa%8c%e4%ba%8c-%e9%9d%9e%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;公钥加密算法RSA&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;公钥加密算法rsa&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%85%ac%e9%92%a5%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95rsa&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;编写RSA密码算法（包含密钥生成、加密和解密）&lt;/li&gt;
 &lt;li&gt;利用此算法加密消息（学号+姓名），得密文；解密密文，检验能否正确解密&lt;/li&gt;
 &lt;/ol&gt;
@@ -1616,8 +1617,8 @@ function toggleCollapse(element) {
     }
 }
 &lt;/script&gt;
-&lt;h3&gt;（2）公钥加密算法ElGamal&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;2公钥加密算法elgamal&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#2%e5%85%ac%e9%92%a5%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95elgamal&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;h3&gt;公钥加密算法ElGamal&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;公钥加密算法elgamal&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%85%ac%e9%92%a5%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95elgamal&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;编写ElGamal加密算法（包含密钥生成、加密和解密过程）&lt;/li&gt;
 &lt;li&gt;利用此算法加密消息（学号+姓名），得密文；解密密文，检验能否正确解密&lt;/li&gt;
 &lt;/ol&gt;
@@ -1797,8 +1798,8 @@ function toggleCollapse(element) {
     }
 }
 &lt;/script&gt;
-&lt;h3&gt;（3）混合加密（电子信封）&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;3混合加密电子信封&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#3%e6%b7%b7%e5%90%88%e5%8a%a0%e5%af%86%e7%94%b5%e5%ad%90%e4%bf%a1%e5%b0%81&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;h3&gt;混合加密（电子信封）&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;混合加密电子信封&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%b7%b7%e5%90%88%e5%8a%a0%e5%af%86%e7%94%b5%e5%ad%90%e4%bf%a1%e5%b0%81&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;基于已编写的AES和RSA（或ElGamal）密码算法，实现混合加密&lt;/li&gt;
 &lt;li&gt;利用混合算法加密消息（学号+姓名），得密文；解密密文，检验能否正确解密&lt;/li&gt;
 &lt;/ol&gt;
@@ -1902,11 +1903,12 @@ function toggleCollapse(element) {
     }
 }
 &lt;/script&gt;
-&lt;h1&gt;实验三 认证技术&lt;/h1&gt;&lt;blockquote&gt;
+&lt;h2&gt;实验三 认证技术&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;实验三-认证技术&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e5%ae%9e%e9%aa%8c%e4%b8%89-%e8%ae%a4%e8%af%81%e6%8a%80%e6%9c%af&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
 &lt;p&gt;注：过程中可以利用密码库中的Hash算法（如SHA2，SM3，SHA3等）&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h3&gt;（1）消息认证码（MAC）&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;1消息认证码mac&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#1%e6%b6%88%e6%81%af%e8%ae%a4%e8%af%81%e7%a0%81mac&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;h3&gt;消息认证码（MAC）&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;消息认证码mac&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#%e6%b6%88%e6%81%af%e8%ae%a4%e8%af%81%e7%a0%81mac&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;编写基于Hash算法的消息认证码&lt;/li&gt;
 &lt;li&gt;利用此算法对消息（学号+姓名）进行完整性和真实性认证&lt;/li&gt;
 &lt;/ol&gt;
@@ -2095,8 +2097,8 @@ function toggleCollapse(element) {
     }
 }
 &lt;/script&gt;
-&lt;h3&gt;（2）RSA数字签名算法&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;2rsa数字签名算法&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#2rsa%e6%95%b0%e5%ad%97%e7%ad%be%e5%90%8d%e7%ae%97%e6%b3%95&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;h3&gt;RSA数字签名算法&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;rsa数字签名算法&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#rsa%e6%95%b0%e5%ad%97%e7%ad%be%e5%90%8d%e7%ae%97%e6%b3%95&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;编写RSA签名算法（包含密钥生成、签名和验证过程）&lt;/li&gt;
 &lt;li&gt;利用此算法对消息（学号+姓名）进行签名；并在接收方进行验证&lt;/li&gt;
 &lt;/ol&gt;
@@ -2264,8 +2266,8 @@ function toggleCollapse(element) {
     }
 }
 &lt;/script&gt;
-&lt;h3&gt;（3）ElGamal数字签名算法&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;3elgamal数字签名算法&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#3elgamal%e6%95%b0%e5%ad%97%e7%ad%be%e5%90%8d%e7%ae%97%e6%b3%95&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;h3&gt;ElGamal数字签名算法&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;elgamal数字签名算法&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#elgamal%e6%95%b0%e5%ad%97%e7%ad%be%e5%90%8d%e7%ae%97%e6%b3%95&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;编写ElGamal签名算法（包含密钥生成、签名和验证过程）&lt;/li&gt;
 &lt;li&gt;利用此算法对消息（学号+姓名）进行签名；并在接收方进行验证&lt;/li&gt;
 &lt;/ol&gt;
@@ -2497,8 +2499,8 @@ function toggleCollapse(element) {
 }
 &lt;/script&gt;
 &lt;h2&gt;实验四：密钥管理&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;实验四密钥管理&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#%e5%ae%9e%e9%aa%8c%e5%9b%9b%e5%af%86%e9%92%a5%e7%ae%a1%e7%90%86&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;（1）DH密钥交换协议&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;1dh密钥交换协议&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#1dh%e5%af%86%e9%92%a5%e4%ba%a4%e6%8d%a2%e5%8d%8f%e8%ae%ae&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+    &lt;a href=&#34;#%e5%ae%9e%e9%aa%8c%e5%9b%9b%e5%af%86%e9%92%a5%e7%ae%a1%e7%90%86&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;DH密钥交换协议&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;dh密钥交换协议&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#dh%e5%af%86%e9%92%a5%e4%ba%a4%e6%8d%a2%e5%8d%8f%e8%ae%ae&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;DH密钥交换协议（包含密钥生成、加密和解密）&lt;/li&gt;
 &lt;li&gt;双方利用此协议生成的密钥，结合已编写的AES算法来加密消息（学号+姓名），得密文；解密密文，检验能否正确解密&lt;/li&gt;
 &lt;/ol&gt;
@@ -2676,8 +2678,8 @@ function toggleCollapse(element) {
     }
 }
 &lt;/script&gt;
-&lt;h3&gt;（2）Shamir秘密共享方案&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;2shamir秘密共享方案&#34;&gt;&lt;/span&gt;
-    &lt;a href=&#34;#2shamir%e7%a7%98%e5%af%86%e5%85%b1%e4%ba%ab%e6%96%b9%e6%a1%88&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;h3&gt;Shamir秘密共享方案&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;shamir秘密共享方案&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#shamir%e7%a7%98%e5%af%86%e5%85%b1%e4%ba%ab%e6%96%b9%e6%a1%88&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;编写一个(n, t) Shamir秘密共享方案（包含秘密的分片和基于Lagrange插值方法恢复秘密）&lt;/li&gt;
 &lt;li&gt;实例化(n, t) =(5, 3)，而秘密信息为你的“学号+姓名”，演示秘密分片和恢复秘密的过程。&lt;/li&gt;
 &lt;/ol&gt;
