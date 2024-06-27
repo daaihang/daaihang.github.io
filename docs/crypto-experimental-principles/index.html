@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon shortcut" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" href="/favicon-dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+<link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
+
+  <title>信息安全密码学基础 - 实验原理 – Daaihang Wong Online</title>
+  <meta name="description" content="造福下一届，人人有责。 所属实验：西安邮电大学 - 网络空间安全学院 - 密码学基础 - 课程设计实验 实验时间：2024年上半年 接 信息安全密码学基础 - 实验" />
+
+  
+    <link rel="canonical" href="https://wdh.hk/docs/crypto-experimental-principles/" itemprop="url" />
+  
+
+  
+
+<meta property="og:title" content="信息安全密码学基础 - 实验原理" />
+<meta property="og:description" content="造福下一届，人人有责。 所属实验：西安邮电大学 - 网络空间安全学院 - 密码学基础 - 课程设计实验 实验时间：2024年上半年 接 信息安全密码学基础 - 实验" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://wdh.hk/docs/crypto-experimental-principles/" /><meta property="article:section" content="docs" />
+<meta property="article:published_time" content="2024-06-22T04:20:42+08:00" />
+<meta property="article:modified_time" content="2024-06-28T05:12:16+08:00" />
+
+  
+  <meta itemprop="name" content="信息安全密码学基础 - 实验原理">
+  <meta itemprop="description" content="造福下一届，人人有责。 所属实验：西安邮电大学 - 网络空间安全学院 - 密码学基础 - 课程设计实验 实验时间：2024年上半年 接 信息安全密码学基础 - 实验">
+  <meta itemprop="datePublished" content="2024-06-22T04:20:42+08:00">
+  <meta itemprop="dateModified" content="2024-06-28T05:12:16+08:00">
+  <meta itemprop="wordCount" content="5923">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="信息安全密码学基础 - 实验原理">
+  <meta name="twitter:description" content="造福下一届，人人有责。 所属实验：西安邮电大学 - 网络空间安全学院 - 密码学基础 - 课程设计实验 实验时间：2024年上半年 接 信息安全密码学基础 - 实验">
+
+    <link rel="preload" href="/css/compiled/main.min.2d281924a07a1379a60f9457cf36eb70902cce95508ab4fff261f9e49a6bb326.css" as="style" integrity="sha256-LSgZJKB6E3mmD5RXzzbrcJAszpVQirT/8mH55JprsyY=" />
+    <link href="/css/compiled/main.min.2d281924a07a1379a60f9457cf36eb70902cce95508ab4fff261f9e49a6bb326.css" rel="stylesheet" integrity="sha256-LSgZJKB6E3mmD5RXzzbrcJAszpVQirT/8mH55JprsyY=" />
+
+
+
+  <link href="/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css" rel="stylesheet" integrity="sha256-47DEQpj8HBSa&#43;/TImW&#43;5JCeuQeRkm5NMpJWZG3hSuFU=" />
+
+
+
+  
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    
+
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HCEGP184JS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-HCEGP184JS");
+  </script>
+
+
+
+  <script>
+     
+    const defaultTheme = 'system';
+
+    const setDarkTheme = () => {
+      document.documentElement.classList.add("dark");
+      document.documentElement.style.colorScheme = "dark";
+    }
+    const setLightTheme = () => {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.style.colorScheme = "light";
+    }
+
+    if ("color-theme" in localStorage) {
+      localStorage.getItem("color-theme") === "dark" ? setDarkTheme() : setLightTheme();
+    } else {
+      defaultTheme === "dark" ? setDarkTheme() : setLightTheme();
+      if (defaultTheme === "system") {
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? setDarkTheme() : setLightTheme();
+      }
+    }
+  </script>
+
+  
+</head>
+<body dir="ltr"><div class="nav-container hx-sticky hx-top-0 hx-z-20 hx-w-full hx-bg-transparent print:hx-hidden">
+  <div class="nav-container-blur hx-pointer-events-none hx-absolute hx-z-[-1] hx-h-full hx-w-full hx-bg-white dark:hx-bg-dark hx-shadow-[0_2px_4px_rgba(0,0,0,.02),0_1px_0_rgba(0,0,0,.06)] contrast-more:hx-shadow-[0_0_0_1px_#000] dark:hx-shadow-[0_-1px_0_rgba(255,255,255,.1)_inset] contrast-more:dark:hx-shadow-[0_0_0_1px_#fff]"></div>
+
+  <nav class="hx-mx-auto hx-flex hx-items-center hx-justify-end hx-gap-2 hx-h-16 hx-px-6 hx-max-w-[90rem]">
+    <a class="hx-flex hx-items-center hover:hx-opacity-75 ltr:hx-mr-auto rtl:hx-ml-auto" href="/">
+        <img class="hx-block dark:hx-hidden" src="/images/logo.svg" alt="Daaihang Wong Online" height="20" width="20" />
+        <img class="hx-hidden dark:hx-block" src="/images/logo.svg" alt="Daaihang Wong Online" height="20" width="20" />
+        <span class="hx-mx-2 hx-font-extrabold hx-inline hx-select-none" title="Daaihang Wong Online">Daaihang Wong Online</span>
+    </a><a
+            title="文档"
+            href="/docs"
+            
+            class="hx-text-sm contrast-more:hx-text-gray-700 contrast-more:dark:hx-text-gray-100 hx-relative -hx-ml-2 hx-hidden hx-whitespace-nowrap hx-p-2 md:hx-inline-block hx-font-medium"
+          >
+            <span class="hx-text-center">文档</span>
+          </a><a
+            title="博客"
+            href="/blog"
+            
+            class="hx-text-sm contrast-more:hx-text-gray-700 contrast-more:dark:hx-text-gray-100 hx-relative -hx-ml-2 hx-hidden hx-whitespace-nowrap hx-p-2 md:hx-inline-block hx-text-gray-600 hover:hx-text-gray-800 dark:hx-text-gray-400 dark:hover:hx-text-gray-200"
+          >
+            <span class="hx-text-center">博客</span>
+          </a><a
+            title="友链"
+            href="/friend"
+            
+            class="hx-text-sm contrast-more:hx-text-gray-700 contrast-more:dark:hx-text-gray-100 hx-relative -hx-ml-2 hx-hidden hx-whitespace-nowrap hx-p-2 md:hx-inline-block hx-text-gray-600 hover:hx-text-gray-800 dark:hx-text-gray-400 dark:hover:hx-text-gray-200"
+          >
+            <span class="hx-text-center">友链</span>
+          </a><a
+            title="关于"
+            href="/about"
+            
+            class="hx-text-sm contrast-more:hx-text-gray-700 contrast-more:dark:hx-text-gray-100 hx-relative -hx-ml-2 hx-hidden hx-whitespace-nowrap hx-p-2 md:hx-inline-block hx-text-gray-600 hover:hx-text-gray-800 dark:hx-text-gray-400 dark:hover:hx-text-gray-200"
+          >
+            <span class="hx-text-center">关于</span>
+          </a><div class="search-wrapper hx-relative md:hx-w-64">
+  <div class="hx-relative hx-flex hx-items-center hx-text-gray-900 contrast-more:hx-text-gray-800 dark:hx-text-gray-300 contrast-more:dark:hx-text-gray-300">
+    <input
+      placeholder="搜索文档..."
+      class="search-input hx-block hx-w-full hx-appearance-none hx-rounded-lg hx-px-3 hx-py-2 hx-transition-colors hx-text-base hx-leading-tight md:hx-text-sm hx-bg-black/[.05] dark:hx-bg-gray-50/10 focus:hx-bg-white dark:focus:hx-bg-dark placeholder:hx-text-gray-500 dark:placeholder:hx-text-gray-400 contrast-more:hx-border contrast-more:hx-border-current"
+      type="search"
+      value=""
+      spellcheck="false"
+    />
+    <kbd
+      class="hx-absolute hx-my-1.5 hx-select-none ltr:hx-right-1.5 rtl:hx-left-1.5 hx-h-5 hx-rounded hx-bg-white hx-px-1.5 hx-font-mono hx-text-[10px] hx-font-medium hx-text-gray-500 hx-border dark:hx-border-gray-100/20 dark:hx-bg-dark/50 contrast-more:hx-border-current contrast-more:hx-text-current contrast-more:dark:hx-border-current hx-items-center hx-gap-1 hx-transition-opacity hx-pointer-events-none hx-hidden sm:hx-flex"
+    >
+      CTRL K
+    </kbd>
+  </div>
+
+  <div>
+    <ul
+      class="search-results hextra-scrollbar hx-hidden hx-border hx-border-gray-200 hx-bg-white hx-text-gray-100 dark:hx-border-neutral-800 dark:hx-bg-neutral-900 hx-absolute hx-top-full hx-z-20 hx-mt-2 hx-overflow-auto hx-overscroll-contain hx-rounded-xl hx-py-2.5 hx-shadow-xl hx-max-h-[min(calc(50vh-11rem-env(safe-area-inset-bottom)),400px)] md:hx-max-h-[min(calc(100vh-5rem-env(safe-area-inset-bottom)),400px)] hx-inset-x-0 ltr:md:hx-left-auto rtl:md:hx-right-auto contrast-more:hx-border contrast-more:hx-border-gray-900 contrast-more:dark:hx-border-gray-50 hx-w-screen hx-min-h-[100px] hx-max-w-[min(calc(100vw-2rem),calc(100%+20rem))]"
+      style="transition: max-height 0.2s ease 0s;"
+    ></ul>
+  </div>
+</div>
+
+          <a class="hx-p-2 hx-text-current" target="_blank" rel="noreferer" href="https://github.com/daaihang/daaihang.github.io" title="GitHub"><svg height=24 fill="currentColor" viewBox="3 3 18 18">
+  <path d="M12 3C7.0275 3 3 7.12937 3 12.2276C3 16.3109 5.57625 19.7597 9.15374 20.9824C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441C9.77249 20.3249 9.76125 19.5982 9.76125 18.8254C7.5 19.2522 6.915 18.2602 6.735 17.7412C6.63375 17.4759 6.19499 16.6569 5.8125 16.4378C5.4975 16.2647 5.0475 15.838 5.80124 15.8264C6.51 15.8149 7.01625 16.4954 7.18499 16.7723C7.99499 18.1679 9.28875 17.7758 9.80625 17.5335C9.885 16.9337 10.1212 16.53 10.38 16.2993C8.3775 16.0687 6.285 15.2728 6.285 11.7432C6.285 10.7397 6.63375 9.9092 7.20749 9.26326C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794C7.2975 6.81794 8.05125 6.57571 9.77249 7.76377C10.4925 7.55615 11.2575 7.45234 12.0225 7.45234C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377C15.9937 6.56418 16.7475 6.81794 16.7475 6.81794C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326C17.4113 9.9092 17.76 10.7281 17.76 11.7432C17.76 15.2843 15.6563 16.0687 13.6537 16.2993C13.98 16.5877 14.2613 17.1414 14.2613 18.0065C14.2613 19.2407 14.25 20.2326 14.25 20.5441C14.25 20.7863 14.4188 21.0746 14.8688 20.9824C16.6554 20.364 18.2079 19.1866 19.3078 17.6162C20.4077 16.0457 20.9995 14.1611 21 12.2276C21 7.12937 16.9725 3 12 3Z"></path>
+</svg>
+<span class="hx-sr-only">GitHub</span>
+          </a><button type="button" aria-label="Menu" class="hamburger-menu -hx-mr-2 hx-rounded hx-p-2 active:hx-bg-gray-400/20 md:hx-hidden"><svg height=24 fill="none" viewBox="0 0 24 24" stroke="currentColor"><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8H20"></path></g><g><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16H20"></path></g></svg></button>
+  </nav>
+</div>
+
+  <div class='hx-mx-auto hx-flex hx-max-w-screen-xl'>
+    <div class="mobile-menu-overlay [transition:background-color_1.5s_ease] hx-fixed hx-inset-0 hx-z-10 hx-bg-black/80 dark:hx-bg-black/60 hx-hidden"></div>
+<aside class="sidebar-container hx-flex hx-flex-col print:hx-hidden md:hx-top-16 md:hx-shrink-0 md:hx-w-64 md:hx-self-start max-md:[transform:translate3d(0,-100%,0)] md:hx-sticky">
+  
+  <div class="hx-px-4 hx-pt-4 md:hx-hidden">
+    <div class="search-wrapper hx-relative md:hx-w-64">
+  <div class="hx-relative hx-flex hx-items-center hx-text-gray-900 contrast-more:hx-text-gray-800 dark:hx-text-gray-300 contrast-more:dark:hx-text-gray-300">
+    <input
+      placeholder="搜索文档..."
+      class="search-input hx-block hx-w-full hx-appearance-none hx-rounded-lg hx-px-3 hx-py-2 hx-transition-colors hx-text-base hx-leading-tight md:hx-text-sm hx-bg-black/[.05] dark:hx-bg-gray-50/10 focus:hx-bg-white dark:focus:hx-bg-dark placeholder:hx-text-gray-500 dark:placeholder:hx-text-gray-400 contrast-more:hx-border contrast-more:hx-border-current"
+      type="search"
+      value=""
+      spellcheck="false"
+    />
+    <kbd
+      class="hx-absolute hx-my-1.5 hx-select-none ltr:hx-right-1.5 rtl:hx-left-1.5 hx-h-5 hx-rounded hx-bg-white hx-px-1.5 hx-font-mono hx-text-[10px] hx-font-medium hx-text-gray-500 hx-border dark:hx-border-gray-100/20 dark:hx-bg-dark/50 contrast-more:hx-border-current contrast-more:hx-text-current contrast-more:dark:hx-border-current hx-items-center hx-gap-1 hx-transition-opacity hx-pointer-events-none hx-hidden sm:hx-flex"
+    >
+      CTRL K
+    </kbd>
+  </div>
+
+  <div>
+    <ul
+      class="search-results hextra-scrollbar hx-hidden hx-border hx-border-gray-200 hx-bg-white hx-text-gray-100 dark:hx-border-neutral-800 dark:hx-bg-neutral-900 hx-absolute hx-top-full hx-z-20 hx-mt-2 hx-overflow-auto hx-overscroll-contain hx-rounded-xl hx-py-2.5 hx-shadow-xl hx-max-h-[min(calc(50vh-11rem-env(safe-area-inset-bottom)),400px)] md:hx-max-h-[min(calc(100vh-5rem-env(safe-area-inset-bottom)),400px)] hx-inset-x-0 ltr:md:hx-left-auto rtl:md:hx-right-auto contrast-more:hx-border contrast-more:hx-border-gray-900 contrast-more:dark:hx-border-gray-50 hx-w-screen hx-min-h-[100px] hx-max-w-[min(calc(100vw-2rem),calc(100%+20rem))]"
+      style="transition: max-height 0.2s ease 0s;"
+    ></ul>
+  </div>
+</div>
+
+  </div>
+  <div class="hextra-scrollbar hx-overflow-y-auto hx-overflow-x-hidden hx-p-4 hx-grow md:hx-h-[calc(100vh-var(--navbar-height)-var(--menu-height))]">
+    <ul class="hx-flex hx-flex-col hx-gap-1 md:hx-hidden">
+      
+      
+          <li class=""><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/friend/"
+    
+  >友链
+    </a></li>
+          <li class="open"><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/"
+    
+  >文档
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx-h-[18px] hx-min-w-[18px] hx-rounded-sm hx-p-0.5 hover:hx-bg-gray-800/5 dark:hover:hx-bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx-origin-center hx-transition-transform rtl:-hx-rotate-180"></path></svg></span>
+    </a><div class="ltr:hx-pr-0 hx-overflow-hidden">
+        <ul class='hx-relative hx-flex hx-flex-col hx-gap-1 before:hx-absolute before:hx-inset-y-1 before:hx-w-px before:hx-bg-gray-200 before:hx-content-[""] ltr:hx-ml-3 ltr:hx-pl-3 ltr:before:hx-left-0 rtl:hx-mr-3 rtl:hx-pr-3 rtl:before:hx-right-0 dark:before:hx-bg-neutral-800'><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/dev-trends/"
+    
+  >开发动态
+    </a>
+              
+            </li><li class="hx-flex hx-flex-col open"><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+    href="/docs/crypto-experimental-principles/"
+    
+  >信息安全密码学基础 - 实验原理
+    </a>
+  
+    <ul class='hx-flex hx-flex-col hx-gap-1 hx-relative before:hx-absolute before:hx-inset-y-1 before:hx-w-px before:hx-bg-gray-200 before:hx-content-[""] dark:before:hx-bg-neutral-800 ltr:hx-pl-3 ltr:before:hx-left-0 rtl:hx-pr-3 rtl:before:hx-right-0 ltr:hx-ml-3 rtl:hx-mr-3'><li>
+              <a
+                href="#%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86"
+                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
+              >对称加密</a>
+            </li>
+          <li>
+              <a
+                href="#%e9%9d%9e%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86"
+                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
+              >非对称加密</a>
+            </li>
+          <li>
+              <a
+                href="#%e8%ae%a4%e8%af%81%e6%8a%80%e6%9c%af"
+                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
+              >认证技术</a>
+            </li>
+          <li>
+              <a
+                href="#%e5%af%86%e9%92%a5%e7%ae%a1%e7%90%86"
+                class="hx-flex hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [word-break:break-word] hx-cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] contrast-more:hx-border hx-gap-2 before:hx-opacity-25 before:hx-content-['#'] hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:hx-text-gray-900 contrast-more:dark:hx-text-gray-50 contrast-more:hx-border-transparent contrast-more:hover:hx-border-gray-900 contrast-more:dark:hover:hx-border-gray-50"
+              >密钥管理</a>
+            </li>
+          </ul>
+  
+              
+            </li><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/short-code/"
+    
+  >Short Code Hugo 短代码
+    </a>
+              
+            </li><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/crypto/"
+    
+  >信息安全密码学基础 - 实验代码
+    </a>
+              
+            </li><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/awesome-python/"
+    
+  >Awesome Python*
+    </a>
+              
+            </li><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/js-33/"
+    
+  >JavaScript 开发者应懂的 33 个概念*
+    </a>
+              
+            </li><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/gmp-windows/"
+    
+  >Windows 安装 C&#43;&#43; GMP 大数运算库
+    </a>
+              
+            </li><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/netlity/"
+    
+  >使用 Netlity 加速 Github Page
+    </a>
+              
+            </li><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/ubuntu-mongodb/"
+    
+  >Ubuntu 20.04 安装 MongoDB 7.0
+    </a>
+              
+            </li><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/mi4c-drcom/"
+    
+  >使用小米路由器 4C 登录西邮联通校园网
+    </a>
+              
+            </li><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/gzctf-build/"
+    
+  >GZCTF 搭建部署笔记（Docker）
+    </a>
+              
+            </li></ul>
+      </div></li>
+          <li class=""><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/blog/"
+    
+  >博客
+        <span class="hextra-sidebar-collapsible-button"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="hx-h-[18px] hx-min-w-[18px] hx-rounded-sm hx-p-0.5 hover:hx-bg-gray-800/5 dark:hover:hx-bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx-origin-center hx-transition-transform rtl:-hx-rotate-180"></path></svg></span>
+    </a><div class="ltr:hx-pr-0 hx-overflow-hidden">
+        <ul class='hx-relative hx-flex hx-flex-col hx-gap-1 before:hx-absolute before:hx-inset-y-1 before:hx-w-px before:hx-bg-gray-200 before:hx-content-[""] ltr:hx-ml-3 ltr:hx-pl-3 ltr:before:hx-left-0 rtl:hx-mr-3 rtl:hx-pr-3 rtl:before:hx-right-0 dark:before:hx-bg-neutral-800'><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/blog/boat-tide/"
+    
+  >浪潮中的一叶扁舟
+    </a>
+              
+            </li><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/blog/world-book-day-2024/"
+    
+  >2024世界读书日：《平如美棠：我俩的故事》
+    </a>
+              
+            </li><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/blog/24-04/"
+    
+  >最近的记录（第一辑）
+    </a>
+              
+            </li><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/blog/tech-and-manage/"
+    
+  >技术与管理
+    </a>
+              
+            </li><li class="hx-flex hx-flex-col "><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/blog/check-in/"
+    
+  >滴！打卡！
+    </a>
+              
+            </li></ul>
+      </div></li>
+          <li class=""><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/about/"
+    
+  >关于
+    </a></li>
+          <li class=""><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/memos/"
+    
+  >碎碎念
+    </a></li>
+    </ul>
+
+    <ul class="hx-flex hx-flex-col hx-gap-1 max-md:hx-hidden">
+        
+          <li class=""><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/dev-trends/"
+    
+  >开发动态
+    </a></li>
+          <li class="open"><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      sidebar-active-item hx-bg-primary-100 hx-font-semibold hx-text-primary-800 contrast-more:hx-border contrast-more:hx-border-primary-500 dark:hx-bg-primary-400/10 dark:hx-text-primary-600 contrast-more:dark:hx-border-primary-500"
+    href="/docs/crypto-experimental-principles/"
+    
+  >信息安全密码学基础 - 实验原理
+    </a></li>
+          <li class=""><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/short-code/"
+    
+  >Short Code Hugo 短代码
+    </a></li>
+          <li class=""><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/crypto/"
+    
+  >信息安全密码学基础 - 实验代码
+    </a></li>
+          <li class=""><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/awesome-python/"
+    
+  >Awesome Python*
+    </a></li>
+          <li class=""><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/js-33/"
+    
+  >JavaScript 开发者应懂的 33 个概念*
+    </a></li>
+          <li class=""><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/gmp-windows/"
+    
+  >Windows 安装 C&#43;&#43; GMP 大数运算库
+    </a></li>
+          <li class=""><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/netlity/"
+    
+  >使用 Netlity 加速 Github Page
+    </a></li>
+          <li class=""><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/ubuntu-mongodb/"
+    
+  >Ubuntu 20.04 安装 MongoDB 7.0
+    </a></li>
+          <li class=""><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/mi4c-drcom/"
+    
+  >使用小米路由器 4C 登录西邮联通校园网
+    </a></li>
+          <li class=""><a
+    class="hx-flex hx-items-center hx-justify-between hx-gap-2 hx-cursor-pointer hx-rounded hx-px-2 hx-py-1.5 hx-text-sm hx-transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] [word-break:break-word]
+      hx-text-gray-500 hover:hx-bg-gray-100 hover:hx-text-gray-900 contrast-more:hx-border contrast-more:hx-border-transparent contrast-more:hx-text-gray-900 contrast-more:hover:hx-border-gray-900 dark:hx-text-neutral-400 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50 contrast-more:dark:hx-text-gray-50 contrast-more:dark:hover:hx-border-gray-50"
+    href="/docs/gzctf-build/"
+    
+  >GZCTF 搭建部署笔记（Docker）
+    </a></li>
+        
+      </ul>
+    </div>
+  
+  
+    <div class="  hx-sticky hx-bottom-0 hx-bg-white dark:hx-bg-dark hx-mx-4 hx-py-4 hx-shadow-[0_-12px_16px_#fff] hx-flex hx-items-center hx-gap-2 dark:hx-border-neutral-800 dark:hx-shadow-[0_-12px_16px_#111] contrast-more:hx-border-neutral-400 contrast-more:hx-shadow-none contrast-more:dark:hx-shadow-none hx-border-t" data-toggle-animation="show"><div class="hx-flex hx-grow hx-flex-col"><button
+  title="切换主题"
+  data-theme="light"
+  class="theme-toggle hx-group hx-h-7 hx-rounded-md hx-px-2 hx-text-left hx-text-xs hx-font-medium hx-text-gray-600 hx-transition-colors dark:hx-text-gray-400 hover:hx-bg-gray-100 hover:hx-text-gray-900 dark:hover:hx-bg-primary-100/5 dark:hover:hx-text-gray-50"
+  type="button"
+  aria-label="切换主题"
+>
+  <div class="hx-flex hx-items-center hx-gap-2 hx-capitalize"><svg height=12 class="group-data-[theme=light]:hx-hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg><span class="group-data-[theme=light]:hx-hidden">浅色</span><svg height=12 class="group-data-[theme=dark]:hx-hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg><span class="group-data-[theme=dark]:hx-hidden">深色</span></div>
+</button>
+</div></div></aside>
+    
+<nav class="hextra-toc hx-order-last hx-hidden hx-w-64 hx-shrink-0 xl:hx-block print:hx-hidden hx-px-4" aria-label="table of contents">
+    <div class="hextra-scrollbar hx-sticky hx-top-16 hx-overflow-y-auto hx-pr-4 hx-pt-6 hx-text-sm [hyphens:auto] hx-max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] ltr:hx--mr-4 rtl:hx--ml-4"><p class="hx-mb-4 hx-font-semibold hx-tracking-tight">此页上</p><ul>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86">对称加密
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e5%8f%a4%e5%85%b8%e5%af%86%e7%a0%81hill%e5%af%86%e7%a0%81">古典密码Hill密码
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f%e5%8e%9f%e7%90%86">数学公式原理
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e4%bb%a3%e7%a0%81%e5%8e%9f%e7%90%86">代码原理
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e7%bd%ae%e6%8d%a2%e5%af%86%e7%a0%81">置换密码
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f%e5%8e%9f%e7%90%86-1">数学公式原理
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e4%bb%a3%e7%a0%81%e5%8e%9f%e7%90%86-1">代码原理
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#aes">AES
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f%e5%8e%9f%e7%90%86-2">数学公式原理
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e4%bb%a3%e7%a0%81%e5%8e%9f%e7%90%86-2">代码原理
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e9%9d%9e%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86">非对称加密
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#rsa%e7%ae%97%e6%b3%95">RSA算法
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#1-%e7%94%9f%e6%88%90%e5%a4%a7%e7%b4%a0%e6%95%b0-p-%e5%92%8c-q">1. 生成大素数 $p$ 和 $q$
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#2-%e8%ae%a1%e7%ae%97%e6%a8%a1%e6%95%b0-n">2. 计算模数 $n$
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#3-%e8%ae%a1%e7%ae%97%e6%ac%a7%e6%8b%89%e5%87%bd%e6%95%b0-phin">3. 计算欧拉函数 $\phi(n)$
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#4-%e9%80%89%e6%8b%a9%e5%85%ac%e9%92%a5%e6%8c%87%e6%95%b0-e">4. 选择公钥指数 $e$
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#5-%e8%ae%a1%e7%ae%97%e7%a7%81%e9%92%a5%e6%8c%87%e6%95%b0-d">5. 计算私钥指数 $d$
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#6-%e5%85%ac%e9%92%a5%e5%92%8c%e7%a7%81%e9%92%a5">6. 公钥和私钥
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#7-%e5%8a%a0%e5%af%86%e8%bf%87%e7%a8%8b">7. 加密过程
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#8-%e8%a7%a3%e5%af%86%e8%bf%87%e7%a8%8b">8. 解密过程
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#elgamal">ElGamal
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e5%af%86%e9%92%a5%e7%94%9f%e6%88%90">密钥生成
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e5%8a%a0%e5%af%86">加密
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e8%a7%a3%e5%af%86">解密
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e8%ae%a4%e8%af%81%e6%8a%80%e6%9c%af">认证技术
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e6%b6%88%e6%81%af%e8%ae%a4%e8%af%81%e7%a0%81mac">消息认证码（MAC）
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#hmac%e6%95%b0%e5%ad%a6%e5%8e%9f%e7%90%86">HMAC数学原理
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#1-hmac%e7%9a%84%e5%9f%ba%e6%9c%ac%e7%bb%93%e6%9e%84">1. HMAC的基本结构
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#2-%e5%af%86%e9%92%a5%e5%a1%ab%e5%85%85">2. 密钥填充
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#3-%e5%86%85%e9%83%a8%e5%af%86%e9%92%a5%e5%92%8c%e5%a4%96%e9%83%a8%e5%af%86%e9%92%a5">3. 内部密钥和外部密钥
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#4-%e7%94%9f%e6%88%90mac">4. 生成MAC
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#5-hmac%e5%85%ac%e5%bc%8f%e6%80%bb%e7%bb%93">5. HMAC公式总结
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#rsa%e6%95%b0%e5%ad%97%e7%ad%be%e5%90%8d%e7%ae%97%e6%b3%95">RSA数字签名算法
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#1-%e5%af%86%e9%92%a5%e7%94%9f%e6%88%90">1. 密钥生成
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#2-%e7%ad%be%e5%90%8d%e7%94%9f%e6%88%90">2. 签名生成
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#3-%e7%ad%be%e5%90%8d%e9%aa%8c%e8%af%81">3. 签名验证
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#elgamal%e6%95%b0%e5%ad%97%e7%ad%be%e5%90%8d%e7%ae%97%e6%b3%95">ElGamal数字签名算法
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#1-%e5%af%86%e9%92%a5%e7%94%9f%e6%88%90-1">1. 密钥生成
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#2-%e7%ad%be%e5%90%8d%e7%94%9f%e6%88%90-1">2. 签名生成
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#3-%e7%ad%be%e5%90%8d%e9%aa%8c%e8%af%81-1">3. 签名验证
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="hx-font-semibold hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#%e5%af%86%e9%92%a5%e7%ae%a1%e7%90%86">密钥管理
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#dh%e5%af%86%e9%92%a5%e4%ba%a4%e6%8d%a2%e5%8d%8f%e8%ae%ae">DH密钥交换协议
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#1-%e5%8f%82%e6%95%b0%e9%80%89%e6%8b%a9">1. 参数选择
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#2-%e5%af%86%e9%92%a5%e7%94%9f%e6%88%90">2. 密钥生成
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#3-%e5%af%86%e9%92%a5%e5%8d%8f%e5%95%86">3. 密钥协商
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-4 rtl:hx-pr-4 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#shamir%e7%a7%98%e5%af%86%e5%85%b1%e4%ba%ab%e6%96%b9%e6%a1%88">Shamir秘密共享方案
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#1-%e5%8f%82%e6%95%b0%e9%80%89%e6%8b%a9-1">1. 参数选择
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#2-%e5%85%b1%e4%ba%ab%e7%94%9f%e6%88%90">2. 共享生成
+        </a>
+      </li>
+      <li class="hx-my-2 hx-scroll-my-6 hx-scroll-py-6">
+        <a class="ltr:hx-pl-8 rtl:hx-pr-8 hx-inline-block hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-300 contrast-more:hx-text-gray-900 contrast-more:hx-underline contrast-more:dark:hx-text-gray-50 hx-w-full hx-break-words" href="#3-%e9%87%8d%e6%9e%84%e7%a7%98%e5%af%86">3. 重构秘密
+        </a>
+      </li></ul>
+      <div class="hx-mt-8 hx-border-t hx-bg-white hx-pt-8 hx-shadow-[0_-12px_16px_white] dark:hx-bg-dark dark:hx-shadow-[0_-12px_16px_#111] hx-sticky hx-bottom-0 hx-flex hx-flex-col hx-items-start hx-gap-2 hx-pb-8 dark:hx-border-neutral-800 contrast-more:hx-border-t contrast-more:hx-border-neutral-400 contrast-more:hx-shadow-none contrast-more:dark:hx-border-neutral-400">
+        <button aria-hidden="true" id="backToTop" onClick="scrollUp();" class="hx-transition-all hx-duration-75 hx-opacity-0 hx-text-xs hx-font-medium hx-text-gray-500 hover:hx-text-gray-900 dark:hx-text-gray-400 dark:hover:hx-text-gray-100 contrast-more:hx-text-gray-800 contrast-more:dark:hx-text-gray-50">
+          <span>返回顶部</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hx-inline ltr:hx-ml-1 rtl:hx-mr-1 hx-h-3.5 hx-w-3.5 hx-border hx-rounded-full hx-border-gray-500 hover:hx-border-gray-900 dark:hx-border-gray-400 dark:hover:hx-border-gray-100 contrast-more:hx-border-gray-800 contrast-more:dark:hx-border-gray-50">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+    <article class="hx-w-full hx-break-words hx-flex hx-min-h-[calc(100vh-var(--navbar-height))] hx-min-w-0 hx-justify-center hx-pb-8 hx-pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+      <main class="hx-w-full hx-min-w-0 hx-max-w-6xl hx-px-6 hx-pt-4 md:hx-px-12">
+        
+  <div class="hx-mt-1.5 hx-flex hx-items-center hx-gap-1 hx-overflow-hidden hx-text-sm hx-text-gray-500 dark:hx-text-gray-400 contrast-more:hx-text-current">
+        <div class="hx-whitespace-nowrap hx-transition-colors hx-min-w-[24px] hx-overflow-hidden hx-text-ellipsis hover:hx-text-gray-900 dark:hover:hx-text-gray-100">
+          <a href="/docs/">文档</a>
+        </div><svg class="hx-w-3.5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx-whitespace-nowrap hx-transition-colors hx-font-medium hx-text-gray-700 contrast-more:hx-font-bold contrast-more:hx-text-current dark:hx-text-gray-100 contrast-more:dark:hx-text-current">信息安全密码学基础 - 实验原理</div>
+  </div>
+
+        <div class="content">
+          <h1>信息安全密码学基础 - 实验原理</h1>
+          <blockquote>
+<p>造福下一届，人人有责。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="hx-overflow-x-auto hx-mt-6 hx-flex hx-rounded-lg hx-border hx-py-2 ltr:hx-pr-4 rtl:hx-pl-4 contrast-more:hx-border-current contrast-more:dark:hx-border-current hx-border-blue-200 hx-bg-blue-100 hx-text-blue-900 dark:hx-border-blue-200/30 dark:hx-bg-blue-900/30 dark:hx-text-blue-200">
+  <div class="ltr:hx-pl-3 ltr:hx-pr-2 rtl:hx-pr-3 rtl:hx-pl-2"><div class="hx-select-none hx-text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">
+         
+      </div></div>
+
+  <div class="hx-w-full hx-min-w-0 hx-leading-7">
+    <div class="hx-mt-6 hx-leading-7 first:hx-mt-0">
+      <p><strong>所属实验：西安邮电大学 - 网络空间安全学院 - 密码学基础 - 课程设计实验</strong></p>
+<p><strong>实验时间：2024年上半年</strong></p>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="hx-overflow-x-auto hx-mt-6 hx-flex hx-rounded-lg hx-border hx-py-2 ltr:hx-pr-4 rtl:hx-pl-4 contrast-more:hx-border-current contrast-more:dark:hx-border-current hx-border-orange-100 hx-bg-orange-50 hx-text-orange-800 dark:hx-border-orange-400/30 dark:hx-bg-orange-400/20 dark:hx-text-orange-300">
+  <div class="ltr:hx-pl-3 ltr:hx-pr-2 rtl:hx-pr-3 rtl:hx-pl-2"></div>
+
+  <div class="hx-w-full hx-min-w-0 hx-leading-7">
+    <div class="hx-mt-6 hx-leading-7 first:hx-mt-0">
+      接 <a href="./crypto" ><strong>信息安全密码学基础 - 实验代码</strong></a>，这里有各个实验的实验代码。
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="hx-overflow-x-auto hx-mt-6 hx-flex hx-rounded-lg hx-border hx-py-2 ltr:hx-pr-4 rtl:hx-pl-4 contrast-more:hx-border-current contrast-more:dark:hx-border-current hx-border-orange-100 hx-bg-orange-50 hx-text-orange-800 dark:hx-border-orange-400/30 dark:hx-bg-orange-400/20 dark:hx-text-orange-300">
+  <div class="ltr:hx-pl-3 ltr:hx-pr-2 rtl:hx-pr-3 rtl:hx-pl-2"></div>
+
+  <div class="hx-w-full hx-min-w-0 hx-leading-7">
+    <div class="hx-mt-6 hx-leading-7 first:hx-mt-0">
+      <em>Markdown 文件位于 <a href="https://github.com/daaihang/static-resource/blob/master/docs/2024-06-28-%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%9F%BA%E7%A1%80%E5%AE%9E%E9%AA%8C-%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86.md" target="_blank" rel="noopener">daaihang/static-resource/docs/2024-06-28-信息安全-密码学基础实验-实验原理.md</a>。</em>
+    </div>
+  </div>
+</div>
+
+<h2>对称加密<span class="hx-absolute -hx-mt-20" id="对称加密"></span>
+    <a href="#%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><h3>古典密码Hill密码<span class="hx-absolute -hx-mt-20" id="古典密码hill密码"></span>
+    <a href="#%e5%8f%a4%e5%85%b8%e5%af%86%e7%a0%81hill%e5%af%86%e7%a0%81" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>数学公式原理<span class="hx-absolute -hx-mt-20" id="数学公式原理"></span>
+    <a href="#%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f%e5%8e%9f%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>在 Hill 密码中，加密和解密过程都依赖于矩阵运算。对于一个给定的加密矩阵 $A$ 和明文向量 $P$，密文向量 $C$ 可以通过矩阵乘法得到：</p>
+<p>$$
+C = A \times P \pmod{n}
+$$</p>
+<p>这里，$n$ 是字符集的大小。例如，对于标准的字母表（A-Z），$n$ 为 26；对于ASCII可见字符集，$n$ 为 94。</p>
+<p>要对密文进行解密，我们需要找到加密矩阵 $A$ 的逆矩阵 $A^{-1}$，使得：</p>
+<p>$$
+A \times A^{-1} \equiv I \pmod{n}
+$$</p>
+<p>其中，$I$ 是单位矩阵。</p>
+<p>逆矩阵 $A^{-1}$ 的计算步骤如下：</p>
+<ol>
+<li>
+<p><strong>行列式的计算</strong>：首先计算矩阵 $A$ 的行列式 $\det(A)$。行列式的计算方法如下：
+$$
+\det(A) = \sum_{i=1}^n (-1)^{i+j} a_{ij} \det(M_{ij})
+$$
+其中，$M_{ij}$ 是从矩阵 $A$ 中删除第 $i$ 行和第 $j$ 列得到的子矩阵。</p>
+</li>
+<li>
+<p><strong>行列式的模逆</strong>：为了在模 $n$ 的情况下找到逆矩阵，我们需要行列式 $\det(A)$ 的模逆 $(\det(A))^{-1} \pmod{n}$。行列式 $\det(A)$ 的模逆必须满足：
+$$
+\det(A) \times (\det(A))^{-1} \equiv 1 \pmod{n}
+$$
+这要求 $\det(A)$ 和 $n$ 互质，即 $\gcd(\det(A), n) = 1$。</p>
+</li>
+<li>
+<p><strong>伴随矩阵的计算</strong>：计算矩阵 $A$ 的伴随矩阵（即代数余子式矩阵的转置）。伴随矩阵 $\text{adj}(A)$ 的计算方法如下：
+$$
+\text{adj}(A) = \left( (-1)^{i+j} \det(M_{ij}) \right)^T
+$$
+其中，$M_{ij}$ 是从矩阵 $A$ 中删除第 $i$ 行和第 $j$ 列得到的子矩阵。</p>
+</li>
+<li>
+<p><strong>求逆矩阵</strong>：将伴随矩阵 $\text{adj}(A)$ 与行列式的模逆 $(\det(A))^{-1}$ 相乘，取模 $n$ 即得矩阵 $A$ 的逆矩阵：
+$$
+A^{-1} \equiv \text{adj}(A) \times (\det(A))^{-1} \pmod{n}
+$$</p>
+</li>
+</ol>
+<h4>代码原理<span class="hx-absolute -hx-mt-20" id="代码原理"></span>
+    <a href="#%e4%bb%a3%e7%a0%81%e5%8e%9f%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>在代码中，我们使用 Python 的 SymPy 库来实现上述数学运算。具体步骤如下：</p>
+<ol>
+<li>
+<p><strong>生成可逆矩阵</strong>：使用 numpy 生成一个随机的 $n \times n$ 矩阵，并确保其行列式在模 $n$ 下是可逆的（即 $\gcd(\det(A), n) = 1$）。如果行列式不可逆，则重新生成矩阵，直到找到可逆矩阵。</p>
+</li>
+<li>
+<p><strong>计算行列式和模逆</strong>：使用 SymPy 的 <code>Matrix</code> 类将 numpy 数组转换为 SymPy 矩阵，并计算其行列式。然后，使用 <code>inv_mod</code> 方法计算行列式的模逆。</p>
+</li>
+<li>
+<p><strong>计算伴随矩阵和逆矩阵</strong>：使用 SymPy 的 <code>adjugate</code> 方法计算伴随矩阵，然后将伴随矩阵与行列式的模逆相乘，得到逆矩阵。</p>
+</li>
+<li>
+<p><strong>文本和数字转换</strong>：定义函数将文本转换为数字列表（对应于 ASCII 值减去最小的可见 ASCII 值），以及将数字列表转换回文本。</p>
+</li>
+<li>
+<p><strong>加密和解密函数</strong>：定义 Hill 加密和解密函数，分别使用加密矩阵和逆矩阵对消息进行矩阵乘法运算，结果取模 $n$，然后转换回文本。</p>
+</li>
+</ol>
+<p>通过这些步骤，我们可以实现包含所有可见 ASCII 字符的 Hill 密码加密和解密。</p>
+<h3>置换密码<span class="hx-absolute -hx-mt-20" id="置换密码"></span>
+    <a href="#%e7%bd%ae%e6%8d%a2%e5%af%86%e7%a0%81" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>数学公式原理<span class="hx-absolute -hx-mt-20" id="数学公式原理-1"></span>
+    <a href="#%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f%e5%8e%9f%e7%90%86-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>置换密码是一种简单且有效的对称加密方法。它通过将明文中的每个字符替换为另一个字符来实现加密。置换密码使用一个置换表来定义这种映射。具体步骤如下：</p>
+<ol>
+<li>
+<p><strong>置换表的生成</strong>：
+生成一个包含所有可能字符的随机排列，形成置换表。对于长度为 $n$ 的字符集 ${a_1, a_2, \ldots, a_n}$，置换表可以视为一个排列 $\sigma$，其将字符 $a_i$ 映射到字符 $a_{\sigma(i)}$。</p>
+</li>
+<li>
+<p><strong>加密</strong>：
+用置换表 $\sigma$ 将消息中的每个字符 $m_i$ 映射为密文字符 $c_i$：
+$$
+c_i = \sigma(m_i)
+$$</p>
+</li>
+<li>
+<p><strong>解密</strong>：
+使用逆置换表 $\sigma^{-1}$ 将密文字符 $c_i$ 还原为明文字符 $m_i$：
+$$
+m_i = \sigma^{-1}(c_i)
+$$</p>
+</li>
+<li>
+<p><strong>逆置换表的计算</strong>：
+若置换表 $\sigma$ 将字符 $a_i$ 映射到字符 $a_j$，则逆置换表 $\sigma^{-1}$ 将字符 $a_j$ 映射回字符 $a_i$。</p>
+</li>
+</ol>
+<h4>代码原理<span class="hx-absolute -hx-mt-20" id="代码原理-1"></span>
+    <a href="#%e4%bb%a3%e7%a0%81%e5%8e%9f%e7%90%86-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>在代码实现中，我们使用 Python 语言来生成置换表、计算逆置换表，并进行加密和解密操作。具体步骤如下：</p>
+<ol>
+<li>
+<p><strong>定义可见 ASCII 字符范围</strong>：
+包含从 ASCII 码 32 到 126 的所有可见字符，这些字符将构成我们的字符集。</p>
+</li>
+<li>
+<p><strong>生成随机置换表</strong>：
+创建一个包含所有字符的列表，然后使用 <code>random.shuffle</code> 函数对其进行随机排列，得到置换表。</p>
+</li>
+<li>
+<p><strong>生成逆置换表</strong>：
+根据置换表生成逆置换表，逆置换表中的每个位置指向置换表中对应字符的位置。</p>
+</li>
+<li>
+<p><strong>置换加密函数</strong>：
+定义加密函数，使用置换表对消息中的每个字符进行替换。</p>
+</li>
+<li>
+<p><strong>置换解密函数</strong>：
+定义解密函数，使用逆置换表对密文中的每个字符进行替换。</p>
+</li>
+</ol>
+<h3>AES<span class="hx-absolute -hx-mt-20" id="aes"></span>
+    <a href="#aes" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>数学公式原理<span class="hx-absolute -hx-mt-20" id="数学公式原理-2"></span>
+    <a href="#%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f%e5%8e%9f%e7%90%86-2" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>AES（高级加密标准）是一种对称加密算法，用于加密和解密数据。AES 使用固定长度的密钥（128, 192 或 256 位）来对数据进行加密和解密。AES 支持多种工作模式，包括 CBC（Cipher Block Chaining）和 OFB（Output Feedback）。</p>
+<p><strong>CBC模式</strong>：</p>
+<ul>
+<li>
+<p><strong>加密</strong>：每个明文分组在加密前与前一个密文分组进行异或（XOR）操作。第一个明文分组与初始化向量（IV）进行异或。
+$$
+C_i = E_K(P_i \oplus C_{i-1})
+$$
+其中，$C_i$ 是第 $i$ 个密文分组，$P_i$ 是第 $i$ 个明文分组，$E_K$ 是加密函数，$K$ 是密钥，$C_{i-1}$ 是前一个密文分组，$C_0$ 是 IV。</p>
+</li>
+<li>
+<p><strong>解密</strong>：每个密文分组在解密后与前一个密文分组进行异或操作。第一个密文分组与 IV 进行异或。
+$$
+P_i = D_K(C_i) \oplus C_{i-1}
+$$</p>
+</li>
+</ul>
+<p><strong>OFB模式</strong>：</p>
+<ul>
+<li>
+<p><strong>加密</strong>：使用加密函数对前一个输出块进行加密，然后与明文分组进行异或操作。初始块是 IV。
+$$
+O_i = E_K(O_{i-1})
+$$
+$$
+C_i = P_i \oplus O_i
+$$</p>
+</li>
+<li>
+<p><strong>解密</strong>：解密过程与加密过程相同，因为 OFB 是流模式。
+$$
+P_i = C_i \oplus O_i
+$$</p>
+</li>
+</ul>
+<h4>代码原理<span class="hx-absolute -hx-mt-20" id="代码原理-2"></span>
+    <a href="#%e4%bb%a3%e7%a0%81%e5%8e%9f%e7%90%86-2" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>在 Python 中，我们可以使用 <code>cryptography</code> 库来实现 AES 加密和解密。以下是具体步骤：</p>
+<ol>
+<li><strong>安装 cryptography 库</strong>：确保安装 <code>cryptography</code> 库。</li>
+<li><strong>导入库和模块</strong>：导入 <code>cryptography.hazmat.primitives.ciphers</code> 模块中的 <code>Cipher</code>, <code>algorithms</code>, <code>modes</code> 以及相关的 <code>padding</code> 模块。</li>
+<li><strong>定义密钥和 IV</strong>：生成或指定用于加密和解密的密钥和初始化向量（IV）。</li>
+<li><strong>实现 AES 加密和解密函数</strong>：使用 <code>Cipher</code> 创建 AES 加密器和解密器。</li>
+<li><strong>实现 CBC 和 OFB 模式</strong>：使用相应的模式进行加密和解密。</li>
+</ol>
+<h2>非对称加密<span class="hx-absolute -hx-mt-20" id="非对称加密"></span>
+    <a href="#%e9%9d%9e%e5%af%b9%e7%a7%b0%e5%8a%a0%e5%af%86" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><h3>RSA算法<span class="hx-absolute -hx-mt-20" id="rsa算法"></span>
+    <a href="#rsa%e7%ae%97%e6%b3%95" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>RSA算法是一种基于数论的公钥密码算法，其主要原理包括大素数生成、模运算和欧拉函数等数学概念。以下是RSA算法的详细数学原理：</p>
+<h4>1. 生成大素数 $p$ 和 $q$<span class="hx-absolute -hx-mt-20" id="1-生成大素数-p-和-q"></span>
+    <a href="#1-%e7%94%9f%e6%88%90%e5%a4%a7%e7%b4%a0%e6%95%b0-p-%e5%92%8c-q" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>选择两个大素数 $p$ 和 $q$，它们需要足够大以确保安全性。我们通过以下方式生成它们：</p>
+<p>$$ p, q \in \text{Prime Numbers} $$</p>
+<h4>2. 计算模数 $n$<span class="hx-absolute -hx-mt-20" id="2-计算模数-n"></span>
+    <a href="#2-%e8%ae%a1%e7%ae%97%e6%a8%a1%e6%95%b0-n" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>将两个素数相乘得到模数 $n$：</p>
+<p>$$ n = p \times q $$</p>
+<h4>3. 计算欧拉函数 $\phi(n)$<span class="hx-absolute -hx-mt-20" id="3-计算欧拉函数-phin"></span>
+    <a href="#3-%e8%ae%a1%e7%ae%97%e6%ac%a7%e6%8b%89%e5%87%bd%e6%95%b0-phin" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>欧拉函数 $\phi(n)$ 表示小于 $n$ 且与 $n$ 互质的整数个数。对于两个素数 $p$ 和 $q$ 而言：</p>
+<p>$$ \phi(n) = (p - 1) \times (q - 1) $$</p>
+<h4>4. 选择公钥指数 $e$<span class="hx-absolute -hx-mt-20" id="4-选择公钥指数-e"></span>
+    <a href="#4-%e9%80%89%e6%8b%a9%e5%85%ac%e9%92%a5%e6%8c%87%e6%95%b0-e" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>选择一个整数 $e$，使得 $1 &lt; e &lt; \phi(n)$ 且 $e$ 与 $\phi(n)$ 互质。通常选择 65537 作为 $e$，因为它既是素数，又能高效计算：</p>
+<p>$$ \gcd(e, \phi(n)) = 1 $$</p>
+<h4>5. 计算私钥指数 $d$<span class="hx-absolute -hx-mt-20" id="5-计算私钥指数-d"></span>
+    <a href="#5-%e8%ae%a1%e7%ae%97%e7%a7%81%e9%92%a5%e6%8c%87%e6%95%b0-d" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>计算私钥指数 $d$，使得 $d$ 是 $e$ 模 $\phi(n)$ 的乘法逆元，即满足以下条件：</p>
+<p>$$ d \times e \equiv 1 \ (\text{mod} \ \phi(n)) $$</p>
+<h4>6. 公钥和私钥<span class="hx-absolute -hx-mt-20" id="6-公钥和私钥"></span>
+    <a href="#6-%e5%85%ac%e9%92%a5%e5%92%8c%e7%a7%81%e9%92%a5" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>公钥由 $(e, n)$ 组成，私钥由 $(d, n)$ 组成。</p>
+<p>$$ \text{Public Key} = (e, n) $$
+$$ \text{Private Key} = (d, n) $$</p>
+<h4>7. 加密过程<span class="hx-absolute -hx-mt-20" id="7-加密过程"></span>
+    <a href="#7-%e5%8a%a0%e5%af%86%e8%bf%87%e7%a8%8b" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>将消息 $m$ 转换为整数 $m$ 后，使用公钥加密：</p>
+<p>$$ c = m^e \ (\text{mod} \ n) $$</p>
+<h4>8. 解密过程<span class="hx-absolute -hx-mt-20" id="8-解密过程"></span>
+    <a href="#8-%e8%a7%a3%e5%af%86%e8%bf%87%e7%a8%8b" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>将密文 $c$ 使用私钥解密得到原文 $m$：$$ m = c^d \ (\text{mod} \ n) $$</p>
+<h3>ElGamal<span class="hx-absolute -hx-mt-20" id="elgamal"></span>
+    <a href="#elgamal" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>密钥生成<span class="hx-absolute -hx-mt-20" id="密钥生成"></span>
+    <a href="#%e5%af%86%e9%92%a5%e7%94%9f%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p><strong>密钥生成的步骤如下：</strong></p>
+<ol>
+<li>
+<p><strong>生成循环群描述</strong></p>
+<p>Alice利用生成元 $g$ 产生一个 $q$ 阶循环群 $G$ 的有效描述。该循环群需要满足一定的安全性质。</p>
+</li>
+<li>
+<p><strong>选择私钥</strong></p>
+<p>Alice从集合 ${1, \ldots, q-1}$ 中随机选择一个整数 $x$。</p>
+</li>
+<li>
+<p><strong>计算公钥</strong></p>
+<p>Alice计算 $ h := g^x $。</p>
+</li>
+<li>
+<p><strong>公开公钥</strong></p>
+<p>Alice公开 $h$，以及循环群 $G$、阶数 $q$ 和生成元 $g$ 的描述作为其公钥，并保留 $x$ 作为其私钥。私钥必须保密。</p>
+</li>
+</ol>
+<h4><strong>加密</strong><span class="hx-absolute -hx-mt-20" id="加密"></span>
+    <a href="#%e5%8a%a0%e5%af%86" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>使用Alice的公钥 $(G, q, g, h)$ 向她加密一条消息 $m$ 的加密算法工作方式如下：</p>
+<ol>
+<li>
+<p><strong>Bob生成临时密钥</strong></p>
+<p>Bob从集合 ${1, \ldots, q-1}$ 随机选择一个整数 $y$，然后计算 $ c_1 := g^y $。</p>
+</li>
+<li>
+<p><strong>计算共享秘密</strong></p>
+<p>Bob计算 $ s := h^y $。</p>
+</li>
+<li>
+<p><strong>映射消息</strong></p>
+<p>Bob把他要发送的秘密消息 $m$ 映射为 $G$ 上的一个元素 $m&rsquo;$。</p>
+</li>
+<li>
+<p><strong>计算密文</strong></p>
+<p>Bob计算 $ c_2 := m&rsquo; \cdot s $。</p>
+</li>
+<li>
+<p><strong>发送密文</strong></p>
+<p>Bob将密文 $ (c_1, c_2) = (g^y, m&rsquo; \cdot h^y) = (g^y, m&rsquo; \cdot (g^x)^y) $ 发送给Alice。</p>
+<p>注意：如果一个人知道了 $m&rsquo;$，那么它很容易就能知道 $h^y$ 的值。因此，对每一条信息都产生一个新的 $y$ 可以提高安全性。因此 $y$ 也被称作临时密钥。</p>
+</li>
+</ol>
+<h4><strong>解密</strong><span class="hx-absolute -hx-mt-20" id="解密"></span>
+    <a href="#%e8%a7%a3%e5%af%86" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>利用私钥 $x$ 对密文 $(c_1, c_2)$ 进行解密的算法工作方式如下：</p>
+<ol>
+<li>
+<p><strong>计算共享秘密</strong></p>
+<p>Alice计算 $ s := c_1^x $。</p>
+</li>
+<li>
+<p><strong>计算消息</strong></p>
+<p>然后计算 $ m&rsquo; := c_2 \cdot s^{-1} $，并将其映射回明文 $m$，其中 $s^{-1}$ 是 $s$ 在群 $G$ 上的逆元。</p>
+</li>
+</ol>
+<p>解密算法能够正确解密出明文，因为：$ c_2 \cdot s^{-1} = m&rsquo; \cdot h^y \cdot (g^{xy})^{-1} = m&rsquo; \cdot g^{xy} \cdot g^{-xy} = m&rsquo; $。</p>
+<h2>认证技术<span class="hx-absolute -hx-mt-20" id="认证技术"></span>
+    <a href="#%e8%ae%a4%e8%af%81%e6%8a%80%e6%9c%af" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><h3>消息认证码（MAC）<span class="hx-absolute -hx-mt-20" id="消息认证码mac"></span>
+    <a href="#%e6%b6%88%e6%81%af%e8%ae%a4%e8%af%81%e7%a0%81mac" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/MAC.svg" alt="MAC" loading="lazy" /></p>
+<h3>HMAC数学原理<span class="hx-absolute -hx-mt-20" id="hmac数学原理"></span>
+    <a href="#hmac%e6%95%b0%e5%ad%a6%e5%8e%9f%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>消息认证码（Message Authentication Code, MAC）是一种保证消息完整性和认证性的算法。基于Hash算法的MAC通常称为HMAC（Hashed Message Authentication Code）。HMAC结合一个秘密密钥与一个哈希函数来生成消息摘要，从而验证消息的完整性和真实性。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/SHAhmac.svg" alt="HMAC" loading="lazy" /></p>
+<h4>1. HMAC的基本结构<span class="hx-absolute -hx-mt-20" id="1-hmac的基本结构"></span>
+    <a href="#1-hmac%e7%9a%84%e5%9f%ba%e6%9c%ac%e7%bb%93%e6%9e%84" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>HMAC由以下元素组成：</p>
+<ul>
+<li>哈希函数 $H$：如SHA-256</li>
+<li>密钥 $K$：长度为 $B$ 字节，其中 $B$ 是哈希函数的块大小</li>
+<li>内部填充值 $ipad$：通常是0x36</li>
+<li>外部填充值 $opad$：通常是0x5C</li>
+</ul>
+<h4>2. 密钥填充<span class="hx-absolute -hx-mt-20" id="2-密钥填充"></span>
+    <a href="#2-%e5%af%86%e9%92%a5%e5%a1%ab%e5%85%85" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>如果密钥 $K$ 的长度超过块大小 $B$，则对 $K$ 进行哈希：</p>
+<p>$$
+K&rsquo; =
+\begin{cases}
+K &amp; \text{if } |K| = B \
+H(K) &amp; \text{if } |K| &gt; B \
+K \parallel \text{(zero-padding to } B \text{ bytes)} &amp; \text{if } |K| &lt; B
+\end{cases}
+$$</p>
+<p>其中，$|K|$ 表示密钥 $K$ 的字节长度，$\parallel$ 表示字符串的连接操作。</p>
+<h4>3. 内部密钥和外部密钥<span class="hx-absolute -hx-mt-20" id="3-内部密钥和外部密钥"></span>
+    <a href="#3-%e5%86%85%e9%83%a8%e5%af%86%e9%92%a5%e5%92%8c%e5%a4%96%e9%83%a8%e5%af%86%e9%92%a5" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>将密钥 $K&rsquo;$ 与内部填充值 $ipad$ 和外部填充值 $opad$ 进行异或操作：</p>
+<p>$$ K_{ipad} = K&rsquo; \oplus ipad $$
+$$ K_{opad} = K&rsquo; \oplus opad $$</p>
+<h4>4. 生成MAC<span class="hx-absolute -hx-mt-20" id="4-生成mac"></span>
+    <a href="#4-%e7%94%9f%e6%88%90mac" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>将消息 $M$ 与内部密钥连接，进行一次哈希：</p>
+<p>$$ \text{inner} = H(K_{ipad} \parallel M) $$</p>
+<p>然后将内部哈希结果与外部密钥连接，进行第二次哈希，得到最终的HMAC值：</p>
+<p>$$ HMAC(K, M) = H(K_{opad} \parallel \text{inner}) = H(K_{opad} \parallel H(K_{ipad} \parallel M)) $$</p>
+<h4>5. HMAC公式总结<span class="hx-absolute -hx-mt-20" id="5-hmac公式总结"></span>
+    <a href="#5-hmac%e5%85%ac%e5%bc%8f%e6%80%bb%e7%bb%93" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>根据RFC 2104，HMAC的数学公式为：</p>
+<p>$$ HMAC(K, M) = H((K&rsquo; \oplus opad) \parallel H((K&rsquo; \oplus ipad) \parallel M)) $$</p>
+<p>其中：</p>
+<ul>
+<li>$K&rsquo;$ 是填充后的密钥。如果K短于散列函数的输入块大小，则向右<a href="https://zh.wikipedia.org/wiki/%e5%a1%ab%e5%85%85_%28%e5%af%86%e7%a0%81%e5%ad%a6%29" target="_blank" rel="noopener">填充</a>（Padding）零；如果比该块大小更长，则对K进行散列</li>
+<li>$ipad$ 和 $opad$ 是内部和外部填充值</li>
+<li>$\parallel$ 表示字符串连接</li>
+<li>$\oplus$ 表示按位异或操作</li>
+<li>$H$ 是所选择的哈希函数（如SHA-256）</li>
+</ul>
+<h3>RSA数字签名算法<span class="hx-absolute -hx-mt-20" id="rsa数字签名算法"></span>
+    <a href="#rsa%e6%95%b0%e5%ad%97%e7%ad%be%e5%90%8d%e7%ae%97%e6%b3%95" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><h4>1. 密钥生成<span class="hx-absolute -hx-mt-20" id="1-密钥生成"></span>
+    <a href="#1-%e5%af%86%e9%92%a5%e7%94%9f%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>RSA数字签名算法的密钥生成步骤与RSA加密算法相同，包括以下步骤：</p>
+<ol>
+<li>
+<p>选择两个大素数 $p$ 和 $q$：
+$$ p, q \in \text{Prime Numbers} $$</p>
+</li>
+<li>
+<p>计算模数 $n$：
+$$ n = p \times q $$</p>
+</li>
+<li>
+<p>计算欧拉函数 $\phi(n)$：
+$$ \phi(n) = (p - 1) \times (q - 1) $$</p>
+</li>
+<li>
+<p>选择公钥指数 $e$，满足：
+$$ 1 &lt; e &lt; \phi(n) \quad \text{且} \quad \gcd(e, \phi(n)) = 1 $$</p>
+</li>
+<li>
+<p>计算私钥指数 $d$，使得：
+$$ d \times e \equiv 1 \ (\text{mod} \ \phi(n)) $$</p>
+</li>
+</ol>
+<p>公钥和私钥分别为：
+$$ \text{Public Key} = (e, n) $$
+$$ \text{Private Key} = (d, n) $$</p>
+<h4>2. 签名生成<span class="hx-absolute -hx-mt-20" id="2-签名生成"></span>
+    <a href="#2-%e7%ad%be%e5%90%8d%e7%94%9f%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>签名生成使用消息摘要（哈希值）和私钥。具体步骤如下：</p>
+<ol>
+<li>
+<p>计算消息 $M$ 的哈希值 $H(M)$：
+$$ h = H(M) $$</p>
+</li>
+<li>
+<p>使用私钥 $(d, n)$ 对哈希值进行签名，计算签名 $S$：
+$$ S = h^d \ (\text{mod} \ n) $$</p>
+</li>
+</ol>
+<h4>3. 签名验证<span class="hx-absolute -hx-mt-20" id="3-签名验证"></span>
+    <a href="#3-%e7%ad%be%e5%90%8d%e9%aa%8c%e8%af%81" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>签名验证使用公钥。具体步骤如下：</p>
+<ol>
+<li>
+<p>接收者使用相同的哈希函数计算消息 $M$ 的哈希值 $H(M)$：
+$$ h&rsquo; = H(M) $$</p>
+</li>
+<li>
+<p>使用发送者的公钥 $(e, n)$ 对签名 $S$ 进行验证，计算验证值 $V$：
+$$ V = S^e \ (\text{mod} \ n) $$</p>
+</li>
+<li>
+<p>检查验证值 $V$ 是否等于接收者计算的哈希值 $h&rsquo;$：
+$$ V \stackrel{?}{=} h&rsquo; $$</p>
+</li>
+</ol>
+<p>如果 $V = h&rsquo;$，则签名验证通过，消息的真实性和完整性得到保证；否则，验证失败。</p>
+<h3>ElGamal数字签名算法<span class="hx-absolute -hx-mt-20" id="elgamal数字签名算法"></span>
+    <a href="#elgamal%e6%95%b0%e5%ad%97%e7%ad%be%e5%90%8d%e7%ae%97%e6%b3%95" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>ElGamal数字签名算法是一种基于离散对数问题的数字签名方案。它由三个主要步骤组成：密钥生成、签名生成和签名验证。</p>
+<h4>1. 密钥生成<span class="hx-absolute -hx-mt-20" id="1-密钥生成-1"></span>
+    <a href="#1-%e5%af%86%e9%92%a5%e7%94%9f%e6%88%90-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ol>
+<li>
+<p><strong>选择素数 $p$</strong>：选择一个大素数 $p$。</p>
+</li>
+<li>
+<p><strong>选择生成元 $g$</strong>：选择一个生成元 $g$，使得 $g$ 是模 $p$ 的一个原根。</p>
+</li>
+<li>
+<p><strong>选择私钥 $x$</strong>：选择一个随机数 $x$，其中 $1 &lt; x &lt; p-1$。</p>
+</li>
+<li>
+<p><strong>计算公钥 $y$</strong>：根据私钥 $x$ 和生成元 $g$ 计算公钥 $y$：
+$$ y = g^x \ (\text{mod} \ p) $$</p>
+</li>
+</ol>
+<p>公钥和私钥分别为：
+$$ \text{Public Key} = (p, g, y) $$
+$$ \text{Private Key} = x $$</p>
+<h4>2. 签名生成<span class="hx-absolute -hx-mt-20" id="2-签名生成-1"></span>
+    <a href="#2-%e7%ad%be%e5%90%8d%e7%94%9f%e6%88%90-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>为了对消息 $M$ 进行签名，签名者执行以下步骤：</p>
+<ol>
+<li>
+<p><strong>计算消息哈希值 $H(M)$</strong>：将消息 $M$ 通过哈希函数 $H$ 生成哈希值 $h$：
+$$ h = H(M) $$</p>
+</li>
+<li>
+<p><strong>选择随机数 $k$</strong>：选择一个随机数 $k$，其中 $1 &lt; k &lt; p-1$ 且 $k$ 与 $p-1$ 互质。</p>
+</li>
+<li>
+<p><strong>计算临时值 $r$</strong>：根据生成元 $g$ 和随机数 $k$ 计算临时值 $r$：
+$$ r = g^k \ (\text{mod} \ p) $$</p>
+</li>
+<li>
+<p><strong>计算签名值 $s$</strong>：根据哈希值 $h$、私钥 $x$、随机数 $k$ 和临时值 $r$ 计算签名值 $s$：
+$$ s = (h - xr)k^{-1} \ (\text{mod} \ (p-1)) $$
+其中，$k^{-1}$ 是 $k$ 模 $(p-1)$ 的乘法逆元。</p>
+</li>
+</ol>
+<p>签名为：
+$$ \text{Signature} = (r, s) $$</p>
+<h4>3. 签名验证<span class="hx-absolute -hx-mt-20" id="3-签名验证-1"></span>
+    <a href="#3-%e7%ad%be%e5%90%8d%e9%aa%8c%e8%af%81-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>为了验证签名 $(r, s)$ 是否由消息 $M$ 生成，验证者执行以下步骤：</p>
+<ol>
+<li>
+<p><strong>计算消息哈希值 $H(M)$</strong>：将消息 $M$ 通过哈希函数 $H$ 生成哈希值 $h$：
+$$ h = H(M) $$</p>
+</li>
+<li>
+<p><strong>验证签名值 $r$</strong>：检查 $r$ 是否在区间 $1 \leq r \leq p-1$ 内。如果不在，则签名无效。</p>
+</li>
+<li>
+<p><strong>计算验证值</strong>：
+$$ v_1 = y^r \cdot r^s \ (\text{mod} \ p) $$
+$$ v_2 = g^h \ (\text{mod} \ p) $$</p>
+</li>
+<li>
+<p><strong>验证</strong>：
+如果 $v_1 \equiv v_2 \ (\text{mod} \ p)$，则签名有效；否则，签名无效。</p>
+</li>
+</ol>
+<h2>密钥管理<span class="hx-absolute -hx-mt-20" id="密钥管理"></span>
+    <a href="#%e5%af%86%e9%92%a5%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><h3>DH密钥交换协议<span class="hx-absolute -hx-mt-20" id="dh密钥交换协议"></span>
+    <a href="#dh%e5%af%86%e9%92%a5%e4%ba%a4%e6%8d%a2%e5%8d%8f%e8%ae%ae" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>Diffie-Hellman（DH）密钥交换协议是一种公钥密码体制，用于安全地交换密钥。它允许两个通信方在公开信道上交换信息，而无需事先共享密钥。</p>
+<h4>1. 参数选择<span class="hx-absolute -hx-mt-20" id="1-参数选择"></span>
+    <a href="#1-%e5%8f%82%e6%95%b0%e9%80%89%e6%8b%a9" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ol>
+<li>
+<p><strong>选择素数 $p$</strong>：选择一个大素数 $p$。</p>
+</li>
+<li>
+<p><strong>选择生成元 $g$</strong>：选择一个整数 $g$，称为生成元，它是模 $p$ 的一个原根。通常情况下，$g$ 的选择是一个小质数，如 $g = 2$ 或 $g = 5$。</p>
+</li>
+</ol>
+<h4>2. 密钥生成<span class="hx-absolute -hx-mt-20" id="2-密钥生成"></span>
+    <a href="#2-%e5%af%86%e9%92%a5%e7%94%9f%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>假设有两个通信方，Alice 和 Bob，他们希望在公开信道上安全地交换密钥。</p>
+<ol>
+<li>
+<p><strong>Alice 和 Bob 各自生成私钥</strong>：</p>
+<ul>
+<li>Alice 选择一个随机整数 $a$，称为私钥。</li>
+<li>Bob 选择一个随机整数 $b$，称为私钥。</li>
+</ul>
+</li>
+<li>
+<p><strong>计算公钥</strong>：</p>
+<ul>
+<li>Alice 计算公钥 $A$：
+$$ A = g^a \ (\text{mod} \ p) $$</li>
+<li>Bob 计算公钥 $B$：
+$$ B = g^b \ (\text{mod} \ p) $$</li>
+</ul>
+</li>
+<li>
+<p><strong>交换公钥</strong>：</p>
+<ul>
+<li>Alice 将公钥 $A$ 发送给 Bob。</li>
+<li>Bob 将公钥 $B$ 发送给 Alice。</li>
+</ul>
+</li>
+</ol>
+<h4>3. 密钥协商<span class="hx-absolute -hx-mt-20" id="3-密钥协商"></span>
+    <a href="#3-%e5%af%86%e9%92%a5%e5%8d%8f%e5%95%86" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ol>
+<li><strong>计算共享密钥</strong>：
+<ul>
+<li>Alice 使用 Bob 发送的公钥 $B$ 计算共享密钥 $K$：
+$$ K = B^a \ (\text{mod} \ p) $$</li>
+<li>Bob 使用 Alice 发送的公钥 $A$ 计算共享密钥 $K$：
+$$ K = A^b \ (\text{mod} \ p) $$</li>
+</ul>
+</li>
+</ol>
+<p>DH密钥交换协议的安全性依赖于离散对数问题的难度。具体来说，即使攻击者可以监听公开信道上的所有通信，但由于他们无法有效地计算离散对数，因此无法推导出通信双方的私钥或共享密钥。</p>
+<h3>Shamir秘密共享方案<span class="hx-absolute -hx-mt-20" id="shamir秘密共享方案"></span>
+    <a href="#shamir%e7%a7%98%e5%af%86%e5%85%b1%e4%ba%ab%e6%96%b9%e6%a1%88" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>Shamir秘密共享方案是一种多方安全密钥管理技术，由Adi Shamir于1979年提出。它允许将秘密分成多个部分，称为共享，这些共享可以分发给不同的实体，只有当足够多的共享组合在一起时才能重构出原始秘密。</p>
+<h4>1. 参数选择<span class="hx-absolute -hx-mt-20" id="1-参数选择-1"></span>
+    <a href="#1-%e5%8f%82%e6%95%b0%e9%80%89%e6%8b%a9-1" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ol>
+<li>
+<p><strong>选择一个大素数 $p$</strong>：用作有限域的模数，通常要求 $p$ 足够大以确保安全性。</p>
+</li>
+<li>
+<p><strong>选择秘密 $S$</strong>：要共享的原始秘密，通常表示为一个整数，$0 \leq S &lt; p$。</p>
+</li>
+<li>
+<p><strong>选择阈值 $t$</strong> 和参与者数 $n$ **：阈值 $t$ 表示重构秘密所需的最少共享数，参与者数 $n$ 表示生成的共享数。</p>
+</li>
+</ol>
+<h4>2. 共享生成<span class="hx-absolute -hx-mt-20" id="2-共享生成"></span>
+    <a href="#2-%e5%85%b1%e4%ba%ab%e7%94%9f%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><ol>
+<li>
+<p><strong>生成随机系数 $a_1, a_2, \ldots, a_{t-1}$</strong>：在 $\mathbb{Z}_p$ 中随机选择 $t-1$ 个系数，其中每个系数 $a_i$ 都是随机选择的。</p>
+</li>
+<li>
+<p><strong>构造多项式 $f(x)$</strong>：多项式 $f(x)$ 的形式如下，其中 $f(0) = S$ 是原始秘密：
+$$ f(x) = S + a_1 x + a_2 x^2 + \ldots + a_{t-1} x^{t-1} \ (\text{mod} \ p) $$</p>
+</li>
+<li>
+<p><strong>生成共享</strong>：对于每个参与者 $i$，计算共享 $(x_i, y_i)$：
+$$ y_i = f(x_i) \ (\text{mod} \ p) $$
+其中，$x_i$ 是一个不同的非零元素 $\mathbb{Z}_p^*$，通常 $x_i = i$。</p>
+</li>
+</ol>
+<h4>3. 重构秘密<span class="hx-absolute -hx-mt-20" id="3-重构秘密"></span>
+    <a href="#3-%e9%87%8d%e6%9e%84%e7%a7%98%e5%af%86" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>为了重构原始秘密 $S$，至少需要 $t$ 个共享。这是通过拉格朗日插值法实现的。</p>
+<ol>
+<li>
+<p><strong>拉格朗日插值法</strong>：假设我们有 $t$ 个共享 $(x_i, y_i)$，其中 $x_i$ 是非零元素 $\mathbb{Z}<em>p^*$。拉格朗日插值多项式 $L(x)$ 定义如下：
+$$ L(x) = \sum</em>{j=1}^{t} y_j \cdot \prod_{\substack{1 \leq m \leq t \ m \neq j}} \frac{x - x_m}{x_j - x_m} \ (\text{mod} \ p) $$</p>
+</li>
+<li>
+<p><strong>计算原始秘密 $S$</strong>：通过插值多项式计算 $L(0)$：
+$$ S = L(0) \ (\text{mod} \ p) $$</p>
+</li>
+</ol>
+<p>Shamir秘密共享方案的安全性基于大整数分解问题和离散对数问题的复杂性，这些问题在有限域 $\mathbb{Z}_p$ 中很难解决。只有持有足够的共享数 $t$ 才能重构出原始秘密 $S$，而持有少于 $t$ 个共享数的任何组合都无法揭示秘密。</p>
+
+        </div>
+        
+    <div class="hx-mt-12 hx-mb-8 hx-block hx-text-xs hx-text-gray-500 ltr:hx-text-right rtl:hx-text-left dark:hx-text-gray-400">最后更新于 <time datetime="2024-06-28T05:12:16.000Z">2024 年 06 月 28 日</time></div>
+        <div class="hx-mb-8 hx-flex hx-items-center hx-border-t hx-pt-8 dark:hx-border-neutral-800 contrast-more:hx-border-neutral-400 dark:contrast-more:hx-border-neutral-400 print:hx-hidden"><a
+        href="/docs/dev-trends/"
+        title="开发动态"
+        class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-pr-4 rtl:hx-pl-4"
+      ><svg class="hx-inline hx-h-5 hx-shrink-0 ltr:hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>开发动态</a><a
+        href="/docs/short-code/"
+        title="Short Code Hugo 短代码"
+        class="hx-flex hx-max-w-[50%] hx-items-center hx-gap-1 hx-py-4 hx-text-base hx-font-medium hx-text-gray-600 hx-transition-colors [word-break:break-word] hover:hx-text-primary-600 dark:hx-text-gray-300 md:hx-text-lg ltr:hx-ml-auto ltr:hx-pl-4 ltr:hx-text-right rtl:hx-mr-auto rtl:hx-pr-4 rtl:hx-text-left"
+      >Short Code Hugo 短代码<svg class="hx-inline hx-h-5 hx-shrink-0 rtl:-hx-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
+        <script>
+  
+
+  function getGiscusTheme() {
+    return localStorage.getItem("color-theme");
+  }
+
+  function setGiscusTheme() {
+    function sendMessage(message) {
+      const iframe = document.querySelector('iframe.giscus-frame');
+      if (!iframe) return;
+      iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    }
+    sendMessage({
+      setConfig: {
+        theme: getGiscusTheme(),
+      },
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const giscusAttributes = {
+      "src": "https://giscus.app/client.js",
+      "data-repo": "daaihang\/daaihang.github.io",
+      "data-repo-id": "R_kgDOLeKfzw",
+      "data-category": "Announcements",
+      "data-category-id": "DIC_kwDOLeKfz84Cd26d",
+      "data-mapping": "pathname",
+      "data-strict": "0",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "0",
+      "data-input-position": "top",
+      "data-theme": getGiscusTheme(),
+      "data-lang": "zh-CN",
+      "crossorigin": "anonymous",
+      "async": "",
+    };
+
+    
+    const giscusScript = document.createElement("script");
+    Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+    document.getElementById('giscus').appendChild(giscusScript);
+
+    
+    const toggles = document.querySelectorAll(".theme-toggle");
+    if (toggles) {
+      toggles.forEach(toggle => toggle.addEventListener('click', setGiscusTheme));
+    }
+  });
+</script>
+
+<div id="giscus"></div>
+      </main>
+    </article>
+  </div>
+
+      <footer class="hextra-footer hx-bg-gray-100 hx-pb-[env(safe-area-inset-bottom)] dark:hx-bg-neutral-900 print:hx-bg-transparent"><div
+    class="hx-max-w-screen-xl hx-mx-auto hx-flex hx-justify-center hx-py-12 hx-pl-[max(env(safe-area-inset-left),1.5rem)] hx-pr-[max(env(safe-area-inset-right),1.5rem)] hx-text-gray-600 dark:hx-text-gray-400 md:hx-justify-start"
+  >
+    <div class="hx-flex hx-w-full hx-flex-col hx-items-center sm:hx-items-start">
+        <div class="hx-mt-6 hx-text-xs">© 2019 - 2024 Daaihang Wong Online </div>
+      
+
+      
+      <div id="beian-info" class="hx-mt-4 hx-text-xs"></div>
+    </div>
+  </div>
+</footer><script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?d702a5a08a6b7a0d02ec85a7eb1091e2";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+  })();
+  
+  
+  (function() {
+    var domain = window.location.hostname;
+    var beianInfo = "";
+    if (domain === "wangdh.cn" || domain === "www.wangdh.cn") {
+      beianInfo = '<a href="https://beian.miit.gov.cn/" target="_blank">桂ICP备2022008498号-2</a>';
+    } else if (domain === "dev.gx.cn" || domain === "www.dev.gx.cn") {
+      beianInfo = '<a href="https://beian.miit.gov.cn/" target="_blank">桂ICP备2022008498号-7</a>';
+    } else if (domain === "wdh.hk" || domain === "www.wdh.hk" || domain === "localhost") {
+      beianInfo = '<a href="https://icp.gov.moe/?keyword=20248156" target="_blank">萌ICP备20248156号</a>';
+    } 
+    document.getElementById("beian-info").innerHTML = beianInfo;
+  })();
+</script>
+
+    
+    <script defer src="/js/main.min.342e1e44bc7342ae62e1a3b59ef97a9517fdcb27179b2b109a683bb5bb77d9a7.js" integrity="sha256-NC4eRLxzQq5i4aO1nvl6lRf9yycXmysQmmg7tbt32ac="></script>
+
+
+
+<link type="text/css" rel="stylesheet" href="/lib/katex/katex.min.7e5db7914b97e596a36c1abb67ccc7f174f8bb71d38c9a88c55b262ed1737f97.css" integrity="sha256-fl23kUuX5ZajbBq7Z8zH8XT4u3HTjJqIxVsmLtFzf5c=" />
+  <script defer src="/lib/katex/katex.min.9f45307c5794ed247a0d095f3a62e52ef2215a67b2327203a7fd919959ae79d1.js" integrity="sha256-n0UwfFeU7SR6DQlfOmLlLvIhWmeyMnIDp/2RmVmuedE="></script>
+  <script defer src="/lib/katex/auto-render.min.7b57d427ac6270677daf8d8380ded2cc73336f9149a167b8e1fe0d6ef66604ae.js" integrity="sha256-e1fUJ6xicGd9r42DgN7SzHMzb5FJoWe44f4NbvZmBK4="></script>
+  <script defer src="/lib/katex/mhchem.min.f0ca03df194b8c3d6017ff455db6a0ef98857905663fa311a6cded788b15340b.js" integrity="sha256-8MoD3xlLjD1gF/9FXbag75iFeQVmP6MRps3teIsVNAs="></script>
+  <script>
+    
+    document.addEventListener("DOMContentLoaded", function () {
+      renderMathInElement(document.body, {
+        delimiters: [
+          { left: "$$", right: "$$", display: true },
+          { left: "$", right: "$", display: false },
+          { left: "\\(", right: "\\)", display: false },
+          { left: "\\[", right: "\\]", display: true },
+        ],
+        throwOnError: false,
+      });
+    });
+  </script>
+
+
+  </body>
+</html>
