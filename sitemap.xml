@@ -2,74 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://wdh.hk/blog/aftersun/</loc>
-    <lastmod>2024-07-26T02:10:43+08:00</lastmod>
+    <loc>/</loc>
+    <lastmod>2024-07-26T00:51:58+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/docs/dev-trends/</loc>
-    <lastmod>2024-06-26T12:02:59+08:00</lastmod>
+    <loc>/blog/aftersun/</loc>
+    <lastmod>2024-07-26T00:51:58+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/friend/</loc>
-    <lastmod>2024-06-26T12:36:46+08:00</lastmod>
+    <loc>/blog/</loc>
+    <lastmod>2024-07-26T00:51:58+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/docs/crypto-experimental-principles/</loc>
-    <lastmod>2024-06-28T05:12:16+08:00</lastmod>
+    <loc>/docs/dev-trends/</loc>
+    <lastmod>2024-06-26T02:16:15+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/docs/short-code/</loc>
-    <lastmod>2024-06-24T02:57:15+08:00</lastmod>
+    <loc>/friend/</loc>
+    <lastmod>2024-06-24T02:32:27+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/docs/crypto/</loc>
-    <lastmod>2024-06-28T05:12:16+08:00</lastmod>
+    <loc>/docs/crypto-experimental-principles/</loc>
+    <lastmod>2024-06-22T04:20:42+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/blog/boat-tide/</loc>
-    <lastmod>2024-04-20T22:40:53+08:00</lastmod>
+    <loc>/docs/short-code/</loc>
+    <lastmod>2024-06-21T21:59:02+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/blog/world-book-day-2024/</loc>
-    <lastmod>2024-04-20T21:20:17+08:00</lastmod>
+    <loc>/docs/crypto/</loc>
+    <lastmod>2024-06-21T18:54:10+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/docs/awesome-python/</loc>
-    <lastmod>2024-04-20T12:36:28+08:00</lastmod>
+    <loc>/blog/boat-tide/</loc>
+    <lastmod>2024-04-20T22:39:00+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/docs/js-33/</loc>
-    <lastmod>2024-04-20T12:36:28+08:00</lastmod>
+    <loc>/blog/world-book-day-2024/</loc>
+    <lastmod>2024-04-20T12:31:24+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/docs/gmp-windows/</loc>
-    <lastmod>2024-04-16T09:00:24+08:00</lastmod>
+    <loc>/docs/awesome-python/</loc>
+    <lastmod>2024-04-16T10:33:11+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/docs/</loc>
-    <lastmod>2024-06-26T02:26:05+08:00</lastmod>
+    <loc>/docs/js-33/</loc>
+    <lastmod>2024-04-16T10:04:49+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/blog/24-04/</loc>
-    <lastmod>2024-04-15T21:55:12+08:00</lastmod>
+    <loc>/docs/gmp-windows/</loc>
+    <lastmod>2024-04-15T22:26:06+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/docs/netlity/</loc>
-    <lastmod>2024-04-16T10:40:54+08:00</lastmod>
+    <loc>/docs/</loc>
+    <lastmod>2024-04-14T23:31:53+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/docs/ubuntu-mongodb/</loc>
-    <lastmod>2024-03-16T15:55:06+08:00</lastmod>
+    <loc>/blog/24-04/</loc>
+    <lastmod>2024-04-14T21:44:15+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/blog/tech-and-manage/</loc>
-    <lastmod>2024-03-15T22:19:08+08:00</lastmod>
+    <loc>/docs/netlity/</loc>
+    <lastmod>2024-03-16T18:22:49+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/docs/mi4c-drcom/</loc>
-    <lastmod>2024-03-11T23:37:01+08:00</lastmod>
+    <loc>/docs/ubuntu-mongodb/</loc>
+    <lastmod>2024-03-16T15:40:12+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/blog/check-in/</loc>
-    <lastmod>2024-03-11T18:11:36+08:00</lastmod>
+    <loc>/blog/tech-and-manage/</loc>
+    <lastmod>2024-03-15T21:35:15+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/docs/gzctf-build/</loc>
-    <lastmod>2024-04-20T17:20:03+08:00</lastmod>
+    <loc>/docs/mi4c-drcom/</loc>
+    <lastmod>2024-03-11T23:16:39+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/blog/</loc>
-    <lastmod>2024-07-26T02:10:43+08:00</lastmod>
+    <loc>/blog/check-in/</loc>
+    <lastmod>2024-03-11T18:06:02+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/about/</loc>
-    <lastmod>2024-06-26T12:02:59+08:00</lastmod>
+    <loc>/docs/gzctf-build/</loc>
+    <lastmod>2024-03-10T21:57:38+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/</loc>
-    <lastmod>2024-07-26T02:10:43+08:00</lastmod>
+    <loc>/about/</loc>
+    <lastmod>2024-03-10T01:39:25+08:00</lastmod>
   </url><url>
-    <loc>https://wdh.hk/categories/</loc>
+    <loc>/categories/</loc>
   </url><url>
-    <loc>https://wdh.hk/tags/</loc>
+    <loc>/tags/</loc>
   </url>
 </urlset>
