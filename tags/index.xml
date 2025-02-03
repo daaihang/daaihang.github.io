@@ -1,10 +1,46 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on Terminal</title>
-    <link>/tags/</link>
-    <description>Recent content in Tags on Terminal</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <title>Tags on Daaihang&#39;s Blog</title>
+    <link>https://wdh.hk/tags/</link>
+    <description>Recent content in Tags on Daaihang&#39;s Blog</description>
+    <image>
+      <title>Daaihang&#39;s Blog</title>
+      <url>https://wdh.hk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wdh.hk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.143.0</generator>
+    <language>zh-cn</language>
+    <copyright>Daaihang Wong 萌ICP备20252019号</copyright>
+    <lastBuildDate>Sun, 19 Jan 2025 20:00:00 +0800</lastBuildDate>
+    <atom:link href="https://wdh.hk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>网站</title>
+      <link>https://wdh.hk/tags/%E7%BD%91%E7%AB%99/</link>
+      <pubDate>Tue, 17 Dec 2024 22:00:00 +0800</pubDate>
+      <guid>https://wdh.hk/tags/%E7%BD%91%E7%AB%99/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>折腾</title>
+      <link>https://wdh.hk/tags/%E6%8A%98%E8%85%BE/</link>
+      <pubDate>Tue, 17 Dec 2024 22:00:00 +0800</pubDate>
+      <guid>https://wdh.hk/tags/%E6%8A%98%E8%85%BE/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>主题</title>
+      <link>https://wdh.hk/tags/%E4%B8%BB%E9%A2%98/</link>
+      <pubDate>Tue, 17 Dec 2024 22:00:00 +0800</pubDate>
+      <guid>https://wdh.hk/tags/%E4%B8%BB%E9%A2%98/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>自定义</title>
+      <link>https://wdh.hk/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/</link>
+      <pubDate>Tue, 17 Dec 2024 22:00:00 +0800</pubDate>
+      <guid>https://wdh.hk/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

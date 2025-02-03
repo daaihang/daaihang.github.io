@@ -1,720 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  
-    <title>License App :: Terminal</title>
-  
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="证书系统 开发指北 页面管理 欢迎页（看板、控制台） 证书管理 证书列表颁发/收受证书列表/分享的证书（页面顶部选项卡切换）（只有这页） 添加证书 证书编辑 证书模板管理 模板列表（只有这页） 添加模板 模板编辑 申请阅办 审核证书 流程管理 人员管理 用户列表 组织管理 角色管理 个人中心 通知 分享的证书 设置 日志 角色管理 目前角色暂时写死下面的角色，在/src/access.ts进行修改。
-" />
-<meta name="keywords" content="" />
+<!doctype html><html lang=zh dir=auto><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>License App | Daaihang's Blog</title>
+<meta name=keywords content><meta name=description content="证书系统 开发指北
+页面管理
 
-  <meta name="robots" content="noodp" />
+欢迎页（看板、控制台）
+证书管理
 
-<link rel="canonical" href="//localhost:1313/docs/license-app/" />
+证书列表颁发/收受证书列表/分享的证书（页面顶部选项卡切换）（只有这页）
+添加证书
+证书编辑
 
 
+证书模板管理
 
+模板列表（只有这页）
+添加模板
+模板编辑
 
 
-  
-  <link rel="stylesheet" href="//localhost:1313/css/buttons.min.2bc533403a27dfe0e93105a92502b42ce4587e2e4a87d9f7d349e51e16e09478.css">
+申请阅办
 
-  
-  <link rel="stylesheet" href="//localhost:1313/css/code.min.00125962708925857e7b66dbc58391d55be1191a3d0ce2034de8c9cd2c481c36.css">
+审核证书
+流程管理
 
-  
-  <link rel="stylesheet" href="//localhost:1313/css/fonts.min.4881f0c525f3ce2a1864fb6e96676396cebe1e6fcef1933e8e1dde7041004fb5.css">
 
-  
-  <link rel="stylesheet" href="//localhost:1313/css/footer.min.2e3eb191baee58dd05a9f0104ac1fab0827bca7c64dafe0b2579f934c33a1d69.css">
+人员管理
 
-  
-  <link rel="stylesheet" href="//localhost:1313/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+用户列表
+组织管理
+角色管理
 
-  
-  <link rel="stylesheet" href="//localhost:1313/css/header.min.b6fb4423cf82a9f9d7abc9cd010223fa3d70a6526a3f28f8e17d814c06e18f9e.css">
 
-  
-  <link rel="stylesheet" href="//localhost:1313/css/main.min.fe8dc560fccb53a458b0db19ccb7b265764ac46b68596b7e099c6793054dd457.css">
+个人中心
 
-  
-  <link rel="stylesheet" href="//localhost:1313/css/menu.min.83637a90d903026bc280d3f82f96ceb06c5fc72b7c1a8d686afb5bbf818a29f7.css">
+通知
+分享的证书
 
-  
-  <link rel="stylesheet" href="//localhost:1313/css/pagination.min.82f6400eae7c7c6dc3c866733c2ec0579e4089608fea69400ff85b3880aa0d3c.css">
 
-  
-  <link rel="stylesheet" href="//localhost:1313/css/post.min.fc74ca360273c1d828da3c02b8174eba435607b369d98418ccc6f2243cd4e75d.css">
+设置
 
-  
-  <link rel="stylesheet" href="//localhost:1313/css/prism.min.9023bbc24533d09e97a51a0a42a5a7bfe4c591ae167c5551fb1d2191d11977c0.css">
+日志
 
-  
-  <link rel="stylesheet" href="//localhost:1313/css/syntax.min.cc789ed9377260d7949ea4c18781fc58959a89287210fe4edbff44ebfc1511b6.css">
 
-  
-  <link rel="stylesheet" href="//localhost:1313/css/terminal.min.4b367d85d0d0061435650561285afed36c46a7cf8dc6d7ed5642d98e589fa622.css">
 
-  
-  <link rel="stylesheet" href="//localhost:1313/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+角色管理
+目前角色暂时写死下面的角色，在/src/access.ts进行修改。"><meta name=author content><link rel=canonical href=http://localhost:1313/docs/license-app/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.css rel="preload stylesheet" as=style><link rel=icon href=http://localhost:1313/favicon.ico><link rel=icon type=image/png sizes=16x16 href=http://localhost:1313/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=http://localhost:1313/favicon-32x32.png><link rel=apple-touch-icon href=http://localhost:1313/apple-touch-icon.png><link rel=mask-icon href=http://localhost:1313/favicon.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=zh href=http://localhost:1313/docs/license-app/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:url" content="http://localhost:1313/docs/license-app/"><meta property="og:site_name" content="Daaihang's Blog"><meta property="og:title" content="License App"><meta property="og:description" content="证书系统 开发指北 页面管理 欢迎页（看板、控制台） 证书管理 证书列表颁发/收受证书列表/分享的证书（页面顶部选项卡切换）（只有这页） 添加证书 证书编辑 证书模板管理 模板列表（只有这页） 添加模板 模板编辑 申请阅办 审核证书 流程管理 人员管理 用户列表 组织管理 角色管理 个人中心 通知 分享的证书 设置 日志 角色管理 目前角色暂时写死下面的角色，在/src/access.ts进行修改。"><meta property="og:locale" content="zh-cn"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:published_time" content="2024-05-31T15:35:03+08:00"><meta property="article:modified_time" content="2024-05-31T15:35:03+08:00"><meta property="og:image" content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="License App"><meta name=twitter:description content="证书系统 开发指北
+页面管理
 
+欢迎页（看板、控制台）
+证书管理
 
+证书列表颁发/收受证书列表/分享的证书（页面顶部选项卡切换）（只有这页）
+添加证书
+证书编辑
 
 
-<link rel="stylesheet" href="//localhost:1313/style.css">
+证书模板管理
 
+模板列表（只有这页）
+添加模板
+模板编辑
 
-<link rel="shortcut icon" href="//localhost:1313/favicon.png">
-<link rel="apple-touch-icon" href="//localhost:1313/apple-touch-icon.png">
 
+申请阅办
 
-<meta name="twitter:card" content="summary" />
+审核证书
+流程管理
 
-  
-    <meta name="twitter:site" content="" />
-  
-    <meta name="twitter:creator" content="" />
 
+人员管理
 
+用户列表
+组织管理
+角色管理
 
-<meta property="og:locale" content="en" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="License App">
-<meta property="og:description" content="证书系统 开发指北 页面管理 欢迎页（看板、控制台） 证书管理 证书列表颁发/收受证书列表/分享的证书（页面顶部选项卡切换）（只有这页） 添加证书 证书编辑 证书模板管理 模板列表（只有这页） 添加模板 模板编辑 申请阅办 审核证书 流程管理 人员管理 用户列表 组织管理 角色管理 个人中心 通知 分享的证书 设置 日志 角色管理 目前角色暂时写死下面的角色，在/src/access.ts进行修改。
-" />
-<meta property="og:url" content="//localhost:1313/docs/license-app/" />
-<meta property="og:site_name" content="Terminal" />
 
-  <meta property="og:image" content="//localhost:1313/og-image.png">
+个人中心
 
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="627">
+通知
+分享的证书
 
 
-  <meta property="article:published_time" content="2024-05-31 15:35:03 &#43;0800 CST" />
+设置
 
+日志
 
 
 
-
-
-
-
-
-
-
-
-</head>
-<body>
-
-
-<div class="container center">
-
-  <header class="header">
-  <div class="header__inner">
-    <div class="header__logo">
-      <a href="/">
-  <div class="logo">
-    Daaihang Wong Online Blog
-  </div>
-</a>
-
-    </div>
-    
-      <ul class="menu menu--mobile">
-  <li class="menu__trigger">Menu&nbsp;▾</li>
-  <li>
-    <ul class="menu__dropdown">
-      
-        
-          <li><a href="/about">About</a></li>
-        
-      
-        
-          <li><a href="/docs">Docs</a></li>
-        
-      
-        
-          <li><a href="/friend">Friend</a></li>
-        
-      
-      
-    </ul>
-  </li>
-</ul>
-
-    
-    
-  </div>
-  
-    <nav class="navigation-menu">
-  <ul class="navigation-menu__inner menu--desktop">
-    
-      
-        
-          <li><a href="/about" >About</a></li>
-        
-      
-        
-          <li><a href="/docs" >Docs</a></li>
-        
-      
-        
-          <li><a href="/friend" >Friend</a></li>
-        
-      
-      
-    
-  </ul>
-</nav>
-
-  
-</header>
-
-
-  <div class="content">
-    
-<article class="post">
-  <h1 class="post-title">
-    <a href="//localhost:1313/docs/license-app/">License App</a>
-  </h1>
-  <div class="post-meta"><time class="post-date">2024-05-31</time></div>
-
-  
-  
-
-
-  
-
-  <div class="post-content"><div>
-        <h1 id="证书系统-开发指北">证书系统 开发指北<a href="#证书系统-开发指北" class="hanchor" ariaLabel="Anchor">#</a> </h1>
-<h2 id="页面管理">页面管理<a href="#页面管理" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<ul>
-<li>欢迎页（看板、控制台）</li>
-<li>证书管理
-<ul>
-<li>证书列表颁发/收受证书列表/分享的证书（页面顶部选项卡切换）（只有这页）</li>
-<li>添加证书</li>
-<li>证书编辑</li>
-</ul>
-</li>
-<li>证书模板管理
-<ul>
-<li>模板列表（只有这页）</li>
-<li>添加模板</li>
-<li>模板编辑</li>
-</ul>
-</li>
-<li>申请阅办
-<ul>
-<li>审核证书</li>
-<li>流程管理</li>
-</ul>
-</li>
-<li>人员管理
-<ul>
-<li>用户列表</li>
-<li>组织管理</li>
-<li>角色管理</li>
-</ul>
-</li>
-<li>个人中心
-<ul>
-<li>通知</li>
-<li>分享的证书</li>
-</ul>
-</li>
-<li>设置
-<ul>
-<li>日志</li>
-</ul>
-</li>
-</ul>
-<h2 id="角色管理">角色管理<a href="#角色管理" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<p>目前角色暂时写死下面的角色，在<code>/src/access.ts</code>进行修改。</p>
-<p>每个角色都包含其下级角色的所有权限，同时所有角色都具有用户权限。</p>
-<ol>
-<li>
-<p><strong>系统管理员</strong> - Admin：</p>
-<ul>
-<li>负责整个系统的管理和维护。</li>
-<li>创建和管理组织。</li>
-<li>分配组织管理员权限。</li>
-<li>配置系统设置和安全策略。</li>
-<li>处理系统级别的问题和故障。</li>
-</ul>
-</li>
-<li>
-<p><strong>组织管理员</strong> - OrgAdmin：</p>
-<ul>
-<li>负责管理特定组织内的用户和操作。</li>
-<li>添加、删除和管理组织内的用户。</li>
-<li>分配管理员权限给其他用户。</li>
-<li>管理组织内用户的角色和权限。</li>
-<li>颁发证书给组织内用户。</li>
-<li>查看组织内用户的证书。</li>
-</ul>
-</li>
-<li>
-<p><strong>证书管理员</strong> - LicenseAdmin：</p>
-<ul>
-<li>负责证书的管理和颁发。</li>
-<li>颁发证书给普通用户。</li>
-<li>查看普通用户的证书。</li>
-<li>管理普通用户的角色和权限（例如，普通用户是否有权颁发证书）。</li>
-</ul>
-</li>
-<li>
-<p><strong>普通用户</strong> - User：</p>
-<ul>
-<li>接收并查看自己获得的证书。</li>
-<li>查看分享给自己的证书。</li>
-<li>验证证书的真实性。</li>
-</ul>
-</li>
-</ol>
-<h2 id="api">API<a href="#api" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<h3 id="用户操作auth">用户操作（/auth）<a href="#用户操作auth" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>POST /auth/register</strong> - 用户注册</li>
-<li><strong>POST /auth/login</strong> - 用户登录</li>
-<li><strong>POST /auth/logout</strong> - 用户注销</li>
-<li><strong>POST /auth/password/reset</strong> - 重置密码请求</li>
-<li><strong>POST /auth/password/reset/confirm</strong> - 重置密码</li>
-<li><strong>POST /auth/two-factor/enable</strong> - 启用两因素认证</li>
-<li><strong>POST /auth/two-factor/disable</strong> - 禁用两因素认证</li>
-<li><strong>POST /auth/two-factor/verify</strong> - 验证两因素认证</li>
-<li><strong>POST /auth/refresh-token</strong> - 刷新认证令牌</li>
-</ol>
-<h3 id="用户查询和管理user">用户查询和管理（/user）<a href="#用户查询和管理user" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>GET /user/me</strong> - 获取当前用户信息</li>
-<li><strong>PUT /user/me</strong> - 更新当前用户信息</li>
-<li><strong>GET /user/{user_id}/logs</strong> - 获取用户日志</li>
-<li><strong>GET /user/{user_id}</strong> - 获取指定用户信息</li>
-<li><strong>GET /user</strong> - 批量获取用户信息</li>
-<li><strong>DELETE /user/{user_id}</strong> - 删除用户</li>
-<li><strong>PUT /user/{user_id}</strong> - 更新指定用户信息</li>
-<li><strong>PUT /user/{user_id}/deactivate</strong> - 禁用用户账号</li>
-<li><strong>PUT /user/{user_id}/activate</strong> - 启用用户账号</li>
-<li><strong>POST /user/{user_id}/roles</strong> - 分配角色给用户</li>
-<li><strong>DELETE /user/{user_id}/roles</strong> - 从用户移除角色</li>
-<li><strong>GET /user/{user_id}/permissions</strong> - 获取用户的所有权限</li>
-<li><strong>POST /user/batch</strong> - 批量创建用户</li>
-<li><strong>PUT /user/batch</strong> - 批量更新用户</li>
-<li><strong>DELETE /user/batch</strong> - 批量删除用户</li>
-</ol>
-<h3 id="角色操作authroles">角色操作（/auth/roles）<a href="#角色操作authroles" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>POST /auth/roles</strong> - 创建角色</li>
-<li><strong>PUT /auth/roles/{role_id}</strong> - 更新角色</li>
-<li><strong>DELETE /auth/roles/{role_id}</strong> - 删除角色</li>
-<li><strong>POST /auth/roles/{role_id}/permissions</strong> - 为角色分配权限</li>
-<li><strong>DELETE /auth/roles/{role_id}/permissions</strong> - 移除角色的权限</li>
-</ol>
-<h3 id="角色查询roles">角色查询（/roles）<a href="#角色查询roles" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>GET /roles</strong> - 获取所有角色</li>
-<li><strong>GET /roles/{role_id}</strong> - 获取指定角色信息</li>
-<li><strong>GET /roles/{role_id}/permissions</strong> - 获取指定角色的所有权限</li>
-</ol>
-<h3 id="权限管理authpermissions">权限管理（/auth/permissions）<a href="#权限管理authpermissions" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>GET /auth/permissions</strong> - 获取所有权限</li>
-<li><strong>POST /auth/permissions</strong> - 创建权限</li>
-<li><strong>PUT /auth/permissions/{permission_id}</strong> - 更新权限</li>
-<li><strong>DELETE /auth/permissions/{permission_id}</strong> - 删除权限</li>
-<li><strong>GET /auth/permissions/{permission_id}</strong> - 获取指定权限信息</li>
-</ol>
-<h3 id="组织管理org">组织管理（/org）<a href="#组织管理org" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>POST /org</strong> - 创建组织</li>
-<li><strong>PUT /org/{org_id}</strong> - 更新组织信息</li>
-<li><strong>DELETE /org/{org_id}</strong> - 删除组织</li>
-<li><strong>GET /org/{org_id}</strong> - 获取组织信息</li>
-<li><strong>GET /org</strong> - 获取所有组织</li>
-<li><strong>GET /org/{org_id}/users</strong> - 获取组织下的所有用户</li>
-<li><strong>POST /org/{org_id}/users</strong> - 批量添加用户到组织</li>
-<li><strong>DELETE /org/{org_id}/users</strong> - 批量从组织中移除用户</li>
-</ol>
-<h3 id="用户分组管理orgorg_idgroups">用户分组管理（/org/{org_id}/groups）<a href="#用户分组管理orgorg_idgroups" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>POST /org/{org_id}/groups</strong> - 创建分组</li>
-<li><strong>PUT /org/{org_id}/groups/{group_id}</strong> - 更新分组信息</li>
-<li><strong>DELETE /org/{org_id}/groups/{group_id}</strong> - 删除分组</li>
-<li><strong>GET /org/{org_id}/groups</strong> - 获取所有分组</li>
-<li><strong>GET /org/{org_id}/groups/{group_id}</strong> - 获取分组信息</li>
-<li><strong>GET /org/{org_id}/groups/{group_id}/users</strong> - 获取分组下的所有用户</li>
-<li><strong>POST /org/{org_id}/groups/{group_id}/users</strong> - 批量添加用户到分组</li>
-<li><strong>DELETE /org/{org_id}/groups/{group_id}/users</strong> - 批量从分组中移除用户</li>
-</ol>
-<h3 id="审计日志logs">审计日志（/logs）<a href="#审计日志logs" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>GET /logs</strong> - 获取所有审计日志</li>
-<li><strong>GET /logs/user/{user_id}</strong> - 获取指定用户的审计日志</li>
-<li><strong>GET /logs/org/{org_id}</strong> - 获取指定组织的审计日志</li>
-<li><strong>GET /logs/role/{role_id}</strong> - 获取指定角色的审计日志</li>
-</ol>
-<h3 id="安全管理security">安全管理（/security）<a href="#安全管理security" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>POST /security/whitelist</strong> - 添加到IP白名单</li>
-<li><strong>DELETE /security/whitelist/{ip}</strong> - 从IP白名单中移除</li>
-<li><strong>GET /security/whitelist</strong> - 获取IP白名单</li>
-<li><strong>POST /security/blacklist</strong> - 添加到IP黑名单</li>
-<li><strong>DELETE /security/blacklist/{ip}</strong> - 从IP黑名单中移除</li>
-<li><strong>GET /security/blacklist</strong> - 获取IP黑名单</li>
-<li><strong>POST /security/password-policy</strong> - 设置密码策略</li>
-<li><strong>GET /security/password-policy</strong> - 获取密码策略</li>
-<li><strong>POST /security/account-lock</strong> - 锁定用户账号</li>
-<li><strong>POST /security/account-unlock</strong> - 解锁用户账号</li>
-</ol>
-<h3 id="其他可能的api">其他可能的API<a href="#其他可能的api" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>GET /metrics</strong> - 获取系统指标</li>
-<li><strong>GET /health</strong> - 检查系统健康状态</li>
-</ol>
-<p>这些API设计考虑了用户和角色的管理、组织和分组的管理、权限管理、两因素认证、审计日志、IP白名单和黑名单管理、密码策略和账户锁定等功能，确保系统的功能全面且安全。</p>
-<p>证书相关</p>
-<p>涵盖证书模板管理、证书内容字段管理、证书生成、验证、销毁、导出、分享、通知、历史记录、统计、安全管理和审计等功能。</p>
-<h3 id="证书模板管理certificatestemplates">证书模板管理（/certificates/templates）<a href="#证书模板管理certificatestemplates" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>POST /certificates/templates</strong> - 创建证书模板</li>
-<li><strong>PUT /certificates/templates/{template_id}</strong> - 更新证书模板</li>
-<li><strong>DELETE /certificates/templates/{template_id}</strong> - 删除证书模板</li>
-<li><strong>GET /certificates/templates</strong> - 获取所有证书模板</li>
-<li><strong>GET /certificates/templates/{template_id}</strong> - 获取指定证书模板</li>
-<li><strong>POST /certificates/templates/{template_id}/clone</strong> - 复制证书模板</li>
-<li><strong>POST /certificates/templates/{template_id}/publish</strong> - 发布证书模板</li>
-<li><strong>POST /certificates/templates/{template_id}/archive</strong> - 归档证书模板</li>
-</ol>
-<h3 id="证书内容字段管理certificatestemplatestemplate_idfields">证书内容字段管理（/certificates/templates/{template_id}/fields）<a href="#证书内容字段管理certificatestemplatestemplate_idfields" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>POST /certificates/templates/{template_id}/fields</strong> - 添加证书内容字段</li>
-<li><strong>PUT /certificates/templates/{template_id}/fields/{field_id}</strong> - 更新证书内容字段</li>
-<li><strong>DELETE /certificates/templates/{template_id}/fields/{field_id}</strong> - 删除证书内容字段</li>
-<li><strong>GET /certificates/templates/{template_id}/fields</strong> - 获取证书模板的所有内容字段</li>
-<li><strong>GET /certificates/templates/{template_id}/fields/{field_id}</strong> - 获取指定证书内容字段</li>
-</ol>
-<h3 id="证书管理certificates">证书管理（/certificates）<a href="#证书管理certificates" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>POST /certificates</strong> - 颁发证书</li>
-<li><strong>POST /certificates/batch</strong> - 批量颁发证书</li>
-<li><strong>GET /certificates</strong> - 获取所有证书</li>
-<li><strong>GET /certificates/{certificate_id}</strong> - 获取指定证书</li>
-<li><strong>DELETE /certificates/{certificate_id}</strong> - 销毁证书</li>
-<li><strong>POST /certificates/verify</strong> - 验证证书</li>
-<li><strong>POST /certificates/verify/batch</strong> - 批量验证证书</li>
-<li><strong>POST /certificates/{certificate_id}/revoke</strong> - 撤销证书</li>
-<li><strong>POST /certificates/{certificate_id}/renew</strong> - 更新证书信息并延长有效期</li>
-<li><strong>POST /certificates/expire</strong> - 设置证书过期时间</li>
-<li><strong>GET /certificates/expired</strong> - 获取已过期证书</li>
-<li><strong>GET /certificates/{certificate_id}/status</strong> - 获取证书的状态</li>
-<li><strong>POST /certificates/search</strong> - 搜索证书</li>
-<li><strong>POST /certificates/{certificate_id}/clone</strong> - 复制证书</li>
-</ol>
-<h3 id="证书导出和格式转换certificatesexport">证书导出和格式转换（/certificates/export）<a href="#证书导出和格式转换certificatesexport" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>POST /certificates/{certificate_id}/pdf</strong> - 导出证书为PDF</li>
-<li><strong>POST /certificates/export/pdf</strong> - 批量导出证书为PDF</li>
-<li><strong>POST /certificates/{certificate_id}/csv</strong> - 导出证书为CSV</li>
-<li><strong>POST /certificates/export/csv</strong> - 批量导出证书为CSV</li>
-</ol>
-<h3 id="证书分享和通知certificatesnotify">证书分享和通知（/certificates/notify）<a href="#证书分享和通知certificatesnotify" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>POST /certificates/{certificate_id}/email</strong> - 将证书通过电子邮件发送</li>
-<li><strong>POST /certificates/{certificate_id}/share</strong> - 分享证书给其他用户</li>
-<li><strong>POST /certificates/{certificate_id}/notify</strong> - 提醒证书持有者证书即将到期</li>
-</ol>
-<h3 id="证书历史和统计certificateshistory-certificatesstats">证书历史和统计（/certificates/history, /certificates/stats）<a href="#证书历史和统计certificateshistory-certificatesstats" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>GET /certificates/{certificate_id}/history</strong> - 查看证书的历史记录</li>
-<li><strong>GET /certificates/stats</strong> - 获取证书统计信息</li>
-</ol>
-<h3 id="证书二维码和其他操作certificatesqr_code-certificatesexpire-certificatesrenew">证书二维码和其他操作（/certificates/qr_code, /certificates/expire, /certificates/renew）<a href="#证书二维码和其他操作certificatesqr_code-certificatesexpire-certificatesrenew" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>GET /certificates/{certificate_id}/qr_code</strong> - 获取证书的二维码</li>
-<li><strong>POST /certificates/expire</strong> - 设置证书过期时间</li>
-<li><strong>GET /certificates/expired</strong> - 获取已过期证书</li>
-<li><strong>POST /certificates/{certificate_id}/renew</strong> - 更新证书信息并延长有效期</li>
-</ol>
-<h3 id="证书安全和审计certificatessecurity-certificateslogs">证书安全和审计（/certificates/security, /certificates/logs）<a href="#证书安全和审计certificatessecurity-certificateslogs" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>GET /certificates/logs</strong> - 获取所有证书的审计日志</li>
-<li><strong>GET /certificates/{certificate_id}/logs</strong> - 获取指定证书的审计日志</li>
-</ol>
-<h3 id="证书权限和授权certificatespermissions">证书权限和授权（/certificates/permissions）<a href="#证书权限和授权certificatespermissions" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>POST /certificates/{certificate_id}/permissions</strong> - 添加证书权限</li>
-<li><strong>DELETE /certificates/{certificate_id}/permissions/{permission_id}</strong> - 删除证书权限</li>
-<li><strong>GET /certificates/{certificate_id}/permissions</strong> - 获取证书的所有权限</li>
-</ol>
-<h3 id="证书标签管理certificatestags">证书标签管理（/certificates/tags）<a href="#证书标签管理certificatestags" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>POST /certificates/{certificate_id}/tags</strong> - 添加证书标签</li>
-<li><strong>DELETE /certificates/{certificate_id}/tags/{tag_id}</strong> - 删除证书标签</li>
-<li><strong>GET /certificates/{certificate_id}/tags</strong> - 获取证书的所有标签</li>
-</ol>
-<h3 id="证书分类管理certificatescategories">证书分类管理（/certificates/categories）<a href="#证书分类管理certificatescategories" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>POST /certificates/categories</strong> - 创建证书分类</li>
-<li><strong>PUT /certificates/categories/{category_id}</strong> - 更新证书分类</li>
-<li><strong>DELETE /certificates/categories/{category_id}</strong> - 删除证书分类</li>
-<li><strong>GET /certificates/categories</strong> - 获取所有证书分类</li>
-<li><strong>GET /certificates/categories/{category_id}</strong> - 获取指定证书分类</li>
-<li><strong>POST /certificates/categories/{category_id}/assign</strong> - 分配证书到分类</li>
-</ol>
-<h3 id="证书的api覆盖范围">证书的API覆盖范围<a href="#证书的api覆盖范围" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ol>
-<li><strong>模板管理</strong>：增删查改、克隆、发布、归档。</li>
-<li><strong>内容字段管理</strong>：增删查改。</li>
-<li><strong>证书管理</strong>：颁发、批量颁发、查、删、验证、批量验证、撤销、续期、过期、状态查询、搜索、克隆。</li>
-<li><strong>导出和格式转换</strong>：导出为PDF、CSV，批量导出。</li>
-<li><strong>分享和通知</strong>：通过邮件发送、分享给其他用户、到期提醒。</li>
-<li><strong>历史和统计</strong>：查看历史记录、获取统计信息。</li>
-<li><strong>二维码</strong>：获取证书的二维码。</li>
-<li><strong>安全和审计</strong>：获取审计日志。</li>
-<li><strong>权限和授权</strong>：添加、删除、查询证书权限。</li>
-<li><strong>标签管理</strong>：添加、删除、查询证书标签。</li>
-<li><strong>分类管理</strong>：创建、更新、删除、查询分类，分配证书到分类。</li>
-</ol>
-<p>这些API涵盖了证书管理系统的各个方面，确保系统功能全面、灵活且安全，能够满足各种证书管理的需求。</p>
-<h2 id="设置项">设置项<a href="#设置项" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<h3 id="个人设置settings">个人设置（Settings）<a href="#个人设置settings" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ul>
-<li>
-<p>账户设置</p>
-<ul>
-<li>用户名</li>
-<li>密码</li>
-<li>邮箱绑定</li>
-<li>电话绑定</li>
-<li>第三方绑定
-<ul>
-<li>微信</li>
-<li>GitHub</li>
-<li><del>Google</del></li>
-</ul>
-</li>
-<li>退出登录</li>
-<li>注销账号</li>
-</ul>
-</li>
-<li>
-<p>关于</p>
-<ul>
-<li>关于 LicenseSys 和 LicenseApp</li>
-<li>使用条款和隐私权</li>
-<li>版权宣告</li>
-<li>取得联络与支援</li>
-<li>版本</li>
-<li>开源许可证</li>
-<li><del>社区参与</del></li>
-</ul>
-</li>
-<li>
-<p>安全设置</p>
-<ul>
-<li>修改密码</li>
-<li><del>两因素认证设置</del></li>
-<li><del>安全问题设置</del></li>
-<li><del>登录设备管理</del></li>
-<li>最近活动</li>
-</ul>
-</li>
-<li>
-<p>通知设置</p>
-<ul>
-<li>邮件通知</li>
-<li>短信通知</li>
-<li>应用内通知</li>
-<li>通知偏好设置</li>
-</ul>
-</li>
-<li>
-<p>外观设置</p>
-<ul>
-<li><del>主题选择</del></li>
-<li><del>布局设置</del></li>
-<li>显示语言</li>
-<li><del>字体大小</del></li>
-<li>夜间模式</li>
-</ul>
-</li>
-</ul>
-<h3 id="系统配置config仅admin权限可见">系统配置（Config）（仅Admin权限可见）<a href="#系统配置config仅admin权限可见" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<ul>
-<li>
-<p>系统基础设置</p>
-<ul>
-<li>系统名称</li>
-<li>系统时区</li>
-<li>默认语言</li>
-<li>系统Logo</li>
-<li><del>主页配置</del></li>
-<li><del>维护模式</del></li>
-</ul>
-</li>
-<li>
-<p>邮箱配置</p>
-<ul>
-<li>SMTP服务器地址</li>
-<li>SMTP服务器端口</li>
-<li>SMTP用户名</li>
-<li>SMTP密码</li>
-<li>发件人地址</li>
-<li>邮箱验证模板</li>
-<li>密码重置模板</li>
-</ul>
-</li>
-<li>
-<p>密码策略（对新设置的有效）</p>
-<ul>
-<li>最小长度</li>
-<li>最大长度</li>
-<li>密码中需要包含特殊字符</li>
-<li>密码有效期</li>
-<li><del>密码历史记录</del></li>
-<li>失败尝试次数限制</li>
-</ul>
-</li>
-<li>
-<p>用户管理</p>
-<ul>
-<li>最大用户数</li>
-<li><del>用户角色管理</del></li>
-<li><del>用户组管理</del></li>
-<li><del>邀请注册设置</del></li>
-<li><del>用户注册审批</del></li>
-</ul>
-</li>
-<li>
-<p>数据库配置</p>
-<ul>
-<li>数据库类型</li>
-<li>数据库连接字符串</li>
-<li>数据备份策略</li>
-<li>数据恢复</li>
-</ul>
-</li>
-<li>
-<p>日志和审计</p>
-<ul>
-<li>日志级别</li>
-<li>日志保存路径</li>
-<li>日志保留期限</li>
-<li>审计日志启用</li>
-<li>审计日志查看</li>
-</ul>
-</li>
-<li>
-<p><del>API 配置</del></p>
-<ul>
-<li>API 访问密钥管理</li>
-<li>API 速率限制</li>
-<li>API 端点启用/禁用</li>
-</ul>
-</li>
-<li>
-<p><del>第三方服务</del></p>
-<ul>
-<li>OAuth提供者配置</li>
-<li>外部API集成</li>
-<li>第三方插件管理</li>
-<li>Webhooks配置</li>
-</ul>
-</li>
-<li>
-<p><del>系统性能</del></p>
-<ul>
-<li>缓存配置</li>
-<li>性能监控</li>
-<li>资源限额</li>
-</ul>
-</li>
-<li>
-<p><del>安全设置</del></p>
-<ul>
-<li>防火墙设置</li>
-<li>IP 白名单/黑名单</li>
-<li>数据加密设置</li>
-<li>安全扫描配置</li>
-</ul>
-</li>
-</ul>
-<h2 id="仪表盘">仪表盘<a href="#仪表盘" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<ul>
-<li>参数显示
-<ul>
-<li>本用户本月登录次数</li>
-<li>本用户颁发/收受证书数量</li>
-<li>当前系统中的用户总数</li>
-<li>当前系统中的证书总数</li>
-<li>待审核证书</li>
-</ul>
-</li>
-<li>快捷按钮
-<ul>
-<li>创建证书</li>
-<li>批量创建证书</li>
-<li>审核证书</li>
-</ul>
-</li>
-<li>统计图表
-<ul>
-<li>用户登录次数趋势图（近30天）</li>
-<li>证书颁发/收受数量趋势图（近30天）</li>
-<li>不同角色用户数量统计图</li>
-</ul>
-</li>
-<li>最新动态
-<ul>
-<li>最新用户注册信息</li>
-<li>最新证书颁发/收受信息</li>
-</ul>
-</li>
-</ul>
-<h2 id="关于-licenseapp-和-licensesys">关于 LicenseApp 和 LicenseSys<a href="#关于-licenseapp-和-licensesys" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<p>本系统（证书颁发与验证系统）分为 LicenseApp 和 LicenseSys 部分。LicenseApp 为系统前端部分，使用 Ant Design 构建。LicenseSys 为系统后端部分，使用 Django 构建。</p>
-
-      </div></div>
-
-  
-
-  
-    
-
-  
-</article>
-
-  </div>
-
-  
-    <footer class="footer">
-  <div class="footer__inner">
-    
-      <div class="copyright">
-        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
-    
-      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
-      </div>
-  </div>
-</footer>
-
-
-
-
-
-
-<script type="text/javascript" src="/bundle.min.js"></script>
-
-
-
-
-
-  
-</div>
-
-</body>
-</html>
+角色管理
+目前角色暂时写死下面的角色，在/src/access.ts进行修改。"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"开发","item":"http://localhost:1313/docs/"},{"@type":"ListItem","position":2,"name":"License App","item":"http://localhost:1313/docs/license-app/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"License App","name":"License App","description":"证书系统 开发指北 页面管理 欢迎页（看板、控制台） 证书管理 证书列表颁发/收受证书列表/分享的证书（页面顶部选项卡切换）（只有这页） 添加证书 证书编辑 证书模板管理 模板列表（只有这页） 添加模板 模板编辑 申请阅办 审核证书 流程管理 人员管理 用户列表 组织管理 角色管理 个人中心 通知 分享的证书 设置 日志 角色管理 目前角色暂时写死下面的角色，在/src/access.ts进行修改。\n","keywords":[],"articleBody":"证书系统 开发指北 页面管理 欢迎页（看板、控制台） 证书管理 证书列表颁发/收受证书列表/分享的证书（页面顶部选项卡切换）（只有这页） 添加证书 证书编辑 证书模板管理 模板列表（只有这页） 添加模板 模板编辑 申请阅办 审核证书 流程管理 人员管理 用户列表 组织管理 角色管理 个人中心 通知 分享的证书 设置 日志 角色管理 目前角色暂时写死下面的角色，在/src/access.ts进行修改。\n每个角色都包含其下级角色的所有权限，同时所有角色都具有用户权限。\n系统管理员 - Admin：\n负责整个系统的管理和维护。 创建和管理组织。 分配组织管理员权限。 配置系统设置和安全策略。 处理系统级别的问题和故障。 组织管理员 - OrgAdmin：\n负责管理特定组织内的用户和操作。 添加、删除和管理组织内的用户。 分配管理员权限给其他用户。 管理组织内用户的角色和权限。 颁发证书给组织内用户。 查看组织内用户的证书。 证书管理员 - LicenseAdmin：\n负责证书的管理和颁发。 颁发证书给普通用户。 查看普通用户的证书。 管理普通用户的角色和权限（例如，普通用户是否有权颁发证书）。 普通用户 - User：\n接收并查看自己获得的证书。 查看分享给自己的证书。 验证证书的真实性。 API 用户操作（/auth） POST /auth/register - 用户注册 POST /auth/login - 用户登录 POST /auth/logout - 用户注销 POST /auth/password/reset - 重置密码请求 POST /auth/password/reset/confirm - 重置密码 POST /auth/two-factor/enable - 启用两因素认证 POST /auth/two-factor/disable - 禁用两因素认证 POST /auth/two-factor/verify - 验证两因素认证 POST /auth/refresh-token - 刷新认证令牌 用户查询和管理（/user） GET /user/me - 获取当前用户信息 PUT /user/me - 更新当前用户信息 GET /user/{user_id}/logs - 获取用户日志 GET /user/{user_id} - 获取指定用户信息 GET /user - 批量获取用户信息 DELETE /user/{user_id} - 删除用户 PUT /user/{user_id} - 更新指定用户信息 PUT /user/{user_id}/deactivate - 禁用用户账号 PUT /user/{user_id}/activate - 启用用户账号 POST /user/{user_id}/roles - 分配角色给用户 DELETE /user/{user_id}/roles - 从用户移除角色 GET /user/{user_id}/permissions - 获取用户的所有权限 POST /user/batch - 批量创建用户 PUT /user/batch - 批量更新用户 DELETE /user/batch - 批量删除用户 角色操作（/auth/roles） POST /auth/roles - 创建角色 PUT /auth/roles/{role_id} - 更新角色 DELETE /auth/roles/{role_id} - 删除角色 POST /auth/roles/{role_id}/permissions - 为角色分配权限 DELETE /auth/roles/{role_id}/permissions - 移除角色的权限 角色查询（/roles） GET /roles - 获取所有角色 GET /roles/{role_id} - 获取指定角色信息 GET /roles/{role_id}/permissions - 获取指定角色的所有权限 权限管理（/auth/permissions） GET /auth/permissions - 获取所有权限 POST /auth/permissions - 创建权限 PUT /auth/permissions/{permission_id} - 更新权限 DELETE /auth/permissions/{permission_id} - 删除权限 GET /auth/permissions/{permission_id} - 获取指定权限信息 组织管理（/org） POST /org - 创建组织 PUT /org/{org_id} - 更新组织信息 DELETE /org/{org_id} - 删除组织 GET /org/{org_id} - 获取组织信息 GET /org - 获取所有组织 GET /org/{org_id}/users - 获取组织下的所有用户 POST /org/{org_id}/users - 批量添加用户到组织 DELETE /org/{org_id}/users - 批量从组织中移除用户 用户分组管理（/org/{org_id}/groups） POST /org/{org_id}/groups - 创建分组 PUT /org/{org_id}/groups/{group_id} - 更新分组信息 DELETE /org/{org_id}/groups/{group_id} - 删除分组 GET /org/{org_id}/groups - 获取所有分组 GET /org/{org_id}/groups/{group_id} - 获取分组信息 GET /org/{org_id}/groups/{group_id}/users - 获取分组下的所有用户 POST /org/{org_id}/groups/{group_id}/users - 批量添加用户到分组 DELETE /org/{org_id}/groups/{group_id}/users - 批量从分组中移除用户 审计日志（/logs） GET /logs - 获取所有审计日志 GET /logs/user/{user_id} - 获取指定用户的审计日志 GET /logs/org/{org_id} - 获取指定组织的审计日志 GET /logs/role/{role_id} - 获取指定角色的审计日志 安全管理（/security） POST /security/whitelist - 添加到IP白名单 DELETE /security/whitelist/{ip} - 从IP白名单中移除 GET /security/whitelist - 获取IP白名单 POST /security/blacklist - 添加到IP黑名单 DELETE /security/blacklist/{ip} - 从IP黑名单中移除 GET /security/blacklist - 获取IP黑名单 POST /security/password-policy - 设置密码策略 GET /security/password-policy - 获取密码策略 POST /security/account-lock - 锁定用户账号 POST /security/account-unlock - 解锁用户账号 其他可能的API GET /metrics - 获取系统指标 GET /health - 检查系统健康状态 这些API设计考虑了用户和角色的管理、组织和分组的管理、权限管理、两因素认证、审计日志、IP白名单和黑名单管理、密码策略和账户锁定等功能，确保系统的功能全面且安全。\n证书相关\n涵盖证书模板管理、证书内容字段管理、证书生成、验证、销毁、导出、分享、通知、历史记录、统计、安全管理和审计等功能。\n证书模板管理（/certificates/templates） POST /certificates/templates - 创建证书模板 PUT /certificates/templates/{template_id} - 更新证书模板 DELETE /certificates/templates/{template_id} - 删除证书模板 GET /certificates/templates - 获取所有证书模板 GET /certificates/templates/{template_id} - 获取指定证书模板 POST /certificates/templates/{template_id}/clone - 复制证书模板 POST /certificates/templates/{template_id}/publish - 发布证书模板 POST /certificates/templates/{template_id}/archive - 归档证书模板 证书内容字段管理（/certificates/templates/{template_id}/fields） POST /certificates/templates/{template_id}/fields - 添加证书内容字段 PUT /certificates/templates/{template_id}/fields/{field_id} - 更新证书内容字段 DELETE /certificates/templates/{template_id}/fields/{field_id} - 删除证书内容字段 GET /certificates/templates/{template_id}/fields - 获取证书模板的所有内容字段 GET /certificates/templates/{template_id}/fields/{field_id} - 获取指定证书内容字段 证书管理（/certificates） POST /certificates - 颁发证书 POST /certificates/batch - 批量颁发证书 GET /certificates - 获取所有证书 GET /certificates/{certificate_id} - 获取指定证书 DELETE /certificates/{certificate_id} - 销毁证书 POST /certificates/verify - 验证证书 POST /certificates/verify/batch - 批量验证证书 POST /certificates/{certificate_id}/revoke - 撤销证书 POST /certificates/{certificate_id}/renew - 更新证书信息并延长有效期 POST /certificates/expire - 设置证书过期时间 GET /certificates/expired - 获取已过期证书 GET /certificates/{certificate_id}/status - 获取证书的状态 POST /certificates/search - 搜索证书 POST /certificates/{certificate_id}/clone - 复制证书 证书导出和格式转换（/certificates/export） POST /certificates/{certificate_id}/pdf - 导出证书为PDF POST /certificates/export/pdf - 批量导出证书为PDF POST /certificates/{certificate_id}/csv - 导出证书为CSV POST /certificates/export/csv - 批量导出证书为CSV 证书分享和通知（/certificates/notify） POST /certificates/{certificate_id}/email - 将证书通过电子邮件发送 POST /certificates/{certificate_id}/share - 分享证书给其他用户 POST /certificates/{certificate_id}/notify - 提醒证书持有者证书即将到期 证书历史和统计（/certificates/history, /certificates/stats） GET /certificates/{certificate_id}/history - 查看证书的历史记录 GET /certificates/stats - 获取证书统计信息 证书二维码和其他操作（/certificates/qr_code, /certificates/expire, /certificates/renew） GET /certificates/{certificate_id}/qr_code - 获取证书的二维码 POST /certificates/expire - 设置证书过期时间 GET /certificates/expired - 获取已过期证书 POST /certificates/{certificate_id}/renew - 更新证书信息并延长有效期 证书安全和审计（/certificates/security, /certificates/logs） GET /certificates/logs - 获取所有证书的审计日志 GET /certificates/{certificate_id}/logs - 获取指定证书的审计日志 证书权限和授权（/certificates/permissions） POST /certificates/{certificate_id}/permissions - 添加证书权限 DELETE /certificates/{certificate_id}/permissions/{permission_id} - 删除证书权限 GET /certificates/{certificate_id}/permissions - 获取证书的所有权限 证书标签管理（/certificates/tags） POST /certificates/{certificate_id}/tags - 添加证书标签 DELETE /certificates/{certificate_id}/tags/{tag_id} - 删除证书标签 GET /certificates/{certificate_id}/tags - 获取证书的所有标签 证书分类管理（/certificates/categories） POST /certificates/categories - 创建证书分类 PUT /certificates/categories/{category_id} - 更新证书分类 DELETE /certificates/categories/{category_id} - 删除证书分类 GET /certificates/categories - 获取所有证书分类 GET /certificates/categories/{category_id} - 获取指定证书分类 POST /certificates/categories/{category_id}/assign - 分配证书到分类 证书的API覆盖范围 模板管理：增删查改、克隆、发布、归档。 内容字段管理：增删查改。 证书管理：颁发、批量颁发、查、删、验证、批量验证、撤销、续期、过期、状态查询、搜索、克隆。 导出和格式转换：导出为PDF、CSV，批量导出。 分享和通知：通过邮件发送、分享给其他用户、到期提醒。 历史和统计：查看历史记录、获取统计信息。 二维码：获取证书的二维码。 安全和审计：获取审计日志。 权限和授权：添加、删除、查询证书权限。 标签管理：添加、删除、查询证书标签。 分类管理：创建、更新、删除、查询分类，分配证书到分类。 这些API涵盖了证书管理系统的各个方面，确保系统功能全面、灵活且安全，能够满足各种证书管理的需求。\n设置项 个人设置（Settings） 账户设置\n用户名 密码 邮箱绑定 电话绑定 第三方绑定 微信 GitHub Google 退出登录 注销账号 关于\n关于 LicenseSys 和 LicenseApp 使用条款和隐私权 版权宣告 取得联络与支援 版本 开源许可证 社区参与 安全设置\n修改密码 两因素认证设置 安全问题设置 登录设备管理 最近活动 通知设置\n邮件通知 短信通知 应用内通知 通知偏好设置 外观设置\n主题选择 布局设置 显示语言 字体大小 夜间模式 系统配置（Config）（仅Admin权限可见） 系统基础设置\n系统名称 系统时区 默认语言 系统Logo 主页配置 维护模式 邮箱配置\nSMTP服务器地址 SMTP服务器端口 SMTP用户名 SMTP密码 发件人地址 邮箱验证模板 密码重置模板 密码策略（对新设置的有效）\n最小长度 最大长度 密码中需要包含特殊字符 密码有效期 密码历史记录 失败尝试次数限制 用户管理\n最大用户数 用户角色管理 用户组管理 邀请注册设置 用户注册审批 数据库配置\n数据库类型 数据库连接字符串 数据备份策略 数据恢复 日志和审计\n日志级别 日志保存路径 日志保留期限 审计日志启用 审计日志查看 API 配置\nAPI 访问密钥管理 API 速率限制 API 端点启用/禁用 第三方服务\nOAuth提供者配置 外部API集成 第三方插件管理 Webhooks配置 系统性能\n缓存配置 性能监控 资源限额 安全设置\n防火墙设置 IP 白名单/黑名单 数据加密设置 安全扫描配置 仪表盘 参数显示 本用户本月登录次数 本用户颁发/收受证书数量 当前系统中的用户总数 当前系统中的证书总数 待审核证书 快捷按钮 创建证书 批量创建证书 审核证书 统计图表 用户登录次数趋势图（近30天） 证书颁发/收受数量趋势图（近30天） 不同角色用户数量统计图 最新动态 最新用户注册信息 最新证书颁发/收受信息 关于 LicenseApp 和 LicenseSys 本系统（证书颁发与验证系统）分为 LicenseApp 和 LicenseSys 部分。LicenseApp 为系统前端部分，使用 Ant Design 构建。LicenseSys 为系统后端部分，使用 Django 构建。\n","wordCount":"3477","inLanguage":"zh","image":"http://localhost:1313/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished":"2024-05-31T15:35:03+08:00","dateModified":"2024-05-31T15:35:03+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:1313/docs/license-app/"},"publisher":{"@type":"Organization","name":"Daaihang's Blog","logo":{"@type":"ImageObject","url":"http://localhost:1313/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=http://localhost:1313/ accesskey=h title="Daaihang's Blog (Alt + H)"><img src=http://localhost:1313/favicon.svg alt aria-label=logo height=35>Daaihang's Blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=http://localhost:1313/daily/ title=🎈日常><span>🎈日常</span></a></li><li><a href=http://localhost:1313/docs/ title=🧑‍💻开发><span>🧑‍💻开发</span></a></li><li><a href=http://localhost:1313/tags/ title=🏷️标签><span>🏷️标签</span></a></li><li><a href=http://localhost:1313/categories/ title=📌分类><span>📌分类</span></a></li><li><a href=http://localhost:1313/search/ title=🔍搜索><span>🔍搜索</span></a></li><li><a href=http://localhost:1313/friend/ title=🧑‍🤝‍🧑朋友><span>🧑‍🤝‍🧑朋友</span></a></li><li><a href=http://localhost:1313/about/ title=🫰关于><span>🫰关于</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=http://localhost:1313/>主页</a>&nbsp;»&nbsp;<a href=http://localhost:1313/docs/>开发</a></div><h1 class=post-title>License App<sup><span class=entry-isdraft>&nbsp;&nbsp;[draft]</span></sup></h1><div class=post-meta>2024-05-31·3477 字&nbsp;|&nbsp;<a href=https://github.com/daaihang/myWebsite/tree/main/content/docs/license-app.md rel="noopener noreferrer" target=_blank>源代码</a></div></header><aside id=toc-container class="toc-container wide"><div class=toc><details open><summary accesskey=c title="(Alt + C)"><span class=details>目录</span></summary><div class=inner><ul><li><a href=#%e8%af%81%e4%b9%a6%e7%b3%bb%e7%bb%9f-%e5%bc%80%e5%8f%91%e6%8c%87%e5%8c%97 aria-label="证书系统 开发指北">证书系统 开发指北</a><ul><li><a href=#%e9%a1%b5%e9%9d%a2%e7%ae%a1%e7%90%86 aria-label=页面管理>页面管理</a></li><li><a href=#%e8%a7%92%e8%89%b2%e7%ae%a1%e7%90%86 aria-label=角色管理>角色管理</a></li><li><a href=#api aria-label=API>API</a><ul><li><a href=#%e7%94%a8%e6%88%b7%e6%93%8d%e4%bd%9cauth aria-label=用户操作（/auth）>用户操作（/auth）</a></li><li><a href=#%e7%94%a8%e6%88%b7%e6%9f%a5%e8%af%a2%e5%92%8c%e7%ae%a1%e7%90%86user aria-label=用户查询和管理（/user）>用户查询和管理（/user）</a></li><li><a href=#%e8%a7%92%e8%89%b2%e6%93%8d%e4%bd%9cauthroles aria-label=角色操作（/auth/roles）>角色操作（/auth/roles）</a></li><li><a href=#%e8%a7%92%e8%89%b2%e6%9f%a5%e8%af%a2roles aria-label=角色查询（/roles）>角色查询（/roles）</a></li><li><a href=#%e6%9d%83%e9%99%90%e7%ae%a1%e7%90%86authpermissions aria-label=权限管理（/auth/permissions）>权限管理（/auth/permissions）</a></li><li><a href=#%e7%bb%84%e7%bb%87%e7%ae%a1%e7%90%86org aria-label=组织管理（/org）>组织管理（/org）</a></li><li><a href=#%e7%94%a8%e6%88%b7%e5%88%86%e7%bb%84%e7%ae%a1%e7%90%86orgorg_idgroups aria-label=用户分组管理（/org/{org_id}/groups）>用户分组管理（/org/{org_id}/groups）</a></li><li><a href=#%e5%ae%a1%e8%ae%a1%e6%97%a5%e5%bf%97logs aria-label=审计日志（/logs）>审计日志（/logs）</a></li><li><a href=#%e5%ae%89%e5%85%a8%e7%ae%a1%e7%90%86security aria-label=安全管理（/security）>安全管理（/security）</a></li><li><a href=#%e5%85%b6%e4%bb%96%e5%8f%af%e8%83%bd%e7%9a%84api aria-label=其他可能的API>其他可能的API</a></li><li><a href=#%e8%af%81%e4%b9%a6%e6%a8%a1%e6%9d%bf%e7%ae%a1%e7%90%86certificatestemplates aria-label=证书模板管理（/certificates/templates）>证书模板管理（/certificates/templates）</a></li><li><a href=#%e8%af%81%e4%b9%a6%e5%86%85%e5%ae%b9%e5%ad%97%e6%ae%b5%e7%ae%a1%e7%90%86certificatestemplatestemplate_idfields aria-label=证书内容字段管理（/certificates/templates/{template_id}/fields）>证书内容字段管理（/certificates/templates/{template_id}/fields）</a></li><li><a href=#%e8%af%81%e4%b9%a6%e7%ae%a1%e7%90%86certificates aria-label=证书管理（/certificates）>证书管理（/certificates）</a></li><li><a href=#%e8%af%81%e4%b9%a6%e5%af%bc%e5%87%ba%e5%92%8c%e6%a0%bc%e5%bc%8f%e8%bd%ac%e6%8d%a2certificatesexport aria-label=证书导出和格式转换（/certificates/export）>证书导出和格式转换（/certificates/export）</a></li><li><a href=#%e8%af%81%e4%b9%a6%e5%88%86%e4%ba%ab%e5%92%8c%e9%80%9a%e7%9f%a5certificatesnotify aria-label=证书分享和通知（/certificates/notify）>证书分享和通知（/certificates/notify）</a></li><li><a href=#%e8%af%81%e4%b9%a6%e5%8e%86%e5%8f%b2%e5%92%8c%e7%bb%9f%e8%ae%a1certificateshistory-certificatesstats aria-label="证书历史和统计（/certificates/history, /certificates/stats）">证书历史和统计（/certificates/history, /certificates/stats）</a></li><li><a href=#%e8%af%81%e4%b9%a6%e4%ba%8c%e7%bb%b4%e7%a0%81%e5%92%8c%e5%85%b6%e4%bb%96%e6%93%8d%e4%bd%9ccertificatesqr_code-certificatesexpire-certificatesrenew aria-label="证书二维码和其他操作（/certificates/qr_code, /certificates/expire, /certificates/renew）">证书二维码和其他操作（/certificates/qr_code, /certificates/expire, /certificates/renew）</a></li><li><a href=#%e8%af%81%e4%b9%a6%e5%ae%89%e5%85%a8%e5%92%8c%e5%ae%a1%e8%ae%a1certificatessecurity-certificateslogs aria-label="证书安全和审计（/certificates/security, /certificates/logs）">证书安全和审计（/certificates/security, /certificates/logs）</a></li><li><a href=#%e8%af%81%e4%b9%a6%e6%9d%83%e9%99%90%e5%92%8c%e6%8e%88%e6%9d%83certificatespermissions aria-label=证书权限和授权（/certificates/permissions）>证书权限和授权（/certificates/permissions）</a></li><li><a href=#%e8%af%81%e4%b9%a6%e6%a0%87%e7%ad%be%e7%ae%a1%e7%90%86certificatestags aria-label=证书标签管理（/certificates/tags）>证书标签管理（/certificates/tags）</a></li><li><a href=#%e8%af%81%e4%b9%a6%e5%88%86%e7%b1%bb%e7%ae%a1%e7%90%86certificatescategories aria-label=证书分类管理（/certificates/categories）>证书分类管理（/certificates/categories）</a></li><li><a href=#%e8%af%81%e4%b9%a6%e7%9a%84api%e8%a6%86%e7%9b%96%e8%8c%83%e5%9b%b4 aria-label=证书的API覆盖范围>证书的API覆盖范围</a></li></ul></li><li><a href=#%e8%ae%be%e7%bd%ae%e9%a1%b9 aria-label=设置项>设置项</a><ul><li><a href=#%e4%b8%aa%e4%ba%ba%e8%ae%be%e7%bd%aesettings aria-label=个人设置（Settings）>个人设置（Settings）</a></li><li><a href=#%e7%b3%bb%e7%bb%9f%e9%85%8d%e7%bd%aeconfig%e4%bb%85admin%e6%9d%83%e9%99%90%e5%8f%af%e8%a7%81 aria-label=系统配置（Config）（仅Admin权限可见）>系统配置（Config）（仅Admin权限可见）</a></li></ul></li><li><a href=#%e4%bb%aa%e8%a1%a8%e7%9b%98 aria-label=仪表盘>仪表盘</a></li><li><a href=#%e5%85%b3%e4%ba%8e-licenseapp-%e5%92%8c-licensesys aria-label="关于 LicenseApp 和 LicenseSys">关于 LicenseApp 和 LicenseSys</a></li></ul></li></ul></div></details></div></aside><script>let activeElement,elements;window.addEventListener("DOMContentLoaded",function(){checkTocPosition(),elements=document.querySelectorAll("h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]"),activeElement=elements[0];const t=encodeURI(activeElement.getAttribute("id")).toLowerCase();document.querySelector(`.inner ul li a[href="#${t}"]`).classList.add("active")},!1),window.addEventListener("resize",function(){checkTocPosition()},!1),window.addEventListener("scroll",()=>{activeElement=Array.from(elements).find(e=>{if(getOffsetTop(e)-window.pageYOffset>0&&getOffsetTop(e)-window.pageYOffset<window.innerHeight/2)return e})||activeElement,elements.forEach(e=>{const t=encodeURI(e.getAttribute("id")).toLowerCase();e===activeElement?document.querySelector(`.inner ul li a[href="#${t}"]`).classList.add("active"):document.querySelector(`.inner ul li a[href="#${t}"]`).classList.remove("active")})},!1);const main=parseInt(getComputedStyle(document.body).getPropertyValue("--article-width"),10),toc=parseInt(getComputedStyle(document.body).getPropertyValue("--toc-width"),10),gap=parseInt(getComputedStyle(document.body).getPropertyValue("--gap"),10);function checkTocPosition(){const e=document.body.scrollWidth;e-main-toc*2-gap*4>0?document.getElementById("toc-container").classList.add("wide"):document.getElementById("toc-container").classList.remove("wide")}function getOffsetTop(e){if(!e.getClientRects().length)return 0;let t=e.getBoundingClientRect(),n=e.ownerDocument.defaultView;return t.top+n.pageYOffset}</script><div class=post-content><h1 id=证书系统-开发指北>证书系统 开发指北<a hidden class=anchor aria-hidden=true href=#证书系统-开发指北>#</a></h1><h2 id=页面管理>页面管理<a hidden class=anchor aria-hidden=true href=#页面管理>#</a></h2><ul><li>欢迎页（看板、控制台）</li><li>证书管理<ul><li>证书列表颁发/收受证书列表/分享的证书（页面顶部选项卡切换）（只有这页）</li><li>添加证书</li><li>证书编辑</li></ul></li><li>证书模板管理<ul><li>模板列表（只有这页）</li><li>添加模板</li><li>模板编辑</li></ul></li><li>申请阅办<ul><li>审核证书</li><li>流程管理</li></ul></li><li>人员管理<ul><li>用户列表</li><li>组织管理</li><li>角色管理</li></ul></li><li>个人中心<ul><li>通知</li><li>分享的证书</li></ul></li><li>设置<ul><li>日志</li></ul></li></ul><h2 id=角色管理>角色管理<a hidden class=anchor aria-hidden=true href=#角色管理>#</a></h2><p>目前角色暂时写死下面的角色，在<code>/src/access.ts</code>进行修改。</p><p>每个角色都包含其下级角色的所有权限，同时所有角色都具有用户权限。</p><ol><li><p><strong>系统管理员</strong> - Admin：</p><ul><li>负责整个系统的管理和维护。</li><li>创建和管理组织。</li><li>分配组织管理员权限。</li><li>配置系统设置和安全策略。</li><li>处理系统级别的问题和故障。</li></ul></li><li><p><strong>组织管理员</strong> - OrgAdmin：</p><ul><li>负责管理特定组织内的用户和操作。</li><li>添加、删除和管理组织内的用户。</li><li>分配管理员权限给其他用户。</li><li>管理组织内用户的角色和权限。</li><li>颁发证书给组织内用户。</li><li>查看组织内用户的证书。</li></ul></li><li><p><strong>证书管理员</strong> - LicenseAdmin：</p><ul><li>负责证书的管理和颁发。</li><li>颁发证书给普通用户。</li><li>查看普通用户的证书。</li><li>管理普通用户的角色和权限（例如，普通用户是否有权颁发证书）。</li></ul></li><li><p><strong>普通用户</strong> - User：</p><ul><li>接收并查看自己获得的证书。</li><li>查看分享给自己的证书。</li><li>验证证书的真实性。</li></ul></li></ol><h2 id=api>API<a hidden class=anchor aria-hidden=true href=#api>#</a></h2><h3 id=用户操作auth>用户操作（/auth）<a hidden class=anchor aria-hidden=true href=#用户操作auth>#</a></h3><ol><li><strong>POST /auth/register</strong> - 用户注册</li><li><strong>POST /auth/login</strong> - 用户登录</li><li><strong>POST /auth/logout</strong> - 用户注销</li><li><strong>POST /auth/password/reset</strong> - 重置密码请求</li><li><strong>POST /auth/password/reset/confirm</strong> - 重置密码</li><li><strong>POST /auth/two-factor/enable</strong> - 启用两因素认证</li><li><strong>POST /auth/two-factor/disable</strong> - 禁用两因素认证</li><li><strong>POST /auth/two-factor/verify</strong> - 验证两因素认证</li><li><strong>POST /auth/refresh-token</strong> - 刷新认证令牌</li></ol><h3 id=用户查询和管理user>用户查询和管理（/user）<a hidden class=anchor aria-hidden=true href=#用户查询和管理user>#</a></h3><ol><li><strong>GET /user/me</strong> - 获取当前用户信息</li><li><strong>PUT /user/me</strong> - 更新当前用户信息</li><li><strong>GET /user/{user_id}/logs</strong> - 获取用户日志</li><li><strong>GET /user/{user_id}</strong> - 获取指定用户信息</li><li><strong>GET /user</strong> - 批量获取用户信息</li><li><strong>DELETE /user/{user_id}</strong> - 删除用户</li><li><strong>PUT /user/{user_id}</strong> - 更新指定用户信息</li><li><strong>PUT /user/{user_id}/deactivate</strong> - 禁用用户账号</li><li><strong>PUT /user/{user_id}/activate</strong> - 启用用户账号</li><li><strong>POST /user/{user_id}/roles</strong> - 分配角色给用户</li><li><strong>DELETE /user/{user_id}/roles</strong> - 从用户移除角色</li><li><strong>GET /user/{user_id}/permissions</strong> - 获取用户的所有权限</li><li><strong>POST /user/batch</strong> - 批量创建用户</li><li><strong>PUT /user/batch</strong> - 批量更新用户</li><li><strong>DELETE /user/batch</strong> - 批量删除用户</li></ol><h3 id=角色操作authroles>角色操作（/auth/roles）<a hidden class=anchor aria-hidden=true href=#角色操作authroles>#</a></h3><ol><li><strong>POST /auth/roles</strong> - 创建角色</li><li><strong>PUT /auth/roles/{role_id}</strong> - 更新角色</li><li><strong>DELETE /auth/roles/{role_id}</strong> - 删除角色</li><li><strong>POST /auth/roles/{role_id}/permissions</strong> - 为角色分配权限</li><li><strong>DELETE /auth/roles/{role_id}/permissions</strong> - 移除角色的权限</li></ol><h3 id=角色查询roles>角色查询（/roles）<a hidden class=anchor aria-hidden=true href=#角色查询roles>#</a></h3><ol><li><strong>GET /roles</strong> - 获取所有角色</li><li><strong>GET /roles/{role_id}</strong> - 获取指定角色信息</li><li><strong>GET /roles/{role_id}/permissions</strong> - 获取指定角色的所有权限</li></ol><h3 id=权限管理authpermissions>权限管理（/auth/permissions）<a hidden class=anchor aria-hidden=true href=#权限管理authpermissions>#</a></h3><ol><li><strong>GET /auth/permissions</strong> - 获取所有权限</li><li><strong>POST /auth/permissions</strong> - 创建权限</li><li><strong>PUT /auth/permissions/{permission_id}</strong> - 更新权限</li><li><strong>DELETE /auth/permissions/{permission_id}</strong> - 删除权限</li><li><strong>GET /auth/permissions/{permission_id}</strong> - 获取指定权限信息</li></ol><h3 id=组织管理org>组织管理（/org）<a hidden class=anchor aria-hidden=true href=#组织管理org>#</a></h3><ol><li><strong>POST /org</strong> - 创建组织</li><li><strong>PUT /org/{org_id}</strong> - 更新组织信息</li><li><strong>DELETE /org/{org_id}</strong> - 删除组织</li><li><strong>GET /org/{org_id}</strong> - 获取组织信息</li><li><strong>GET /org</strong> - 获取所有组织</li><li><strong>GET /org/{org_id}/users</strong> - 获取组织下的所有用户</li><li><strong>POST /org/{org_id}/users</strong> - 批量添加用户到组织</li><li><strong>DELETE /org/{org_id}/users</strong> - 批量从组织中移除用户</li></ol><h3 id=用户分组管理orgorg_idgroups>用户分组管理（/org/{org_id}/groups）<a hidden class=anchor aria-hidden=true href=#用户分组管理orgorg_idgroups>#</a></h3><ol><li><strong>POST /org/{org_id}/groups</strong> - 创建分组</li><li><strong>PUT /org/{org_id}/groups/{group_id}</strong> - 更新分组信息</li><li><strong>DELETE /org/{org_id}/groups/{group_id}</strong> - 删除分组</li><li><strong>GET /org/{org_id}/groups</strong> - 获取所有分组</li><li><strong>GET /org/{org_id}/groups/{group_id}</strong> - 获取分组信息</li><li><strong>GET /org/{org_id}/groups/{group_id}/users</strong> - 获取分组下的所有用户</li><li><strong>POST /org/{org_id}/groups/{group_id}/users</strong> - 批量添加用户到分组</li><li><strong>DELETE /org/{org_id}/groups/{group_id}/users</strong> - 批量从分组中移除用户</li></ol><h3 id=审计日志logs>审计日志（/logs）<a hidden class=anchor aria-hidden=true href=#审计日志logs>#</a></h3><ol><li><strong>GET /logs</strong> - 获取所有审计日志</li><li><strong>GET /logs/user/{user_id}</strong> - 获取指定用户的审计日志</li><li><strong>GET /logs/org/{org_id}</strong> - 获取指定组织的审计日志</li><li><strong>GET /logs/role/{role_id}</strong> - 获取指定角色的审计日志</li></ol><h3 id=安全管理security>安全管理（/security）<a hidden class=anchor aria-hidden=true href=#安全管理security>#</a></h3><ol><li><strong>POST /security/whitelist</strong> - 添加到IP白名单</li><li><strong>DELETE /security/whitelist/{ip}</strong> - 从IP白名单中移除</li><li><strong>GET /security/whitelist</strong> - 获取IP白名单</li><li><strong>POST /security/blacklist</strong> - 添加到IP黑名单</li><li><strong>DELETE /security/blacklist/{ip}</strong> - 从IP黑名单中移除</li><li><strong>GET /security/blacklist</strong> - 获取IP黑名单</li><li><strong>POST /security/password-policy</strong> - 设置密码策略</li><li><strong>GET /security/password-policy</strong> - 获取密码策略</li><li><strong>POST /security/account-lock</strong> - 锁定用户账号</li><li><strong>POST /security/account-unlock</strong> - 解锁用户账号</li></ol><h3 id=其他可能的api>其他可能的API<a hidden class=anchor aria-hidden=true href=#其他可能的api>#</a></h3><ol><li><strong>GET /metrics</strong> - 获取系统指标</li><li><strong>GET /health</strong> - 检查系统健康状态</li></ol><p>这些API设计考虑了用户和角色的管理、组织和分组的管理、权限管理、两因素认证、审计日志、IP白名单和黑名单管理、密码策略和账户锁定等功能，确保系统的功能全面且安全。</p><p>证书相关</p><p>涵盖证书模板管理、证书内容字段管理、证书生成、验证、销毁、导出、分享、通知、历史记录、统计、安全管理和审计等功能。</p><h3 id=证书模板管理certificatestemplates>证书模板管理（/certificates/templates）<a hidden class=anchor aria-hidden=true href=#证书模板管理certificatestemplates>#</a></h3><ol><li><strong>POST /certificates/templates</strong> - 创建证书模板</li><li><strong>PUT /certificates/templates/{template_id}</strong> - 更新证书模板</li><li><strong>DELETE /certificates/templates/{template_id}</strong> - 删除证书模板</li><li><strong>GET /certificates/templates</strong> - 获取所有证书模板</li><li><strong>GET /certificates/templates/{template_id}</strong> - 获取指定证书模板</li><li><strong>POST /certificates/templates/{template_id}/clone</strong> - 复制证书模板</li><li><strong>POST /certificates/templates/{template_id}/publish</strong> - 发布证书模板</li><li><strong>POST /certificates/templates/{template_id}/archive</strong> - 归档证书模板</li></ol><h3 id=证书内容字段管理certificatestemplatestemplate_idfields>证书内容字段管理（/certificates/templates/{template_id}/fields）<a hidden class=anchor aria-hidden=true href=#证书内容字段管理certificatestemplatestemplate_idfields>#</a></h3><ol><li><strong>POST /certificates/templates/{template_id}/fields</strong> - 添加证书内容字段</li><li><strong>PUT /certificates/templates/{template_id}/fields/{field_id}</strong> - 更新证书内容字段</li><li><strong>DELETE /certificates/templates/{template_id}/fields/{field_id}</strong> - 删除证书内容字段</li><li><strong>GET /certificates/templates/{template_id}/fields</strong> - 获取证书模板的所有内容字段</li><li><strong>GET /certificates/templates/{template_id}/fields/{field_id}</strong> - 获取指定证书内容字段</li></ol><h3 id=证书管理certificates>证书管理（/certificates）<a hidden class=anchor aria-hidden=true href=#证书管理certificates>#</a></h3><ol><li><strong>POST /certificates</strong> - 颁发证书</li><li><strong>POST /certificates/batch</strong> - 批量颁发证书</li><li><strong>GET /certificates</strong> - 获取所有证书</li><li><strong>GET /certificates/{certificate_id}</strong> - 获取指定证书</li><li><strong>DELETE /certificates/{certificate_id}</strong> - 销毁证书</li><li><strong>POST /certificates/verify</strong> - 验证证书</li><li><strong>POST /certificates/verify/batch</strong> - 批量验证证书</li><li><strong>POST /certificates/{certificate_id}/revoke</strong> - 撤销证书</li><li><strong>POST /certificates/{certificate_id}/renew</strong> - 更新证书信息并延长有效期</li><li><strong>POST /certificates/expire</strong> - 设置证书过期时间</li><li><strong>GET /certificates/expired</strong> - 获取已过期证书</li><li><strong>GET /certificates/{certificate_id}/status</strong> - 获取证书的状态</li><li><strong>POST /certificates/search</strong> - 搜索证书</li><li><strong>POST /certificates/{certificate_id}/clone</strong> - 复制证书</li></ol><h3 id=证书导出和格式转换certificatesexport>证书导出和格式转换（/certificates/export）<a hidden class=anchor aria-hidden=true href=#证书导出和格式转换certificatesexport>#</a></h3><ol><li><strong>POST /certificates/{certificate_id}/pdf</strong> - 导出证书为PDF</li><li><strong>POST /certificates/export/pdf</strong> - 批量导出证书为PDF</li><li><strong>POST /certificates/{certificate_id}/csv</strong> - 导出证书为CSV</li><li><strong>POST /certificates/export/csv</strong> - 批量导出证书为CSV</li></ol><h3 id=证书分享和通知certificatesnotify>证书分享和通知（/certificates/notify）<a hidden class=anchor aria-hidden=true href=#证书分享和通知certificatesnotify>#</a></h3><ol><li><strong>POST /certificates/{certificate_id}/email</strong> - 将证书通过电子邮件发送</li><li><strong>POST /certificates/{certificate_id}/share</strong> - 分享证书给其他用户</li><li><strong>POST /certificates/{certificate_id}/notify</strong> - 提醒证书持有者证书即将到期</li></ol><h3 id=证书历史和统计certificateshistory-certificatesstats>证书历史和统计（/certificates/history, /certificates/stats）<a hidden class=anchor aria-hidden=true href=#证书历史和统计certificateshistory-certificatesstats>#</a></h3><ol><li><strong>GET /certificates/{certificate_id}/history</strong> - 查看证书的历史记录</li><li><strong>GET /certificates/stats</strong> - 获取证书统计信息</li></ol><h3 id=证书二维码和其他操作certificatesqr_code-certificatesexpire-certificatesrenew>证书二维码和其他操作（/certificates/qr_code, /certificates/expire, /certificates/renew）<a hidden class=anchor aria-hidden=true href=#证书二维码和其他操作certificatesqr_code-certificatesexpire-certificatesrenew>#</a></h3><ol><li><strong>GET /certificates/{certificate_id}/qr_code</strong> - 获取证书的二维码</li><li><strong>POST /certificates/expire</strong> - 设置证书过期时间</li><li><strong>GET /certificates/expired</strong> - 获取已过期证书</li><li><strong>POST /certificates/{certificate_id}/renew</strong> - 更新证书信息并延长有效期</li></ol><h3 id=证书安全和审计certificatessecurity-certificateslogs>证书安全和审计（/certificates/security, /certificates/logs）<a hidden class=anchor aria-hidden=true href=#证书安全和审计certificatessecurity-certificateslogs>#</a></h3><ol><li><strong>GET /certificates/logs</strong> - 获取所有证书的审计日志</li><li><strong>GET /certificates/{certificate_id}/logs</strong> - 获取指定证书的审计日志</li></ol><h3 id=证书权限和授权certificatespermissions>证书权限和授权（/certificates/permissions）<a hidden class=anchor aria-hidden=true href=#证书权限和授权certificatespermissions>#</a></h3><ol><li><strong>POST /certificates/{certificate_id}/permissions</strong> - 添加证书权限</li><li><strong>DELETE /certificates/{certificate_id}/permissions/{permission_id}</strong> - 删除证书权限</li><li><strong>GET /certificates/{certificate_id}/permissions</strong> - 获取证书的所有权限</li></ol><h3 id=证书标签管理certificatestags>证书标签管理（/certificates/tags）<a hidden class=anchor aria-hidden=true href=#证书标签管理certificatestags>#</a></h3><ol><li><strong>POST /certificates/{certificate_id}/tags</strong> - 添加证书标签</li><li><strong>DELETE /certificates/{certificate_id}/tags/{tag_id}</strong> - 删除证书标签</li><li><strong>GET /certificates/{certificate_id}/tags</strong> - 获取证书的所有标签</li></ol><h3 id=证书分类管理certificatescategories>证书分类管理（/certificates/categories）<a hidden class=anchor aria-hidden=true href=#证书分类管理certificatescategories>#</a></h3><ol><li><strong>POST /certificates/categories</strong> - 创建证书分类</li><li><strong>PUT /certificates/categories/{category_id}</strong> - 更新证书分类</li><li><strong>DELETE /certificates/categories/{category_id}</strong> - 删除证书分类</li><li><strong>GET /certificates/categories</strong> - 获取所有证书分类</li><li><strong>GET /certificates/categories/{category_id}</strong> - 获取指定证书分类</li><li><strong>POST /certificates/categories/{category_id}/assign</strong> - 分配证书到分类</li></ol><h3 id=证书的api覆盖范围>证书的API覆盖范围<a hidden class=anchor aria-hidden=true href=#证书的api覆盖范围>#</a></h3><ol><li><strong>模板管理</strong>：增删查改、克隆、发布、归档。</li><li><strong>内容字段管理</strong>：增删查改。</li><li><strong>证书管理</strong>：颁发、批量颁发、查、删、验证、批量验证、撤销、续期、过期、状态查询、搜索、克隆。</li><li><strong>导出和格式转换</strong>：导出为PDF、CSV，批量导出。</li><li><strong>分享和通知</strong>：通过邮件发送、分享给其他用户、到期提醒。</li><li><strong>历史和统计</strong>：查看历史记录、获取统计信息。</li><li><strong>二维码</strong>：获取证书的二维码。</li><li><strong>安全和审计</strong>：获取审计日志。</li><li><strong>权限和授权</strong>：添加、删除、查询证书权限。</li><li><strong>标签管理</strong>：添加、删除、查询证书标签。</li><li><strong>分类管理</strong>：创建、更新、删除、查询分类，分配证书到分类。</li></ol><p>这些API涵盖了证书管理系统的各个方面，确保系统功能全面、灵活且安全，能够满足各种证书管理的需求。</p><h2 id=设置项>设置项<a hidden class=anchor aria-hidden=true href=#设置项>#</a></h2><h3 id=个人设置settings>个人设置（Settings）<a hidden class=anchor aria-hidden=true href=#个人设置settings>#</a></h3><ul><li><p>账户设置</p><ul><li>用户名</li><li>密码</li><li>邮箱绑定</li><li>电话绑定</li><li>第三方绑定<ul><li>微信</li><li>GitHub</li><li><del>Google</del></li></ul></li><li>退出登录</li><li>注销账号</li></ul></li><li><p>关于</p><ul><li>关于 LicenseSys 和 LicenseApp</li><li>使用条款和隐私权</li><li>版权宣告</li><li>取得联络与支援</li><li>版本</li><li>开源许可证</li><li><del>社区参与</del></li></ul></li><li><p>安全设置</p><ul><li>修改密码</li><li><del>两因素认证设置</del></li><li><del>安全问题设置</del></li><li><del>登录设备管理</del></li><li>最近活动</li></ul></li><li><p>通知设置</p><ul><li>邮件通知</li><li>短信通知</li><li>应用内通知</li><li>通知偏好设置</li></ul></li><li><p>外观设置</p><ul><li><del>主题选择</del></li><li><del>布局设置</del></li><li>显示语言</li><li><del>字体大小</del></li><li>夜间模式</li></ul></li></ul><h3 id=系统配置config仅admin权限可见>系统配置（Config）（仅Admin权限可见）<a hidden class=anchor aria-hidden=true href=#系统配置config仅admin权限可见>#</a></h3><ul><li><p>系统基础设置</p><ul><li>系统名称</li><li>系统时区</li><li>默认语言</li><li>系统Logo</li><li><del>主页配置</del></li><li><del>维护模式</del></li></ul></li><li><p>邮箱配置</p><ul><li>SMTP服务器地址</li><li>SMTP服务器端口</li><li>SMTP用户名</li><li>SMTP密码</li><li>发件人地址</li><li>邮箱验证模板</li><li>密码重置模板</li></ul></li><li><p>密码策略（对新设置的有效）</p><ul><li>最小长度</li><li>最大长度</li><li>密码中需要包含特殊字符</li><li>密码有效期</li><li><del>密码历史记录</del></li><li>失败尝试次数限制</li></ul></li><li><p>用户管理</p><ul><li>最大用户数</li><li><del>用户角色管理</del></li><li><del>用户组管理</del></li><li><del>邀请注册设置</del></li><li><del>用户注册审批</del></li></ul></li><li><p>数据库配置</p><ul><li>数据库类型</li><li>数据库连接字符串</li><li>数据备份策略</li><li>数据恢复</li></ul></li><li><p>日志和审计</p><ul><li>日志级别</li><li>日志保存路径</li><li>日志保留期限</li><li>审计日志启用</li><li>审计日志查看</li></ul></li><li><p><del>API 配置</del></p><ul><li>API 访问密钥管理</li><li>API 速率限制</li><li>API 端点启用/禁用</li></ul></li><li><p><del>第三方服务</del></p><ul><li>OAuth提供者配置</li><li>外部API集成</li><li>第三方插件管理</li><li>Webhooks配置</li></ul></li><li><p><del>系统性能</del></p><ul><li>缓存配置</li><li>性能监控</li><li>资源限额</li></ul></li><li><p><del>安全设置</del></p><ul><li>防火墙设置</li><li>IP 白名单/黑名单</li><li>数据加密设置</li><li>安全扫描配置</li></ul></li></ul><h2 id=仪表盘>仪表盘<a hidden class=anchor aria-hidden=true href=#仪表盘>#</a></h2><ul><li>参数显示<ul><li>本用户本月登录次数</li><li>本用户颁发/收受证书数量</li><li>当前系统中的用户总数</li><li>当前系统中的证书总数</li><li>待审核证书</li></ul></li><li>快捷按钮<ul><li>创建证书</li><li>批量创建证书</li><li>审核证书</li></ul></li><li>统计图表<ul><li>用户登录次数趋势图（近30天）</li><li>证书颁发/收受数量趋势图（近30天）</li><li>不同角色用户数量统计图</li></ul></li><li>最新动态<ul><li>最新用户注册信息</li><li>最新证书颁发/收受信息</li></ul></li></ul><h2 id=关于-licenseapp-和-licensesys>关于 LicenseApp 和 LicenseSys<a hidden class=anchor aria-hidden=true href=#关于-licenseapp-和-licensesys>#</a></h2><p>本系统（证书颁发与验证系统）分为 LicenseApp 和 LicenseSys 部分。LicenseApp 为系统前端部分，使用 Ant Design 构建。LicenseSys 为系统后端部分，使用 Django 构建。</p></div><footer class=post-footer><ul class=post-tags></ul><nav class=paginav><a class=prev href=http://localhost:1313/docs/crypto/><span class=title>« 上一页</span><br><span>信息安全密码学基础 - 实验代码</span>
+</a><a class=next href=http://localhost:1313/docs/awesome-python/><span class=title>下一页 »</span><br><span>Awesome Python*</span></a></nav></footer></article></main><footer class=footer><span>© <a href=https://wdh.hk>Daaihang Wong</a> <a href="https://icp.gov.moe/?keyword=20252019">萌ICP备20252019号</a></span>
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/sherlcok314159/MyPaperMod rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>(function(e,t){var s=document,o="script",n=s.createElement(o),i=s.getElementsByTagName(o)[0];n.src=e,t&&n.addEventListener("load",function(e){t(e)}),i.parentNode.insertBefore(n,i)})("/js/pangu.min.js",function(){pangu.spacingPage()})</script><script>(function(){var e,t,n,s=document.getElementsByTagName("code");for(n=0;n<s.length;){if(t=s[n],t.parentNode.tagName!=="PRE"&&t.childElementCount===0&&(e=t.textContent,/^\$[^$]/.test(e)&&/[^$]\$$/.test(e)&&(e=e.replace(/^\$/,"\\(").replace(/\$$/,"\\)"),t.textContent=e),/^\\\((.|\s)+\\\)$/.test(e)||/^\\\[(.|\s)+\\\]$/.test(e)||/^\$(.|\s)+\$$/.test(e)||/^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(e))){t.outerHTML=t.innerHTML;continue}n++}})()</script><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="Copy";function s(){t.innerHTML="Done",setTimeout(()=>{t.innerHTML="Copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>

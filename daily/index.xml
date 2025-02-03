@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>日常 on Daaihang&#39;s Blog</title>
+    <link>https://wdh.hk/daily/</link>
+    <description>Recent content in 日常 on Daaihang&#39;s Blog</description>
+    <image>
+      <title>Daaihang&#39;s Blog</title>
+      <url>https://wdh.hk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://wdh.hk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- 0.143.0</generator>
+    <language>zh-cn</language>
+    <copyright>Daaihang Wong 萌ICP备20252019号</copyright>
+    <lastBuildDate>Fri, 26 Jul 2024 00:51:58 +0800</lastBuildDate>
+    <atom:link href="https://wdh.hk/daily/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aftersun 晒后假日</title>
+      <link>https://wdh.hk/daily/aftersun/</link>
+      <pubDate>Fri, 26 Jul 2024 00:51:58 +0800</pubDate>
+      <guid>https://wdh.hk/daily/aftersun/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;I thought I am sinking&amp;hellip;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;明明夏日那样舒爽，那样慵懒。一次次的Play Back，才知道那时的你，那样悲伤。&lt;/p&gt;&lt;/blockquote&gt;</description>
+    </item>
+    <item>
+      <title>浪潮中的一叶扁舟</title>
+      <link>https://wdh.hk/daily/boat-tide/</link>
+      <pubDate>Sat, 20 Apr 2024 22:39:00 +0800</pubDate>
+      <guid>https://wdh.hk/daily/boat-tide/</guid>
+      <description>&lt;p&gt;时代滚滚向前，犹如奔腾的浪潮，裹挟着我们每个人。在时代的洪流中，我们如同一叶扁舟，或轻盈漂泊，或艰难前行。无论航向何方，我们都无法逃避这汹涌的波涛。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>2024世界读书日：《平如美棠：我俩的故事》</title>
+      <link>https://wdh.hk/daily/world-book-day-2024/</link>
+      <pubDate>Sat, 20 Apr 2024 12:31:24 +0800</pubDate>
+      <guid>https://wdh.hk/daily/world-book-day-2024/</guid>
+      <description>&lt;p&gt;几天之后就是世界读书日了，任方老师让我也写一篇笔记与摘录。于是今天中午从床上爬起来，写下这感受已久的书。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>最近的记录（第一辑）</title>
+      <link>https://wdh.hk/daily/24-04/</link>
+      <pubDate>Sun, 14 Apr 2024 21:44:15 +0800</pubDate>
+      <guid>https://wdh.hk/daily/24-04/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>技术与管理</title>
+      <link>https://wdh.hk/daily/tech-and-manage/</link>
+      <pubDate>Fri, 15 Mar 2024 21:35:15 +0800</pubDate>
+      <guid>https://wdh.hk/daily/tech-and-manage/</guid>
+      <description>&lt;p&gt;上礼拜五（24/3/8）去开组会，方哥让我们讲一讲假期都做了啥。我还以为像是做报告呢，连 Keynote 都准备了，结果到那里大家人手一个手机，有的人连笔记本和笔都没有带。真是怪尴尬的。但是想着自己能和大家分享我的假期经历，也是不错的。有时候南北差异的碰撞也能带来惊喜。也可以和大家分享了自己假期的心态。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>滴！打卡！</title>
+      <link>https://wdh.hk/daily/check-in/</link>
+      <pubDate>Mon, 11 Mar 2024 18:06:02 +0800</pubDate>
+      <guid>https://wdh.hk/daily/check-in/</guid>
+      <description>&lt;p&gt;不懂从什么时候开始，大家被各种“打卡”包围了。各种 app 需要打卡，各种旅行地点需要打卡……好像是做任务，从某个npc手中接到了任务，然后拼命去完成了。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,392 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  
-    <title>GZCTF 搭建部署笔记（Docker） :: Terminal</title>
-  
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content=" Github: GZTimeWalker/GZCTF
+<!doctype html><html lang=zh dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>GZCTF 搭建部署笔记（Docker） | Daaihang's Blog</title>
+<meta name=keywords content><meta name=description content="
+Github: GZTimeWalker/GZCTF
 部署方式：Docker-compose（GZCTF、数据库、题目容器均在同一Docker实例中）
-系统：Ubuntu20.04-Docker20（因此默认系统已经安装了Docker和Docker Compose）
-将当前用户加入 docker 组 若出现下面的报错才需配置。
-[xxxx@xxxx ~]$ docker ps Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get &#34;http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json&#34;: dial unix /var/run/docker.sock: connect: permission denied 问题出在用户为访问 /var/run/docker.sock 的权限，只需给用户增加权限即可。命令行输入：
-" />
-<meta name="keywords" content="" />
-
-  <meta name="robots" content="noodp" />
-
-<link rel="canonical" href="/docs/gzctf-build/" />
-
-
-
-
-
-  
-  <link rel="stylesheet" href="/css/buttons.min.2bc533403a27dfe0e93105a92502b42ce4587e2e4a87d9f7d349e51e16e09478.css">
-
-  
-  <link rel="stylesheet" href="/css/code.min.00125962708925857e7b66dbc58391d55be1191a3d0ce2034de8c9cd2c481c36.css">
-
-  
-  <link rel="stylesheet" href="/css/fonts.min.4881f0c525f3ce2a1864fb6e96676396cebe1e6fcef1933e8e1dde7041004fb5.css">
-
-  
-  <link rel="stylesheet" href="/css/footer.min.2e3eb191baee58dd05a9f0104ac1fab0827bca7c64dafe0b2579f934c33a1d69.css">
-
-  
-  <link rel="stylesheet" href="/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
-
-  
-  <link rel="stylesheet" href="/css/header.min.b6fb4423cf82a9f9d7abc9cd010223fa3d70a6526a3f28f8e17d814c06e18f9e.css">
-
-  
-  <link rel="stylesheet" href="/css/main.min.fe8dc560fccb53a458b0db19ccb7b265764ac46b68596b7e099c6793054dd457.css">
-
-  
-  <link rel="stylesheet" href="/css/menu.min.83637a90d903026bc280d3f82f96ceb06c5fc72b7c1a8d686afb5bbf818a29f7.css">
-
-  
-  <link rel="stylesheet" href="/css/pagination.min.82f6400eae7c7c6dc3c866733c2ec0579e4089608fea69400ff85b3880aa0d3c.css">
-
-  
-  <link rel="stylesheet" href="/css/post.min.fc74ca360273c1d828da3c02b8174eba435607b369d98418ccc6f2243cd4e75d.css">
-
-  
-  <link rel="stylesheet" href="/css/prism.min.9023bbc24533d09e97a51a0a42a5a7bfe4c591ae167c5551fb1d2191d11977c0.css">
-
-  
-  <link rel="stylesheet" href="/css/syntax.min.cc789ed9377260d7949ea4c18781fc58959a89287210fe4edbff44ebfc1511b6.css">
-
-  
-  <link rel="stylesheet" href="/css/terminal.min.4b367d85d0d0061435650561285afed36c46a7cf8dc6d7ed5642d98e589fa622.css">
-
-  
-  <link rel="stylesheet" href="/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
-
-
-
-
-<link rel="stylesheet" href="/style.css">
-
-
-<link rel="shortcut icon" href="/favicon.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-
-<meta name="twitter:card" content="summary" />
-
-  
-    <meta name="twitter:site" content="" />
-  
-    <meta name="twitter:creator" content="" />
-
-
-
-<meta property="og:locale" content="en" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="GZCTF 搭建部署笔记（Docker）">
-<meta property="og:description" content=" Github: GZTimeWalker/GZCTF
+系统：Ubuntu20.04-Docker20（因此默认系统已经安装了Docker和Docker Compose）"><meta name=author content><link rel=canonical href=https://wdh.hk/docs/gzctf-build/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.css rel="preload stylesheet" as=style><link rel=icon href=https://wdh.hk/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://wdh.hk/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://wdh.hk/favicon-32x32.png><link rel=apple-touch-icon href=https://wdh.hk/apple-touch-icon.png><link rel=mask-icon href=https://wdh.hk/favicon.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=zh href=https://wdh.hk/docs/gzctf-build/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:url" content="https://wdh.hk/docs/gzctf-build/"><meta property="og:site_name" content="Daaihang's Blog"><meta property="og:title" content="GZCTF 搭建部署笔记（Docker）"><meta property="og:description" content=" Github: GZTimeWalker/GZCTF
 部署方式：Docker-compose（GZCTF、数据库、题目容器均在同一Docker实例中）
-系统：Ubuntu20.04-Docker20（因此默认系统已经安装了Docker和Docker Compose）
-将当前用户加入 docker 组 若出现下面的报错才需配置。
-[xxxx@xxxx ~]$ docker ps Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get &#34;http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json&#34;: dial unix /var/run/docker.sock: connect: permission denied 问题出在用户为访问 /var/run/docker.sock 的权限，只需给用户增加权限即可。命令行输入：
-" />
-<meta property="og:url" content="/docs/gzctf-build/" />
-<meta property="og:site_name" content="Terminal" />
-
-  <meta property="og:image" content="/og-image.png">
-
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="627">
-
-
-  <meta property="article:published_time" content="2024-03-10 21:57:38 &#43;0800 &#43;0800" />
-
-
-
-
-
-
-
-
-
-
-
-
-</head>
-<body>
-
-
-<div class="container center">
-
-  <header class="header">
-  <div class="header__inner">
-    <div class="header__logo">
-      <a href="/">
-  <div class="logo">
-    Daaihang Wong Online Blog
-  </div>
-</a>
-
-    </div>
-    
-      <ul class="menu menu--mobile">
-  <li class="menu__trigger">Menu&nbsp;▾</li>
-  <li>
-    <ul class="menu__dropdown">
-      
-        
-          <li><a href="/about">About</a></li>
-        
-      
-        
-          <li><a href="/docs">Docs</a></li>
-        
-      
-        
-          <li><a href="/friend">Friend</a></li>
-        
-      
-      
-    </ul>
-  </li>
-</ul>
-
-    
-    
-  </div>
-  
-    <nav class="navigation-menu">
-  <ul class="navigation-menu__inner menu--desktop">
-    
-      
-        
-          <li><a href="/about" >About</a></li>
-        
-      
-        
-          <li><a href="/docs" >Docs</a></li>
-        
-      
-        
-          <li><a href="/friend" >Friend</a></li>
-        
-      
-      
-    
-  </ul>
-</nav>
-
-  
-</header>
-
-
-  <div class="content">
-    
-<article class="post">
-  <h1 class="post-title">
-    <a href="/docs/gzctf-build/">GZCTF 搭建部署笔记（Docker）</a>
-  </h1>
-  <div class="post-meta"><time class="post-date">2024-03-10</time></div>
-
-  
-  
-
-
-  
-
-  <div class="post-content"><div>
-        <blockquote>
-<p>Github: <a href="https://github.com/GZTimeWalker/GZCTF">GZTimeWalker/GZCTF</a></p>
-<p>部署方式：Docker-compose（GZCTF、数据库、题目容器均在同一Docker实例中）</p>
-<p>系统：Ubuntu20.04-Docker20（因此默认系统已经安装了Docker和Docker Compose）</p></blockquote>
-<h2 id="将当前用户加入-docker-组">将当前用户加入 docker 组<a href="#将当前用户加入-docker-组" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<p>若出现下面的报错才需配置。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#f92672">[</span>xxxx@xxxx ~<span style="color:#f92672">]</span>$ docker ps
-</span></span><span style="display:flex;"><span>Got permission denied <span style="color:#66d9ef">while</span> trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get <span style="color:#e6db74">&#34;http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json&#34;</span>: dial unix /var/run/docker.sock: connect: permission denied
-</span></span></code></pre></div><p>问题出在用户为访问 <code>/var/run/docker.sock</code> 的权限，只需给用户增加权限即可。命令行输入：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>sudo chown root:docker /var/run/docker.sock	<span style="color:#75715e"># 修改docker.sock权限为root:docker</span>
-</span></span><span style="display:flex;"><span>sudo groupadd docker          				<span style="color:#75715e"># 添加docker用户组 </span>
-</span></span><span style="display:flex;"><span>sudo gpasswd -a $USER docker  				<span style="color:#75715e"># 将当前用户添加至docker用户组</span>
-</span></span><span style="display:flex;"><span>newgrp docker                 				<span style="color:#75715e"># 更新docker用户组</span>
-</span></span></code></pre></div><h2 id="配置文件">配置文件<a href="#配置文件" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<p>新建两个文件，位于同一个文件夹。这里的文件夹名称为 <code>GZCTF</code>，文件为 <code>appsettings.json</code> 和 <code>docker-compose.yml</code> 。</p>
-<p><code>appsettings.json</code> 文件内写入：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;AllowedHosts&#34;</span>: <span style="color:#e6db74">&#34;*&#34;</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;ConnectionStrings&#34;</span>: {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Database&#34;</span>: <span style="color:#e6db74">&#34;Host=db:5432;Database=gzctf;Username=postgres;Password=&lt;String1&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//&lt;String1&gt;换成数据库密码，随机密码且长度足够
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  },
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;Logging&#34;</span>: {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;LogLevel&#34;</span>: {
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Default&#34;</span>: <span style="color:#e6db74">&#34;Information&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Microsoft&#34;</span>: <span style="color:#e6db74">&#34;Warning&#34;</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Microsoft.Hosting.Lifetime&#34;</span>: <span style="color:#e6db74">&#34;Information&#34;</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  },
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//邮箱配置
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#f92672">&#34;EmailConfig&#34;</span>: {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;SendMailAddress&#34;</span>: <span style="color:#e6db74">&#34;Admin@xxx.com&#34;</span>,		<span style="color:#75715e">// 填入邮箱
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;UserName&#34;</span>: <span style="color:#e6db74">&#34;ctf_noreply&#34;</span>,				    <span style="color:#75715e">// 发件人名称
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;Password&#34;</span>: <span style="color:#e6db74">&#34;******&#34;</span>,                 <span style="color:#75715e">// 邮箱密码，部分服务商需要填入授权码
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;Smtp&#34;</span>: {
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Host&#34;</span>: <span style="color:#e6db74">&#34;smtp.163.com&#34;</span>,				  <span style="color:#75715e">// 此处为163邮箱服务器，具体自定
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#f92672">&#34;Port&#34;</span>: <span style="color:#ae81ff">465</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  },
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;XorKey&#34;</span>: <span style="color:#e6db74">&#34;&lt;String2&gt;&#34;</span>,					    <span style="color:#75715e">// 自定XorKey
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#f92672">&#34;ContainerProvider&#34;</span>: {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Type&#34;</span>: <span style="color:#e6db74">&#34;Docker&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;PublicEntry&#34;</span>: <span style="color:#e6db74">&#34;xx.xx.xx.xx&#34;</span>,			<span style="color:#75715e">// 域名或IP配置，用于容器生成,域名不带http/https
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#f92672">&#34;DockerConfig&#34;</span>: {
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;SwarmMode&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;Uri&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>								        <span style="color:#75715e">// 本地配置Docker因此此处置空
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
-</span></span><span style="display:flex;"><span>  },
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;RequestLogging&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;DisableRateLimit&#34;</span>: <span style="color:#66d9ef">false</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;RegistryConfig&#34;</span>: {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;UserName&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Password&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;ServerAddress&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>  },
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//谷歌验证码配置
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#f92672">&#34;GoogleRecaptcha&#34;</span>: {
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;VerifyAPIAddress&#34;</span>: <span style="color:#e6db74">&#34;https://www.recaptcha.net/recaptcha/api/siteverify&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Sitekey&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;Secretkey&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;RecaptchaThreshold&#34;</span>: <span style="color:#e6db74">&#34;0.5&#34;</span>
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><code>docker-compose.yml</code> 写入：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">version</span>: <span style="color:#e6db74">&#39;3.0&#39;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">services</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">gzctf</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">gztime/gzctf:latest</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;GZCTF_ADMIN_PASSWORD=&lt;String3&gt;&#34;</span> <span style="color:#75715e"># &lt;String3&gt;换成管理员账户密码，账号为Admin</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ports</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;80:8080&#34;</span> <span style="color:#75715e"># 对外端口号，前为外部端口。</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">default</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;./data/files:/app/uploads&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;./appsettings.json:/app/appsettings.json:ro&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;./logs:/app/log&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;./data/keys:/root/.aspnet/DataProtection-Keys&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># - &#34;./k8sconfig.yaml:/app/k8sconfig.yaml:ro&#34;</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;/var/run/docker.sock:/var/run/docker.sock&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">depends_on</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">db</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">db</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">image</span>: <span style="color:#ae81ff">postgres:alpine</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">always</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">environment</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;POSTGRES_PASSWORD=&lt;String1&gt;&#34;</span> <span style="color:#75715e"># 数据库密码，务必要和appsettings.json中的配置一致</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">networks</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">default</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">volumes</span>:
-</span></span><span style="display:flex;"><span>      - <span style="color:#e6db74">&#34;./data/db:/var/lib/postgresql/data&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">networks</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">default</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">driver</span>: <span style="color:#ae81ff">bridge</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ipam</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">config</span>:
-</span></span><span style="display:flex;"><span>        - <span style="color:#f92672">subnet</span>: <span style="color:#ae81ff">192.168.12.0</span><span style="color:#ae81ff">/24</span>
-</span></span></code></pre></div><h2 id="命令行">命令行<a href="#命令行" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<p>通过 Xshell 和 Xftp 连接服务器，上传 <code>GZCTF</code> 文件夹。开始部署。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>cd GZCTF
-</span></span><span style="display:flex;"><span>docker-compose up -d
-</span></span></code></pre></div><p>部署完成后，建议查看 log，看部署是否成功。主要是看 gzctf 容器是否连接上了数据库。</p>
-<p><code>docker ps</code> 查看容器 ID：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ubuntu@VM-16-8-ubuntu:~$ docker ps
-</span></span><span style="display:flex;"><span>CONTAINER ID   IMAGE                 COMMAND                  CREATED        STATUS        PORTS                NAMES
-</span></span><span style="display:flex;"><span>5b9bc7a475h2   gztime/gzctf:latest   <span style="color:#e6db74">&#34;dotnet CTFServer.dll&#34;</span>   <span style="color:#ae81ff">17</span> hours ago   Up <span style="color:#ae81ff">17</span> hours   0.0.0.0:80-&gt;8080/tcp   gzctf_gzctf_1
-</span></span><span style="display:flex;"><span>f00e8850dee4   postgres:alpine       <span style="color:#e6db74">&#34;docker-entrypoint.s…&#34;</span>   <span style="color:#ae81ff">17</span> hours ago   Up <span style="color:#ae81ff">17</span> hours   5432/tcp             gzctf_db_1
-</span></span></code></pre></div><p>看到 gzctf 的 ID 是 <code>5b9bc7a475h2</code>。使用 <code>docker logs 5b9bc7a475h2</code> 查看日志。看到连接上数据库的日志即可成功配置。</p>
-<h2 id="平台测试">平台测试<a href="#平台测试" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<p>登录域名或 IP（域名需要在域名服务商配置）。用 Admin 和前面设置的密码登录。（中间就自己添加比赛什么的）然后添加需要容器的题目，并测试几个 Web 容器。</p>
-<p><img src="http://picgo-1258675557.cos.accelerate.myqcloud.com/202304011351351.png" alt=""></p>
-<p>可以测试的 Docker Hub 镜像如下。这些镜像本身部署是没有问题的。若出现错误就是平台配置问题了。服务端口均为 80。</p>
-<pre tabindex="0"><code>vaalacat/push_f12
-glzjin/hctf_2018_warmup
-ctftraining/hbctf_2017_dameixian
-ctftraining/qwb_2019_smarthacker
-ctftraining/buuctf_2018_online_tool
-ctftraining/qwb_2019_upload
-ctftraining/qwb_2019_supersqli
-</code></pre><p>需要注意的是，<strong>部分镜像需要内存和存储较多，可能出现创建容器成功但无法打开网页的情况</strong>。</p>
-<h2 id="容器其他错误排查">容器其他错误排查<a href="#容器其他错误排查" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<ul>
-<li>
-<p>部署报错：</p>
-<ul>
-<li><strong>不会两个文件内容改都不改吧？</strong></li>
-<li>检查 pip 版本，检查 Docker 版本。</li>
-</ul>
-</li>
-<li>
-<p>容器无法创建：数据库是否连上？看前面的配置和使用 <code>docker logs xxx</code> 命令查看日志。</p>
-</li>
-<li>
-<p>容器创建成功但无法打开网页：</p>
-<ul>
-<li>
-<p>域名访问：服务商的域名配置是否正确？</p>
-</li>
-<li>
-<p>内存限制和存储限制是否太小？</p>
-</li>
-<li>
-<p>服务器的防火墙端口是否打开了？</p>
-</li>
-</ul>
-</li>
-</ul>
-
-      </div></div>
-
-  
-
-  
-    
-
-  
-</article>
-
-  </div>
-
-  
-    <footer class="footer">
-  <div class="footer__inner">
-    
-      <div class="copyright">
-        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
-    
-      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
-      </div>
-  </div>
-</footer>
-
-
-
-
-
-
-<script type="text/javascript" src="/bundle.min.js"></script>
-
-
-
-
-
-  
-</div>
-
-</body>
-</html>
+系统：Ubuntu20.04-Docker20（因此默认系统已经安装了Docker和Docker Compose）"><meta property="og:locale" content="zh-cn"><meta property="og:type" content="article"><meta property="article:section" content="docs"><meta property="article:published_time" content="2024-03-10T21:57:38+08:00"><meta property="article:modified_time" content="2024-03-10T21:57:38+08:00"><meta property="og:image" content="https://wdh.hk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://wdh.hk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="GZCTF 搭建部署笔记（Docker）"><meta name=twitter:description content="
+Github: GZTimeWalker/GZCTF
+部署方式：Docker-compose（GZCTF、数据库、题目容器均在同一Docker实例中）
+系统：Ubuntu20.04-Docker20（因此默认系统已经安装了Docker和Docker Compose）"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"开发","item":"https://wdh.hk/docs/"},{"@type":"ListItem","position":2,"name":"GZCTF 搭建部署笔记（Docker）","item":"https://wdh.hk/docs/gzctf-build/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"GZCTF 搭建部署笔记（Docker）","name":"GZCTF 搭建部署笔记（Docker）","description":" Github: GZTimeWalker/GZCTF\n部署方式：Docker-compose（GZCTF、数据库、题目容器均在同一Docker实例中）\n系统：Ubuntu20.04-Docker20（因此默认系统已经安装了Docker和Docker Compose）\n","keywords":[],"articleBody":" Github: GZTimeWalker/GZCTF\n部署方式：Docker-compose（GZCTF、数据库、题目容器均在同一Docker实例中）\n系统：Ubuntu20.04-Docker20（因此默认系统已经安装了Docker和Docker Compose）\n将当前用户加入 docker 组 若出现下面的报错才需配置。\n[xxxx@xxxx ~]$ docker ps Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get \"http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json\": dial unix /var/run/docker.sock: connect: permission denied 问题出在用户为访问 /var/run/docker.sock 的权限，只需给用户增加权限即可。命令行输入：\nsudo chown root:docker /var/run/docker.sock\t# 修改docker.sock权限为root:docker sudo groupadd docker # 添加docker用户组 sudo gpasswd -a $USER docker # 将当前用户添加至docker用户组 newgrp docker # 更新docker用户组 配置文件 新建两个文件，位于同一个文件夹。这里的文件夹名称为 GZCTF，文件为 appsettings.json 和 docker-compose.yml 。\nappsettings.json 文件内写入：\n{ \"AllowedHosts\": \"*\", \"ConnectionStrings\": { \"Database\": \"Host=db:5432;Database=gzctf;Username=postgres;Password=\" //换成数据库密码，随机密码且长度足够 }, \"Logging\": { \"LogLevel\": { \"Default\": \"Information\", \"Microsoft\": \"Warning\", \"Microsoft.Hosting.Lifetime\": \"Information\" } }, //邮箱配置 \"EmailConfig\": { \"SendMailAddress\": \"Admin@xxx.com\",\t// 填入邮箱 \"UserName\": \"ctf_noreply\",\t// 发件人名称 \"Password\": \"******\", // 邮箱密码，部分服务商需要填入授权码 \"Smtp\": { \"Host\": \"smtp.163.com\",\t// 此处为163邮箱服务器，具体自定 \"Port\": 465 } }, \"XorKey\": \"\",\t// 自定XorKey \"ContainerProvider\": { \"Type\": \"Docker\", \"PublicEntry\": \"xx.xx.xx.xx\",\t// 域名或IP配置，用于容器生成,域名不带http/https \"DockerConfig\": { \"SwarmMode\": false, \"Uri\": \"\"\t// 本地配置Docker因此此处置空 } }, \"RequestLogging\": false, \"DisableRateLimit\": false, \"RegistryConfig\": { \"UserName\": \"\", \"Password\": \"\", \"ServerAddress\": \"\" }, //谷歌验证码配置 \"GoogleRecaptcha\": { \"VerifyAPIAddress\": \"https://www.recaptcha.net/recaptcha/api/siteverify\", \"Sitekey\": \"\", \"Secretkey\": \"\", \"RecaptchaThreshold\": \"0.5\" } } docker-compose.yml 写入：\nversion: '3.0' services: gzctf: image: gztime/gzctf:latest restart: always environment: - \"GZCTF_ADMIN_PASSWORD=\" # 换成管理员账户密码，账号为Admin ports: - \"80:8080\" # 对外端口号，前为外部端口。 networks: default: volumes: - \"./data/files:/app/uploads\" - \"./appsettings.json:/app/appsettings.json:ro\" - \"./logs:/app/log\" - \"./data/keys:/root/.aspnet/DataProtection-Keys\" # - \"./k8sconfig.yaml:/app/k8sconfig.yaml:ro\" - \"/var/run/docker.sock:/var/run/docker.sock\" depends_on: - db db: image: postgres:alpine restart: always environment: - \"POSTGRES_PASSWORD=\" # 数据库密码，务必要和appsettings.json中的配置一致 networks: default: volumes: - \"./data/db:/var/lib/postgresql/data\" networks: default: driver: bridge ipam: config: - subnet: 192.168.12.0/24 命令行 通过 Xshell 和 Xftp 连接服务器，上传 GZCTF 文件夹。开始部署。\ncd GZCTF docker-compose up -d 部署完成后，建议查看 log，看部署是否成功。主要是看 gzctf 容器是否连接上了数据库。\ndocker ps 查看容器 ID：\nubuntu@VM-16-8-ubuntu:~$ docker ps CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES 5b9bc7a475h2 gztime/gzctf:latest \"dotnet CTFServer.dll\" 17 hours ago Up 17 hours 0.0.0.0:80-\u003e8080/tcp gzctf_gzctf_1 f00e8850dee4 postgres:alpine \"docker-entrypoint.s…\" 17 hours ago Up 17 hours 5432/tcp gzctf_db_1 看到 gzctf 的 ID 是 5b9bc7a475h2。使用 docker logs 5b9bc7a475h2 查看日志。看到连接上数据库的日志即可成功配置。\n平台测试 登录域名或 IP（域名需要在域名服务商配置）。用 Admin 和前面设置的密码登录。（中间就自己添加比赛什么的）然后添加需要容器的题目，并测试几个 Web 容器。\n可以测试的 Docker Hub 镜像如下。这些镜像本身部署是没有问题的。若出现错误就是平台配置问题了。服务端口均为 80。\nvaalacat/push_f12 glzjin/hctf_2018_warmup ctftraining/hbctf_2017_dameixian ctftraining/qwb_2019_smarthacker ctftraining/buuctf_2018_online_tool ctftraining/qwb_2019_upload ctftraining/qwb_2019_supersqli 需要注意的是，部分镜像需要内存和存储较多，可能出现创建容器成功但无法打开网页的情况。\n容器其他错误排查 部署报错：\n不会两个文件内容改都不改吧？ 检查 pip 版本，检查 Docker 版本。 容器无法创建：数据库是否连上？看前面的配置和使用 docker logs xxx 命令查看日志。\n容器创建成功但无法打开网页：\n域名访问：服务商的域名配置是否正确？\n内存限制和存储限制是否太小？\n服务器的防火墙端口是否打开了？\n","wordCount":"1184","inLanguage":"zh","image":"https://wdh.hk/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E","datePublished":"2024-03-10T21:57:38+08:00","dateModified":"2024-03-10T21:57:38+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://wdh.hk/docs/gzctf-build/"},"publisher":{"@type":"Organization","name":"Daaihang's Blog","logo":{"@type":"ImageObject","url":"https://wdh.hk/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://wdh.hk/ accesskey=h title="Daaihang's Blog (Alt + H)"><img src=https://wdh.hk/favicon.svg alt aria-label=logo height=35>Daaihang's Blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://wdh.hk/daily/ title=🎈日常><span>🎈日常</span></a></li><li><a href=https://wdh.hk/docs/ title=🧑‍💻开发><span>🧑‍💻开发</span></a></li><li><a href=https://wdh.hk/tags/ title=🏷️标签><span>🏷️标签</span></a></li><li><a href=https://wdh.hk/categories/ title=📌分类><span>📌分类</span></a></li><li><a href=https://wdh.hk/search/ title=🔍搜索><span>🔍搜索</span></a></li><li><a href=https://wdh.hk/friend/ title=🧑‍🤝‍🧑朋友><span>🧑‍🤝‍🧑朋友</span></a></li><li><a href=https://wdh.hk/about/ title=🫰关于><span>🫰关于</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://wdh.hk/>主页</a>&nbsp;»&nbsp;<a href=https://wdh.hk/docs/>开发</a></div><h1 class=post-title>GZCTF 搭建部署笔记（Docker）</h1><div class=post-meta>2024-03-10·1184 字&nbsp;|&nbsp;<a href=https://github.com/daaihang/myWebsite/tree/main/content/docs/gzctf-build.md rel="noopener noreferrer" target=_blank>源代码</a></div></header><aside id=toc-container class="toc-container wide"><div class=toc><details open><summary accesskey=c title="(Alt + C)"><span class=details>目录</span></summary><div class=inner><ul><li><a href=#%e5%b0%86%e5%bd%93%e5%89%8d%e7%94%a8%e6%88%b7%e5%8a%a0%e5%85%a5-docker-%e7%bb%84 aria-label="将当前用户加入 docker 组">将当前用户加入 docker 组</a></li><li><a href=#%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6 aria-label=配置文件>配置文件</a></li><li><a href=#%e5%91%bd%e4%bb%a4%e8%a1%8c aria-label=命令行>命令行</a></li><li><a href=#%e5%b9%b3%e5%8f%b0%e6%b5%8b%e8%af%95 aria-label=平台测试>平台测试</a></li><li><a href=#%e5%ae%b9%e5%99%a8%e5%85%b6%e4%bb%96%e9%94%99%e8%af%af%e6%8e%92%e6%9f%a5 aria-label=容器其他错误排查>容器其他错误排查</a></li></ul></div></details></div></aside><script>let activeElement,elements;window.addEventListener("DOMContentLoaded",function(){checkTocPosition(),elements=document.querySelectorAll("h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]"),activeElement=elements[0];const t=encodeURI(activeElement.getAttribute("id")).toLowerCase();document.querySelector(`.inner ul li a[href="#${t}"]`).classList.add("active")},!1),window.addEventListener("resize",function(){checkTocPosition()},!1),window.addEventListener("scroll",()=>{activeElement=Array.from(elements).find(e=>{if(getOffsetTop(e)-window.pageYOffset>0&&getOffsetTop(e)-window.pageYOffset<window.innerHeight/2)return e})||activeElement,elements.forEach(e=>{const t=encodeURI(e.getAttribute("id")).toLowerCase();e===activeElement?document.querySelector(`.inner ul li a[href="#${t}"]`).classList.add("active"):document.querySelector(`.inner ul li a[href="#${t}"]`).classList.remove("active")})},!1);const main=parseInt(getComputedStyle(document.body).getPropertyValue("--article-width"),10),toc=parseInt(getComputedStyle(document.body).getPropertyValue("--toc-width"),10),gap=parseInt(getComputedStyle(document.body).getPropertyValue("--gap"),10);function checkTocPosition(){const e=document.body.scrollWidth;e-main-toc*2-gap*4>0?document.getElementById("toc-container").classList.add("wide"):document.getElementById("toc-container").classList.remove("wide")}function getOffsetTop(e){if(!e.getClientRects().length)return 0;let t=e.getBoundingClientRect(),n=e.ownerDocument.defaultView;return t.top+n.pageYOffset}</script><div class=post-content><blockquote><p>Github: <a href=https://github.com/GZTimeWalker/GZCTF>GZTimeWalker/GZCTF</a></p><p>部署方式：Docker-compose（GZCTF、数据库、题目容器均在同一Docker实例中）</p><p>系统：Ubuntu20.04-Docker20（因此默认系统已经安装了Docker和Docker Compose）</p></blockquote><h2 id=将当前用户加入-docker-组>将当前用户加入 docker 组<a hidden class=anchor aria-hidden=true href=#将当前用户加入-docker-组>#</a></h2><p>若出现下面的报错才需配置。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=o>[</span>xxxx@xxxx ~<span class=o>]</span>$ docker ps
+</span></span><span class=line><span class=cl>Got permission denied <span class=k>while</span> trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get <span class=s2>&#34;http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json&#34;</span>: dial unix /var/run/docker.sock: connect: permission denied
+</span></span></code></pre></div><p>问题出在用户为访问 <code>/var/run/docker.sock</code> 的权限，只需给用户增加权限即可。命令行输入：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>sudo chown root:docker /var/run/docker.sock	<span class=c1># 修改docker.sock权限为root:docker</span>
+</span></span><span class=line><span class=cl>sudo groupadd docker          				<span class=c1># 添加docker用户组 </span>
+</span></span><span class=line><span class=cl>sudo gpasswd -a <span class=nv>$USER</span> docker  				<span class=c1># 将当前用户添加至docker用户组</span>
+</span></span><span class=line><span class=cl>newgrp docker                 				<span class=c1># 更新docker用户组</span>
+</span></span></code></pre></div><h2 id=配置文件>配置文件<a hidden class=anchor aria-hidden=true href=#配置文件>#</a></h2><p>新建两个文件，位于同一个文件夹。这里的文件夹名称为 <code>GZCTF</code>，文件为 <code>appsettings.json</code> 和 <code>docker-compose.yml</code> 。</p><p><code>appsettings.json</code> 文件内写入：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;AllowedHosts&#34;</span><span class=p>:</span> <span class=s2>&#34;*&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;ConnectionStrings&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;Database&#34;</span><span class=p>:</span> <span class=s2>&#34;Host=db:5432;Database=gzctf;Username=postgres;Password=&lt;String1&gt;&#34;</span>
+</span></span><span class=line><span class=cl>      <span class=c1>//&lt;String1&gt;换成数据库密码，随机密码且长度足够
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;Logging&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;LogLevel&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;Default&#34;</span><span class=p>:</span> <span class=s2>&#34;Information&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;Microsoft&#34;</span><span class=p>:</span> <span class=s2>&#34;Warning&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;Microsoft.Hosting.Lifetime&#34;</span><span class=p>:</span> <span class=s2>&#34;Information&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=c1>//邮箱配置
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=nt>&#34;EmailConfig&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;SendMailAddress&#34;</span><span class=p>:</span> <span class=s2>&#34;Admin@xxx.com&#34;</span><span class=p>,</span>		<span class=c1>// 填入邮箱
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nt>&#34;UserName&#34;</span><span class=p>:</span> <span class=s2>&#34;ctf_noreply&#34;</span><span class=p>,</span>				    <span class=c1>// 发件人名称
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nt>&#34;Password&#34;</span><span class=p>:</span> <span class=s2>&#34;******&#34;</span><span class=p>,</span>                 <span class=c1>// 邮箱密码，部分服务商需要填入授权码
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nt>&#34;Smtp&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;Host&#34;</span><span class=p>:</span> <span class=s2>&#34;smtp.163.com&#34;</span><span class=p>,</span>				  <span class=c1>// 此处为163邮箱服务器，具体自定
+</span></span></span><span class=line><span class=cl><span class=c1></span>      <span class=nt>&#34;Port&#34;</span><span class=p>:</span> <span class=mi>465</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;XorKey&#34;</span><span class=p>:</span> <span class=s2>&#34;&lt;String2&gt;&#34;</span><span class=p>,</span>					    <span class=c1>// 自定XorKey
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=nt>&#34;ContainerProvider&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;Type&#34;</span><span class=p>:</span> <span class=s2>&#34;Docker&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;PublicEntry&#34;</span><span class=p>:</span> <span class=s2>&#34;xx.xx.xx.xx&#34;</span><span class=p>,</span>			<span class=c1>// 域名或IP配置，用于容器生成,域名不带http/https
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=nt>&#34;DockerConfig&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;SwarmMode&#34;</span><span class=p>:</span> <span class=kc>false</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;Uri&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span>								        <span class=c1>// 本地配置Docker因此此处置空
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;RequestLogging&#34;</span><span class=p>:</span> <span class=kc>false</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;DisableRateLimit&#34;</span><span class=p>:</span> <span class=kc>false</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;RegistryConfig&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;UserName&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;Password&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;ServerAddress&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl>    
+</span></span><span class=line><span class=cl>    <span class=c1>//谷歌验证码配置
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=nt>&#34;GoogleRecaptcha&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;VerifyAPIAddress&#34;</span><span class=p>:</span> <span class=s2>&#34;https://www.recaptcha.net/recaptcha/api/siteverify&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;Sitekey&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;Secretkey&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;RecaptchaThreshold&#34;</span><span class=p>:</span> <span class=s2>&#34;0.5&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><p><code>docker-compose.yml</code> 写入：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-yml data-lang=yml><span class=line><span class=cl><span class=nt>version</span><span class=p>:</span><span class=w> </span><span class=s1>&#39;3.0&#39;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>services</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>gzctf</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>image</span><span class=p>:</span><span class=w> </span><span class=l>gztime/gzctf:latest</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>restart</span><span class=p>:</span><span class=w> </span><span class=l>always</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>environment</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=s2>&#34;GZCTF_ADMIN_PASSWORD=&lt;String3&gt;&#34;</span><span class=w> </span><span class=c># &lt;String3&gt;换成管理员账户密码，账号为Admin</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>ports</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=s2>&#34;80:8080&#34;</span><span class=w> </span><span class=c># 对外端口号，前为外部端口。</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>networks</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>default</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>volumes</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=s2>&#34;./data/files:/app/uploads&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=s2>&#34;./appsettings.json:/app/appsettings.json:ro&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=s2>&#34;./logs:/app/log&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=s2>&#34;./data/keys:/root/.aspnet/DataProtection-Keys&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=c># - &#34;./k8sconfig.yaml:/app/k8sconfig.yaml:ro&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=s2>&#34;/var/run/docker.sock:/var/run/docker.sock&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>depends_on</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=l>db</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>db</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>image</span><span class=p>:</span><span class=w> </span><span class=l>postgres:alpine</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>restart</span><span class=p>:</span><span class=w> </span><span class=l>always</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>environment</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=s2>&#34;POSTGRES_PASSWORD=&lt;String1&gt;&#34;</span><span class=w> </span><span class=c># 数据库密码，务必要和appsettings.json中的配置一致</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>networks</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>default</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>volumes</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span>- <span class=s2>&#34;./data/db:/var/lib/postgresql/data&#34;</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w></span><span class=nt>networks</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>  </span><span class=nt>default</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>driver</span><span class=p>:</span><span class=w> </span><span class=l>bridge</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>    </span><span class=nt>ipam</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>      </span><span class=nt>config</span><span class=p>:</span><span class=w>
+</span></span></span><span class=line><span class=cl><span class=w>        </span>- <span class=nt>subnet</span><span class=p>:</span><span class=w> </span><span class=m>192.168.12.0</span><span class=l>/24</span><span class=w>
+</span></span></span></code></pre></div><h2 id=命令行>命令行<a hidden class=anchor aria-hidden=true href=#命令行>#</a></h2><p>通过 Xshell 和 Xftp 连接服务器，上传 <code>GZCTF</code> 文件夹。开始部署。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=nb>cd</span> GZCTF
+</span></span><span class=line><span class=cl>docker-compose up -d
+</span></span></code></pre></div><p>部署完成后，建议查看 log，看部署是否成功。主要是看 gzctf 容器是否连接上了数据库。</p><p><code>docker ps</code> 查看容器 ID：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>ubuntu@VM-16-8-ubuntu:~$ docker ps
+</span></span><span class=line><span class=cl>CONTAINER ID   IMAGE                 COMMAND                  CREATED        STATUS        PORTS                NAMES
+</span></span><span class=line><span class=cl>5b9bc7a475h2   gztime/gzctf:latest   <span class=s2>&#34;dotnet CTFServer.dll&#34;</span>   <span class=m>17</span> hours ago   Up <span class=m>17</span> hours   0.0.0.0:80-&gt;8080/tcp   gzctf_gzctf_1
+</span></span><span class=line><span class=cl>f00e8850dee4   postgres:alpine       <span class=s2>&#34;docker-entrypoint.s…&#34;</span>   <span class=m>17</span> hours ago   Up <span class=m>17</span> hours   5432/tcp             gzctf_db_1
+</span></span></code></pre></div><p>看到 gzctf 的 ID 是 <code>5b9bc7a475h2</code>。使用 <code>docker logs 5b9bc7a475h2</code> 查看日志。看到连接上数据库的日志即可成功配置。</p><h2 id=平台测试>平台测试<a hidden class=anchor aria-hidden=true href=#平台测试>#</a></h2><p>登录域名或 IP（域名需要在域名服务商配置）。用 Admin 和前面设置的密码登录。（中间就自己添加比赛什么的）然后添加需要容器的题目，并测试几个 Web 容器。</p><p><img loading=lazy src=http://picgo-1258675557.cos.accelerate.myqcloud.com/202304011351351.png></p><p>可以测试的 Docker Hub 镜像如下。这些镜像本身部署是没有问题的。若出现错误就是平台配置问题了。服务端口均为 80。</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-gdscript3 data-lang=gdscript3><span class=line><span class=cl><span class=n>vaalacat</span><span class=o>/</span><span class=n>push_f12</span>
+</span></span><span class=line><span class=cl><span class=n>glzjin</span><span class=o>/</span><span class=n>hctf_2018_warmup</span>
+</span></span><span class=line><span class=cl><span class=n>ctftraining</span><span class=o>/</span><span class=n>hbctf_2017_dameixian</span>
+</span></span><span class=line><span class=cl><span class=n>ctftraining</span><span class=o>/</span><span class=n>qwb_2019_smarthacker</span>
+</span></span><span class=line><span class=cl><span class=n>ctftraining</span><span class=o>/</span><span class=n>buuctf_2018_online_tool</span>
+</span></span><span class=line><span class=cl><span class=n>ctftraining</span><span class=o>/</span><span class=n>qwb_2019_upload</span>
+</span></span><span class=line><span class=cl><span class=n>ctftraining</span><span class=o>/</span><span class=n>qwb_2019_supersqli</span>
+</span></span></code></pre></div><p>需要注意的是，<strong>部分镜像需要内存和存储较多，可能出现创建容器成功但无法打开网页的情况</strong>。</p><h2 id=容器其他错误排查>容器其他错误排查<a hidden class=anchor aria-hidden=true href=#容器其他错误排查>#</a></h2><ul><li><p>部署报错：</p><ul><li><strong>不会两个文件内容改都不改吧？</strong></li><li>检查 pip 版本，检查 Docker 版本。</li></ul></li><li><p>容器无法创建：数据库是否连上？看前面的配置和使用 <code>docker logs xxx</code> 命令查看日志。</p></li><li><p>容器创建成功但无法打开网页：</p><ul><li><p>域名访问：服务商的域名配置是否正确？</p></li><li><p>内存限制和存储限制是否太小？</p></li><li><p>服务器的防火墙端口是否打开了？</p></li></ul></li></ul></div><footer class=post-footer><ul class=post-tags></ul><nav class=paginav><a class=prev href=https://wdh.hk/docs/mi4c-drcom/><span class=title>« 上一页</span><br><span>使用小米路由器 4C 登录西邮联通校园网</span></a></nav></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css integrity=sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js integrity=sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t crossorigin=anonymous></script><script src=https://cdn.jsdelivr.net/npm/artalk@2.8.6/dist/Artalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/@artalk/plugin-katex@0.2.4/dist/artalk-plugin-katex.min.js></script><div id=Comments></div><script>const savedTheme=localStorage.getItem("pref-theme");let darkMode="auto";savedTheme!==null&&(darkMode=savedTheme==="dark");const artalk=Artalk.init({el:"#Comments",pageKey:"",pageTitle:"GZCTF 搭建部署笔记（Docker）",server:"",site:"",darkMode,versionCheck:!1});document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?artalk.setDarkMode(!1):artalk.setDarkMode(!0)})</script></article></main><footer class=footer><span>© <a href=https://wdh.hk>Daaihang Wong</a> <a href="https://icp.gov.moe/?keyword=20252019">萌ICP备20252019号</a></span>
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/sherlcok314159/MyPaperMod rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>(function(e,t){var s=document,o="script",n=s.createElement(o),i=s.getElementsByTagName(o)[0];n.src=e,t&&n.addEventListener("load",function(e){t(e)}),i.parentNode.insertBefore(n,i)})("/js/pangu.min.js",function(){pangu.spacingPage()})</script><script>(function(){var e,t,n,s=document.getElementsByTagName("code");for(n=0;n<s.length;){if(t=s[n],t.parentNode.tagName!=="PRE"&&t.childElementCount===0&&(e=t.textContent,/^\$[^$]/.test(e)&&/[^$]\$$/.test(e)&&(e=e.replace(/^\$/,"\\(").replace(/\$$/,"\\)"),t.textContent=e),/^\\\((.|\s)+\\\)$/.test(e)||/^\\\[(.|\s)+\\\]$/.test(e)||/^\$(.|\s)+\$$/.test(e)||/^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(e))){t.outerHTML=t.innerHTML;continue}n++}})()</script><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="Copy";function s(){t.innerHTML="Done",setTimeout(()=>{t.innerHTML="Copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
